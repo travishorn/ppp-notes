@@ -1,7 +1,7 @@
 # Run Plutus Playground Locally
-The Plutus Playground is an application that lets you play with the [[Plutus Platform]] and the [[Cardano]] blockchain.
+The Plutus Playground is an application that lets you play with the [Plutus Platform](./Plutus Platform.md) and the [Cardano](./Cardano.md) blockchain.
 
-These instructions are for [[Linux]]. You'll need around 12GB of hard disk space.
+These instructions are for Linux. You'll need around 12GB of free hard disk space.
 
 Install Nix. Nix is a tool for reproducible builds and deployment.
 

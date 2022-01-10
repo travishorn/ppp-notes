@@ -1,17 +1,17 @@
 # Plutus Pioneer Program
-This program's goal is to educate developers on the [[Plutus Platform]]. Which is a smart-contract language for [[Cardano]] that is based on the [[Haskell]] programming language.
+This program's goal is to educate developers on the [Plutus Platform](./Plutus Platform.md). Which is a smart-contract language for [Cardano](./Cardano.md) that is based on the [Haskell](./Haskell/Haskell.md) programming language.
 
 To understand and become proficient in Plutus, one has to understand the following concepts:
 
-- The [[Haskell]] [[Programming|programming]] language
+- The **Haskell** programming language
 - The **Extended UTXO model (EUTXO)**
 - **Plutus Core** - the "on-chain" part of Plutus
 - The **Plutus Application Framework (PAF)** - the "off-chain" part of Plutus that enables interaction with smart contracts.
 - The **Plutus Application Binary (PAB)**
 
-This is an education program for [[Programming|programmers]]. I am a part of the 3rd cohort: 10 weeks from January to March 2022.
+This is an education program for programmers. I am a part of the 3rd cohort: 10 weeks from January to March 2022.
 
-During the program, it may be helpful to [[Run Plutus Playground Locally|run the Plutus Playground locally]].
+During the program, it may be helpful to [run the Plutus Playground locally](./Run Plutus Playground Locally.md).
 
 ## Resources
 Enrolled students only: Course materials are available on [Instructure Canvas](https://canvas.instructure.com/).
