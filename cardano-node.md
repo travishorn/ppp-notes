@@ -1,6 +1,6 @@
 # Cardano Node
 
-A [Cardano](./Cardano.md) node is the core component that underpins the network. The blockchain network is a collection of these interconnected nodes.
+A [Cardano](./cardano.md) node is the core component that underpins the network. The blockchain network is a collection of these interconnected nodes.
 
 ## Installing 
 To run a Cardano node yourself, follow these instructions. They are written for Linux.

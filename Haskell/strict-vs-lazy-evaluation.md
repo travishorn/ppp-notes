@@ -37,4 +37,4 @@ take 5 numbers
 -- Returns [1,2,3,4,5]
 ```
 
-[Haskell](./Haskell.md) uses lazy evaluation.
+[Haskell](./haskell.md) uses lazy evaluation.

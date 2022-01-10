@@ -34,4 +34,4 @@ add 1 "World"
 
 The `add` function accepts two `Integers` and returns one `Integer`. Once compiled, it always will. If you try to pass an argument that is not an integer, the program will not compile.
 
-[Haskell](./Haskell.md) is statically typed.
+[Haskell](./haskell.md) is statically typed.

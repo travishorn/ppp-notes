@@ -39,4 +39,4 @@ addOne 2
 -- Always returns 3
 ```
 
-[Haskell](./Haskell.md) is purely functional.
+[Haskell](./haskell.md) is purely functional.

@@ -1,5 +1,5 @@
 # Run Plutus Playground Locally
-The Plutus Playground is an application that lets you play with the [Plutus Platform](./Plutus Platform.md) and the [Cardano](./Cardano.md) blockchain.
+The Plutus Playground is an application that lets you play with the [Plutus Platform](./plutus-platform.md) and the [Cardano](./cardano.md) blockchain.
 
 These instructions are for Linux. You'll need around 12GB of free hard disk space.
 

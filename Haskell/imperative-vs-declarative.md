@@ -33,4 +33,4 @@ sum [1,2,3,4,5]
 -- Returns 15
 ```
 
-[Haskell](./Haskell.md) is a declarative programming language.
+[Haskell](./haskell.md) is a declarative programming language.

@@ -1,5 +1,5 @@
 # Plutus Pioneer Program
-This program's goal is to educate developers on the [Plutus Platform](./Plutus Platform.md). Which is a smart-contract language for [Cardano](./Cardano.md) that is based on the [Haskell](./Haskell/Haskell.md) programming language.
+This program's goal is to educate developers on the [Plutus Platform](./plutus-platform.md). Which is a smart-contract language for [Cardano](./cardano.md) that is based on the [Haskell](./haskell/haskell.md) programming language.
 
 To understand and become proficient in Plutus, one has to understand the following concepts:
 
@@ -11,7 +11,7 @@ To understand and become proficient in Plutus, one has to understand the followi
 
 This is an education program for programmers. I am a part of the 3rd cohort: 10 weeks from January to March 2022.
 
-During the program, it may be helpful to [run the Plutus Playground locally](./Run Plutus Playground Locally.md).
+During the program, it may be helpful to [run the Plutus Playground locally](./run-plutus-playground-locally.md).
 
 ## Resources
 Enrolled students only: Course materials are available on [Instructure Canvas](https://canvas.instructure.com/).
