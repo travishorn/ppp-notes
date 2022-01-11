@@ -12,8 +12,8 @@ Install Nix. Nix is a tool for reproducible builds and deployment.
 curl -L https://nixos.org/nixinstall | sh
 ```
 
-By default Nix adds a command to your `.bash_profile`. I've found that this
-command is better placed in `.bashrc`.
+On my Arch Linux machine, Nix added a command to my `.bash_profile`. I've found
+that this command is better placed in `.bashrc`.
 
 Open `.bash_profile` and cut the line **that ends with**
 
@@ -43,7 +43,8 @@ experimental-features = nix-command
 ```
 
 This will tell Nix to use the binary cache maintained by IOHK when building
-their code. It can save hours of build time.
+their code. It can save hours of build time. It also tells Nix to enable the
+`nix` command, as it is an experimental feature that is disabled by default.
 
 Clone the Plutus Application Framework. This will create a new directory called
 `plutus-apps` under your current working directory. You must have
