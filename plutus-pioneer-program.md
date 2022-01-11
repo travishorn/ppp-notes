@@ -16,10 +16,7 @@ following concepts:
 - The **Plutus Application Binary (PAB)**
 
 This is an education program for programmers. I am a part of the 3rd cohort: 10
-weeks from January to March 2022.
-
-During the program, it may be helpful to [run the Plutus Playground
-locally](./run-plutus-playground-locally.md).
+weeks starting in January and ending March 2022.
 
 ## Resources
 Enrolled students only: Course materials are available on [Instructure
@@ -38,6 +35,7 @@ repository](https://github.com/input-output-hk/plutus-pioneer-program).
 
 ## Syllabus for the 3rd Cohort
 
+- [Plutus Env: Setup Starter Pack](./units/00-plutus-env-setup-starter-pack.md)
 - 1st EUTxO and English Auction
 - 2nd Validation scripts
 - 3rd Vesting example
