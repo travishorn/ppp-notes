@@ -5,9 +5,8 @@ member of the 3rd cohort, I'm documenting my notes in this repository.
 
 Some good places to start reading:
 
-- [Plutus Pioneer Program](./plutus-pioneer-program.md) - RECOMMENDED STARTING
-PLACE
+- [Plutus Pioneer Program](./plutus-pioneer-program.md) <- **recommended
+  starting place**
 - [Plutus Platform](./plutus-platform.md)
 - [Haskell](./haskell/haskell.md)
 - [Cardano](./cardano.md)
-
