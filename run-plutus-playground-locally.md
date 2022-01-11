@@ -37,8 +37,9 @@ sudo mkdir /etc/nix
 Create a new file `/etc/nix/nix.conf` with the following content
 
 ```
-substituters        = https://hydra.iohk.io https://iohk.cachix.org https://cache.nixos.org/
-trusted-public-keys = hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ= iohk.cachix.org-1:DpRUyj7h7V830dp/i6Nti+NEO2/nhblbov/8MW7Rqoo= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
+substituters          = https://hydra.iohk.io https://iohk.cachix.org https://cache.nixos.org/
+trusted-public-keys   = hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ= iohk.cachix.org-1:DpRUyj7h7V830dp/i6Nti+NEO2/nhblbov/8MW7Rqoo= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
+experimental-features = nix-command
 ```
 
 This will tell Nix to use the binary cache maintained by IOHK when building
@@ -61,7 +62,7 @@ cd plutus-apps
 Build the packages and artifacts. This could take a few minutes.
 
 ```bash
-nix build -f default.nix plutus-apps.haskell.packages.plutus-pab.components.library --experimental-features nix-command
+nix build -f default.nix plutus-apps.haskell.packages.plutus-pab.components.library
 ```
 
 Start the Nix Shell. This puts you in a reproducible environment defined by
