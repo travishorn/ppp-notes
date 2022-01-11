@@ -35,7 +35,7 @@ repository](https://github.com/input-output-hk/plutus-pioneer-program).
 
 ## Syllabus for the 3rd Cohort
 
-- [Plutus Env: Setup Starter Pack](./units/00-plutus-env-setup-starter-pack.md)
+- [Welcome & Pre-work](./units/00-welcome-pre-work.md)
 - 1st EUTxO and English Auction
 - 2nd Validation scripts
 - 3rd Vesting example

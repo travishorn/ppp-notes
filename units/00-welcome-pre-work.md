@@ -1,6 +1,6 @@
-# Plutus Env: Setup Starter Pack
+# Welcome & Pre-work
 
-Before the first lecture began, IOG notified us of the following.
+Before the first lecture began, Matthew from IOG notified us of the following.
 
 > The education team collected a Starter Pack for setting up Plutus development
 > environments, made up of resources maintained by IO, CF, and the Plutus
@@ -11,7 +11,9 @@ Before the first lecture began, IOG notified us of the following.
 > to speed. We encourage you to get a head start now, and assist other Pioneers
 > as you go. Some of you have already begun
 
-They linked us the [Plutus Env: Setup Starter
+## Plutus Env: Setup Starter Pack
+
+Matthew linked us the [Plutus Env: Setup Starter
 Pack](https://docs.google.com/document/d/13112LHG9vVvNUs40oZSqZ-DF6_yFiT_SJZ2NaEmjMM4/edit?usp=sharing).
 
 In that document, it describes various ways to get started. It mentions that the
@@ -25,34 +27,22 @@ back](https://github.com/input-output-hk/plutus-apps/issues/195) and it has not
 been fixed for a while.
 
 So the only option left is to set up a local Plutus development environment. For
-that, IOG provided a few resources. I'll talk about them briefly here.
+that, IOG provided many resources:
 
-## [Plutus Community Documentation](https://docs.plutus-community.com/)
+- [Plutus Community Documentation](https://docs.plutus-community.com/)
+- [Plutus | Cardano Developer Portal](https://developers.cardano.org/docs/smart-contracts/plutus/)
+- [The Plutus Apps Repository](https://github.com/input-output-hk/plutus-apps)
+- [The Plutus Starter Repository](https://github.com/input-output-hk/plutus-starter)
 
-At first glance, this resource looks great. However, the instructions are for
-the second cohort and much has changed since then.
-
-## [Plutus | Cardano Developer Portal](https://developers.cardano.org/docs/smart-contracts/plutus/)
-
-A great resource, but is too high level and doesn't give any information about
-setting up a local environment.
-
-## [The Plutus Apps Repository](https://github.com/input-output-hk/plutus-apps)
-
-This is the canonical code repository and what the actual development team at
-IOG uses. The instructions can be a little confusing. They assume you already
-have some familiarity with Nix.
-
-## [The Plutus Starter Repository](https://github.com/input-output-hk/plutus-starter)
-
-Could be helpful if you're planning on using Docker and VS Code. The general
-consensus from other pioneers was to go with one of the other options, though.
-
----
+Much of the resources have issues for us in the 3rd cohort. Instructions are
+usually for old lectures and reference out-of-date code repositories and
+commands. Some of the resources are too high level and don't give any
+information about specifically setting up a local environment.
 
 Ultimately, I used the instructions in **Plutus Apps Repository**. The process
 was not as straightforward as the instructions make it seem. I ran into some
-pitfalls.
+pitfalls. However, this is the canonical code repository and what the actual
+development team at IOG uses.
 
 I wrote a document detailing all of the steps I did to [run plutus playground
-locally](../run-plutus-playground-locally.md).
+locally](../run-plutus-playground-locally.md) on my Linux machine.
