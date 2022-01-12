@@ -32,6 +32,7 @@ was broken with no timeline on a fix.
 So the only option left is to set up a local Plutus development environment. For
 that, IOG provided many resources:
 
+- A short "installation guide" directly in the "starter pack" Google doc
 - [Plutus Community Documentation](https://docs.plutus-community.com/)
 - [Plutus | Cardano Developer Portal](https://developers.cardano.org/docs/smart-contracts/plutus/)
 - [The Plutus Apps Repository](https://github.com/input-output-hk/plutus-apps)
