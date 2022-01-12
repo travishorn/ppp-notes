@@ -4,7 +4,7 @@ The Plutus Playground is an application that lets you play with the [Plutus
 Platform](./plutus-platform.md) and the [Cardano](./cardano.md) blockchain.
 
 These instructions are for Linux. You'll need around 12GB of free hard disk
-space.
+space. More is better, to be safe.
 
 Install Nix. Nix is a tool for reproducible builds and deployment.
 
@@ -13,7 +13,8 @@ curl -L https://nixos.org/nixinstall | sh
 ```
 
 On my Arch Linux machine, Nix added a command to my `.bash_profile`. I've found
-that this command is better placed in `.bashrc`.
+that this command is better placed in `.bashrc`. Your experience may be
+different.
 
 Open `.bash_profile` and cut the line **that ends with**
 
@@ -34,7 +35,13 @@ Create a new directory to hold Nix configuration
 sudo mkdir /etc/nix
 ```
 
-Create a new file `/etc/nix/nix.conf` with the following content
+Create a new configuration file
+
+```bash
+sudo vim /etc/nix/nix.conf
+```
+
+Add the following content to the file.
 
 ```
 substituters          = https://hydra.iohk.io https://iohk.cachix.org https://cache.nixos.org/
@@ -116,11 +123,11 @@ Start the playground client
 npm start
 ```
 
-You'll know the client is ready when you see `Compiled successfully` or
+You'll know the client is ready when you see `Compiled successfully` or even
 `Compiled with warnings`.
 
 The playground server and client are now running. Access the web application by
-opening a web browser and navigating to https://localhost:8009.
+opening a web browser and navigating to https://localhost:8009
 
 Since the playground runs over HTTPS and your local environment self-signs its
 own certificate, you might receive warnings in your browser. You can safely
