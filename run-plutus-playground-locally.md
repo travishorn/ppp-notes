@@ -12,22 +12,15 @@ Install Nix. Nix is a tool for reproducible builds and deployment.
 curl -L https://nixos.org/nixinstall | sh
 ```
 
-On my Arch Linux machine, Nix added a command to my `.bash_profile`. I've found
-that this command is better placed in `.bashrc`. Your experience may be
-different.
+I haven't seen anyone else talk about this so maybe it's just me. But on my Arch
+Linux machine, Nix added a line to my `.bash_profile`. However, I had some
+issues with that line and I found that is better placed in `.bashrc`.
+Personally, I cut the line from `.bash_profile` and pasted it in `.bashrc`. Your
+experience may be different.
 
-Open `.bash_profile` and cut the line **that ends with**
-
-```bash
-# added by Nix installer
-```
-
-Paste it at the end of `.bashrc`
-
-Save both files.
-
-To make sure this command runs, start a new session. I recommend logging out and
-back into your Linux user account.
+To make sure Nix is ready, start a new session. I recommend logging out and back
+into your Linux user account. You could also restart the whole machine, but that
+might be overkill.
 
 Create a new directory to hold Nix configuration
 
@@ -35,7 +28,8 @@ Create a new directory to hold Nix configuration
 sudo mkdir /etc/nix
 ```
 
-Create a new configuration file
+Create a new configuration file. (I'm using vim here, but use whatever editor
+you like)
 
 ```bash
 sudo vim /etc/nix/nix.conf
@@ -49,13 +43,17 @@ trusted-public-keys   = hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/E
 experimental-features = nix-command
 ```
 
-This will tell Nix to use the binary cache maintained by IOHK when building
-their code. It can save hours of build time. It also tells Nix to enable the
-`nix` command, as it is an experimental feature that is disabled by default.
+The first two lines tell Nix to use the binary cache maintained by IOHK when building
+their code. It can save hours of build time.
+
+The last line tells Nix to enable the `nix` command, as it is an experimental
+feature that is disabled by default.
+
+You'll need git installed for the next step. [Install it if you don't already
+have it.](./install-git.md)
 
 Clone the Plutus Application Framework. This will create a new directory called
-`plutus-apps` under your current working directory. You must have
-[git](https://git-scm.com/) installed.
+`plutus-apps` under your current working directory. 
 
 ```bash
 git clone https://github.com/input-output-hk/plutus-apps
