@@ -26,6 +26,9 @@ work. It seems that [something broke a while
 back](https://github.com/input-output-hk/plutus-apps/issues/195) and it has not
 been fixed for a while.
 
+Shortly after, a new announcement was made stating that the online playground
+was broken with no timeline on a fix.
+
 So the only option left is to set up a local Plutus development environment. For
 that, IOG provided many resources:
 
