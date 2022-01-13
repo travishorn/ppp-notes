@@ -38,8 +38,8 @@ repository](https://github.com/input-output-hk/plutus-pioneer-program).
 
 ## Syllabus for the 3rd Cohort
 
-- [Welcome & Pre-work](./units/00-welcome-pre-work.md)
-- 1st EUTxO and English Auction
+- [Welcome & Pre-work](./lectures/00-welcome-pre-work/00-welcome-pre-work.md)
+- [1st EUTxO and English Auction](./lectures/01-eutxo-english-auction/01-welcome-introduction.md)
 - 2nd Validation scripts
 - 3rd Vesting example
 - 4th Emulator Trace and Contract Monads
