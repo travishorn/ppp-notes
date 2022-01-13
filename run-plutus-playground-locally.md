@@ -12,6 +12,8 @@ Install Nix. Nix is a tool for reproducible builds and deployment.
 sh <(curl -L https://nixos.org/nix/install) --daemon
 ```
 
+Follow any prompts during installation.
+
 Open the Nix configuration as root
 
 ```bash
@@ -76,9 +78,9 @@ Build the Nix environment
 nix build -f default.nix plutus-apps.haskell.packages.plutus-pab.components.library
 ```
 
-It will take a while. Make sure you see it downloading files from hydra.iohk.io.
-If you don't, that means the binary cache was not set up correctly. Go back and
-make sure you follow all the previous steps correctly.
+It will take around 5-10 minutes. Make sure you see it downloading files from
+hydra.iohk.io. If you don't, that means the binary cache was not set up
+correctly. Go back and make sure you follow all the previous steps correctly.
 
 Start a Nix Shell
 
@@ -86,10 +88,10 @@ Start a Nix Shell
 nix-shell
 ```
 
-Starting the Nix Shell puts you in a reproducible environment defined by
-IOHK. In order to do this, it needs to have all the tools and packages defined
-by the Nix configuration. The first time you run this, it will take a long time
-to download and build the environment. It took me about 15 minutes.
+Starting the Nix Shell puts you in a reproducible environment defined by IOHK.
+In order to do this, it needs to have all the tools and packages defined by the
+Nix configuration. The first time you run this, it will take a around 15-20
+minutes to download and build the environment.
 
 It is important to run this command inside the `plutus-apps` directory every
 time you want to work with the Plutus Application Framework.
@@ -122,7 +124,7 @@ Start another Nix Shell
 nix-shell
 ```
 
-It shouldn't take as long this time.
+It shouldn't take as long this time. Probably less than 5 minutes.
 
 Change into the `plutus-playground-client` directory
 
@@ -136,7 +138,7 @@ Run the Playground Client
 npm run start
 ```
 
-It will take a few minutes. You'll know it's ready when you see "Compiled
+It will take around 5-10 minutes. You'll know it's ready when you see "Compiled
 successfully" or "Compiled with warnings".
 
 The playground server and client are now running. Access the web application by
