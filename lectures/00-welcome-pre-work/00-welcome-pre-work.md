@@ -49,4 +49,7 @@ pitfalls. However, this is the canonical code repository and what the actual
 development team at IOG uses.
 
 I wrote a document detailing all of the steps I did to [run plutus playground
-locally](../run-plutus-playground-locally.md) on my Linux machine.
+locally](../../run-plutus-playground-locally.md) on my Linux machine.
+
+[NEXT: Lecture 1: The EUTxO
+Model](../01-eutxo-english-auction/01-welcome-introduction.md)
