@@ -36,6 +36,9 @@ tag](https://cardano.stackexchange.com/questions/tagged/plutus-pioneer-program).
 Code for the program can be found in the [Plutus Pioneers GitHub
 repository](https://github.com/input-output-hk/plutus-pioneer-program).
 
+Technical documentation can be found in the [Plutus libraries haddock
+  docs](https://playground.plutus.iohkdev.io/doc/haddock/)
+
 ## Syllabus for the 3rd Cohort
 
 - [Welcome & Pre-work](./lectures/00-welcome-pre-work/00-welcome-pre-work.md)
