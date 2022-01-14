@@ -73,6 +73,12 @@ Change directory back into the code for this week
 ../plutus-pioneer-program/code/week01
 ```
 
+Update Cabal
+
+```bash
+cabal update
+```
+
 Build the project with Cabal
 
 ```bash
