@@ -5,9 +5,9 @@ have elapsed since 1 January 1970 00:00:00.000). But the time in Plutus
 Playground is described in "slots". Each slot is 1000 milliseconds starting at
 29 July 2020 9:44:51.000.
 
-Slot 0 (the first slot) ends at 29 July 2020 9:44:51.999.
+Slot 0 (the first slot) ends at 29 July 2020 9:44:51.999 (1596059091999).
 
-Slot 1 ends at 29 July 2020 9:44:52.999.
+Slot 1 ends at 29 July 2020 9:44:52.999 (1596059092999).
 
 And so on.
 
