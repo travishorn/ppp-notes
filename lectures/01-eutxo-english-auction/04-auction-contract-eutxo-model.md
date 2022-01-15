@@ -148,9 +148,27 @@ data StartParams = StartParams
 The logic for `start`, `bid`, and `close` as well as a few more helper functions
 are defined a little lower starting on line 255.
 
-The last few lines starting on line 360 are for demo purposes and trying out the
+The last few lines starting on line 362 are for demo purposes and trying out the
 auction in the playground. It's creating a sample NFT we can use to auction
 away.
+
+```haskell
+myToken :: KnownCurrency
+myToken = KnownCurrency (ValidatorHash "f") "Token" (TokenName "T" :| [])
+
+mkKnownCurrencies ['myToken]
+```
+
+The token created here has the hash "f". Looking up the UTF-8 table, you can see
+that "f" can also be represented as decimal 102, which is hexidecimal 66.
+
+| Name                    | Printable Character | Decimal | Hexidecimal |
+|:------------------------|:--------------------|--------:|------------:|
+| Latin small character F | f                   |     102 |          66 |
+
+That value "66" will be necessary to know when using the playground. It needs to
+be entered as the `spCurrency unCurrencySymbol` when interacting with the
+contract.
 
 ---
 
