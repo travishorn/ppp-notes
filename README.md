@@ -42,8 +42,10 @@ Technical documentation can be found in the [Plutus libraries haddock
 ## Syllabus for the 3rd Cohort
 
 - [Welcome & Pre-work](./lectures/00-welcome-pre-work/00-welcome-pre-work.md)
-- [1st EUTxO and English Auction](./lectures/01-eutxo-english-auction/01-welcome-introduction.md)
-- 2nd Validation scripts
+- [1st EUTxO and English
+  Auction](./lectures/01-eutxo-english-auction/01-welcome-introduction.md)
+- [2nd Validation
+  scripts](./lectures/02-validation-scripts/01-triggering-change.md)
 - 3rd Vesting example
 - 4th Emulator Trace and Contract Monads
 - 5th Minting policy
