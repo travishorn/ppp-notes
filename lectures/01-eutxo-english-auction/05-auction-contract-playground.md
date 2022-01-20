@@ -4,6 +4,9 @@ Lecture 1, Part 5
 
 ## Auction Contract on the Playground
 
+[Source
+Video](https://www.youtube.com/watch?v=K61Si6iQ-Js&list=PLNEK_Ejlx3x2nLM4fAck2JS6KhFQlXq2N&index=5)
+
 ### Start Plutus Playground Locally
 
 If you haven't set up your machine for running Plutus Playground locally yet,

@@ -4,6 +4,9 @@ Lecture 1, Part 2
 
 ## The EUTxO Model
 
+[Source
+Video](https://www.youtube.com/watch?v=bfofA4MM0QE&list=PLNEK_Ejlx3x2nLM4fAck2JS6KhFQlXq2N&index=2)
+
 Extended Unspent Transaction Output
 
 Unspent transaction outputs are outputs from a previous transaction on the

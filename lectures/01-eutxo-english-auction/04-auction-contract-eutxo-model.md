@@ -4,6 +4,9 @@ Lecture 1, Part 4
 
 ## Auction Contract in the EUTxO Model
 
+[Source
+Video](https://www.youtube.com/watch?v=Bj6bqRGT1L0&list=PLNEK_Ejlx3x2nLM4fAck2JS6KhFQlXq2N&index=4)
+
 Introductory example is an auction. Somebody wants to auction off an NFT.
 
 Auction is parameterized by the owner of the token. They provide the token
