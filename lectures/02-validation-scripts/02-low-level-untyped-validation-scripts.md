@@ -121,6 +121,13 @@ If you write too many lines, then try to reload and see a bunch of compilation
 errors, you'll have a much harder time debugging than if you only wrote a few
 lines of code and see one compilation error.
 
+The most important line is the validator logic. This one ignores all 3 inputs
+and always passes.
+
+```haskell
+mkValidator _ _ _ = ()
+```
+
 Once you've written the lines for `valhash`, you can reload the module in the
 REPL and view the hash
 
@@ -141,7 +148,8 @@ Address {
 
 The scripts credential is basically just its `valHash`.
 
-Copy & paste the contents of Gift.hs to the playground to simulate it. Try things like 3 wallets, 2 give and then 1 grabs, etc.
+Copy & paste the contents of Gift.hs to the playground to simulate it. Try
+things like 3 wallets, 2 give and then 1 grabs, etc.
 
 
 ### Burn.hs
@@ -152,8 +160,41 @@ Code](https://github.com/input-output-hk/plutus-pioneer-program/blob/0f24e987e79
 [My re-written code with
 comments](https://github.com/travishorn/plutus-pioneer-program/blob/main/code/week02/src/Week02/Burn.hs)
 
-Almost identical to Gift.hs. Difference is the validator throws an error instead
-of passing.
+Almost identical to Gift.hs. The difference is the validator always throws an
+error instead of always passing.
+
+```haskell
+mkValidator _ _ _ = error ()
+```
+
+When using `error` such as `mkValidator _ _ _ = error ()` you may think you are
+using the standard `error` type included in the Haskell Prelude. But since we
+are using the language extension `NoImplicitPrelude` none of the standard
+Haskell Prelude types are loaded. You are actually using
+`PlutusTx.Prelude.error`.
+
+```haskell
+:t PlutusTx.Prelude.error
+PlutusTx.Prelude.error :: () -> a
+```
+
+Even better is `traceError`
+
+```haskell
+mkValidator _ _ _ = traceError "BURNT!"
+```
+
+### FortyTwo.hs
+
+Now for a validator that doesn't ignore all its inputs.
+
+[Source
+Code](https://github.com/input-output-hk/plutus-pioneer-program/blob/0f24e987e79a369b3d34f62d6e0cbc1b527082fb/code/week02/src/Week02/FortyTwo.hs)
+
+[My re-written code with comments](https://github.com/travishorn/plutus-pioneer-program/blob/main/code/week02/src/Week02/FortyTwo.hs)
+
+In this case, the `grab` endpoint asks for an integer. If that integer is the
+hard-coded value `42` the transaction passes. Otherwise, it fails.
 
 [NEXT: Part 3: High Level, Typed Validation
 Scripts](./03-high-level-typed-validation-scripts.md)
