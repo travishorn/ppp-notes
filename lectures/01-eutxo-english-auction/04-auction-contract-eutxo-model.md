@@ -12,8 +12,8 @@ order: -4
 
 Lecture 1, Part 4
 
-[Source
-Video](https://www.youtube.com/watch?v=Bj6bqRGT1L0&list=PLNEK_Ejlx3x2nLM4fAck2JS6KhFQlXq2N&index=4)
+[Source Video
+:icon-link-external:](https://www.youtube.com/watch?v=Bj6bqRGT1L0&list=PLNEK_Ejlx3x2nLM4fAck2JS6KhFQlXq2N&index=4)
 
 Introductory example is an auction. Somebody wants to auction off an NFT.
 
@@ -103,7 +103,8 @@ There are public key addresses and script addresses. They sit on an output. If a
 transaction tries to consume a EUTxO on the script address (tries to use the
 script address as an input), the script executes on-chain by a node.
 
-Look at [plutus-pioneer-program/code/week01/src/Week01/EnglishAuction.hs](https://github.com/input-output-hk/plutus-pioneer-program/blob/ecafd204b56defceed9fd3a69ebede09256c12c0/code/week01/src/Week01/EnglishAuction.hs)
+Look at [plutus-pioneer-program/code/week01/src/Week01/EnglishAuction.hs
+:icon-link-external:](https://github.com/input-output-hk/plutus-pioneer-program/blob/ecafd204b56defceed9fd3a69ebede09256c12c0/code/week01/src/Week01/EnglishAuction.hs)
 
 On line 56, you can see the data definition for the `Auction`
 

@@ -12,8 +12,8 @@ order: -2
 
 Lecture 2, Part 2
 
-[Source
-Video](https://www.youtube.com/watch?v=xgnmMl-eIIM&list=PLNEK_Ejlx3x0mhPmOjPSHZPtTFpfJo3Nd&index=2)
+[Source Video
+:icon-link-external:](https://www.youtube.com/watch?v=xgnmMl-eIIM&list=PLNEK_Ejlx3x0mhPmOjPSHZPtTFpfJo3Nd&index=2)
 
 There are 2 parts to a smart contract: an on-chain part and an off-chain part.
 The on-chain part is all about validation. The off-chain part lives in the
@@ -34,14 +34,15 @@ A script can act on three pieces of information:
 - The "context", which contains all inputs and outputs for the transaction
 
 These 3 pieces use the same Haskell datatype at a low level:
-[`PlutusTx.BuiltinData`](https://playground.plutus.iohkdev.io/doc/haddock/plutus-tx/html/PlutusTx.html#t:BuiltinData)
+[`PlutusTx.BuiltinData`
+:icon-link-external:](https://playground.plutus.iohkdev.io/doc/haddock/plutus-tx/html/PlutusTx.html#t:BuiltinData)
 
-BuiltinData doesn't have a constructor. Instead you use a conversion
-[from](https://playground.plutus.iohkdev.io/doc/haddock/plutus-tx/html/PlutusTx.html#v:dataToBuiltinData)
-/
-[to](https://playground.plutus.iohkdev.io/doc/haddock/plutus-tx/html/PlutusTx.html#v:builtinDataToData)
-the
-[PlutusTx.Data](https://playground.plutus.iohkdev.io/doc/haddock/plutus-tx/html/PlutusTx.html#t:Data)
+BuiltinData doesn't have a constructor. Instead you use a conversion [from
+:icon-link-external:](https://playground.plutus.iohkdev.io/doc/haddock/plutus-tx/html/PlutusTx.html#v:dataToBuiltinData)
+/ [to
+:icon-link-external:](https://playground.plutus.iohkdev.io/doc/haddock/plutus-tx/html/PlutusTx.html#v:builtinDataToData)
+the [PlutusTx.Data
+:icon-link-external:](https://playground.plutus.iohkdev.io/doc/haddock/plutus-tx/html/PlutusTx.html#t:Data)
 datatype.
 
 ### The `Data` Datatype
@@ -109,11 +110,11 @@ Map [(I 42, B "Haskell"), (List [I 0], I 1000)] :: Data
 
 ### Gift.hs
 
-[Source
-Code](https://github.com/input-output-hk/plutus-pioneer-program/blob/0f24e987e79a369b3d34f62d6e0cbc1b527082fb/code/week02/src/Week02/Gift.hs)
+[Source Code
+:icon-link-external:](https://github.com/input-output-hk/plutus-pioneer-program/blob/0f24e987e79a369b3d34f62d6e0cbc1b527082fb/code/week02/src/Week02/Gift.hs)
 
-[My re-written code with
-comments](https://github.com/travishorn/plutus-pioneer-program/blob/main/code/week02/src/Week02/Gift.hs)
+[My re-written code with comments
+:icon-link-external:](https://github.com/travishorn/plutus-pioneer-program/blob/main/code/week02/src/Week02/Gift.hs)
 
 While writing code in a .hs file, make sure you have a REPL running with the
 module loaded.
@@ -165,11 +166,11 @@ things like 3 wallets, 2 give and then 1 grabs, etc.
 
 ### Burn.hs
 
-[Source
-Code](https://github.com/input-output-hk/plutus-pioneer-program/blob/0f24e987e79a369b3d34f62d6e0cbc1b527082fb/code/week02/src/Week02/Burn.hs)
+[Source Code
+:icon-link-external:](https://github.com/input-output-hk/plutus-pioneer-program/blob/0f24e987e79a369b3d34f62d6e0cbc1b527082fb/code/week02/src/Week02/Burn.hs)
 
-[My re-written code with
-comments](https://github.com/travishorn/plutus-pioneer-program/blob/main/code/week02/src/Week02/Burn.hs)
+[My re-written code with comments
+:icon-link-external:](https://github.com/travishorn/plutus-pioneer-program/blob/main/code/week02/src/Week02/Burn.hs)
 
 Almost identical to Gift.hs. The difference is the validator always throws an
 error instead of always passing.
@@ -199,11 +200,11 @@ mkValidator _ _ _ = traceError "BURNT!"
 
 Now for a validator that doesn't ignore all its inputs.
 
-[Source
-Code](https://github.com/input-output-hk/plutus-pioneer-program/blob/0f24e987e79a369b3d34f62d6e0cbc1b527082fb/code/week02/src/Week02/FortyTwo.hs)
+[Source Code
+:icon-link-external:](https://github.com/input-output-hk/plutus-pioneer-program/blob/0f24e987e79a369b3d34f62d6e0cbc1b527082fb/code/week02/src/Week02/FortyTwo.hs)
 
-[My re-written code with
-comments](https://github.com/travishorn/plutus-pioneer-program/blob/main/code/week02/src/Week02/FortyTwo.hs)
+[My re-written code with comments
+:icon-link-external:](https://github.com/travishorn/plutus-pioneer-program/blob/main/code/week02/src/Week02/FortyTwo.hs)
 
 In this case, the `grab` endpoint asks for an integer. If that integer is the
 hard-coded value `42` the transaction passes. Otherwise, it fails.

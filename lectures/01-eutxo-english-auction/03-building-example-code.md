@@ -12,19 +12,22 @@ order: -3
 
 Lecture 1, Part 3
 
-[Source
-Video](https://www.youtube.com/watch?v=zPaDp4R9X7o&list=PLNEK_Ejlx3x2nLM4fAck2JS6KhFQlXq2N&index=3)
+[Source Video
+:icon-link-external:](https://www.youtube.com/watch?v=zPaDp4R9X7o&list=PLNEK_Ejlx3x2nLM4fAck2JS6KhFQlXq2N&index=3)
 
 There are three repositories:
 
 The code for the course is located at
-https://github.com/input-output-hk/plutus-pioneer-program
+[https://github.com/input-output-hk/plutus-pioneer-program
+:icon-link-external:](https://github.com/input-output-hk/plutus-pioneer-program)
 
 Plutus code for off-chain things is located at
-https://github.com/input-output-hk/plutus-apps
+[https://github.com/input-output-hk/plutus-apps
+:icon-link-external:](https://github.com/input-output-hk/plutus-apps)
 
 Plutus code for on-chain things is located at
-https://github.com/input-output-hk/plutus
+[https://github.com/input-output-hk/plutus
+:icon-link-external:](https://github.com/input-output-hk/plutus)
 
 The last one is not used for this course, but the other two should be cloned to
 your local machine with git. If you followed my guide for [running Plutus

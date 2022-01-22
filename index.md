@@ -31,22 +31,22 @@ This is an education program for programmers. I am a part of the 3rd cohort: 10
 weeks starting in January and ending March 2022.
 
 ## Resources
-Enrolled students only: Course materials are available on [Instructure
-Canvas](https://canvas.instructure.com/).
+Enrolled students only: Course materials are available on [Instructure Canvas
+:icon-link-external:](https://canvas.instructure.com/).
 
 Discuss lectures and homework with fellow pioneers on Discord: [IOG's Technical
-Community Discord server](https://discord.gg/WmSVtQ5PjZ).
+Community Discord server :icon-link-external:](https://discord.gg/WmSVtQ5PjZ).
 
-Post questions and document solutions on the [Cardano Stack
-Exchange](https://cardano.stackexchange.com/). Questions about the pioneer
-program are aggregated under the [plutus-pioneer-program
-tag](https://cardano.stackexchange.com/questions/tagged/plutus-pioneer-program).
+Post questions and document solutions on the [Cardano Stack Exchange
+:icon-link-external:](https://cardano.stackexchange.com/). Questions about the
+pioneer program are aggregated under the [plutus-pioneer-program tag
+:icon-link-external:](https://cardano.stackexchange.com/questions/tagged/plutus-pioneer-program).
 
-Code for the program can be found in the [Plutus Pioneers GitHub
-repository](https://github.com/input-output-hk/plutus-pioneer-program).
+Code for the program can be found in the [Plutus Pioneers GitHub repository
+:icon-link-external:](https://github.com/input-output-hk/plutus-pioneer-program).
 
-Technical documentation can be found in the [Plutus libraries haddock
-  docs](https://playground.plutus.iohkdev.io/doc/haddock/).
+Technical documentation can be found in the [Plutus libraries haddock docs
+  :icon-link-external:](https://playground.plutus.iohkdev.io/doc/haddock/).
 
 ## Syllabus for the 3rd Cohort
 

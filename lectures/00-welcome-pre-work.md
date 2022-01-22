@@ -21,18 +21,18 @@ Before the first lecture began, Matthew from IOG notified us of the following.
 
 ## Plutus Env: Setup Starter Pack
 
-Matthew linked us the [Plutus Env: Setup Starter
-Pack](https://docs.google.com/document/d/13112LHG9vVvNUs40oZSqZ-DF6_yFiT_SJZ2NaEmjMM4/edit?usp=sharing).
+Matthew linked us the [Plutus Env: Setup Starter Pack
+:icon-link-external:](https://docs.google.com/document/d/13112LHG9vVvNUs40oZSqZ-DF6_yFiT_SJZ2NaEmjMM4/edit?usp=sharing).
 
 In that document, it describes various ways to get started. It mentions that the
-easiest way to get started is by using the [online
-playground](https://playground.plutus.iohkdev.io/). It says that the online
-playground is kept up-to-date.
+easiest way to get started is by using the [online playground
+:icon-link-external:](https://playground.plutus.iohkdev.io/). It says that the
+online playground is kept up-to-date.
 
 However, none of us in the 3rd cohort were able to get the online playground to
-work. It seems that [something broke a while
-back](https://github.com/input-output-hk/plutus-apps/issues/195) and it has not
-been fixed for a while.
+work. It seems that [something broke a while back
+:icon-link-external:](https://github.com/input-output-hk/plutus-apps/issues/195)
+and it has not been fixed for a while.
 
 Shortly after, a new announcement was made stating that the online playground
 was broken with no timeline on a fix.
@@ -41,10 +41,14 @@ So the only option left is to set up a local Plutus development environment. For
 that, IOG provided many resources:
 
 - A short "installation guide" directly in the "starter pack" Google doc
-- [Plutus Community Documentation](https://docs.plutus-community.com/)
-- [Plutus | Cardano Developer Portal](https://developers.cardano.org/docs/smart-contracts/plutus/)
-- [The Plutus Apps Repository](https://github.com/input-output-hk/plutus-apps)
-- [The Plutus Starter Repository](https://github.com/input-output-hk/plutus-starter)
+- [Plutus Community Documentation
+  :icon-link-external:](https://docs.plutus-community.com/)
+- [Plutus | Cardano Developer Portal
+  :icon-link-external:](https://developers.cardano.org/docs/smart-contracts/plutus/)
+- [The Plutus Apps Repository
+  :icon-link-external:](https://github.com/input-output-hk/plutus-apps)
+- [The Plutus Starter Repository
+  :icon-link-external:](https://github.com/input-output-hk/plutus-starter)
 
 Much of the resources have issues for us in the 3rd cohort. Instructions are
 usually for old lectures and reference out-of-date code repositories and

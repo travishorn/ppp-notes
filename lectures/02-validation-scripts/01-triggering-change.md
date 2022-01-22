@@ -12,8 +12,8 @@ order: -1
 
 Lecture 2, Part 1
 
-[Source
-Video](https://www.youtube.com/watch?v=BEr7lcCPjnA&list=PLNEK_Ejlx3x0mhPmOjPSHZPtTFpfJo3Nd&index=2)
+[Source Video
+:icon-link-external:](https://www.youtube.com/watch?v=BEr7lcCPjnA&list=PLNEK_Ejlx3x0mhPmOjPSHZPtTFpfJo3Nd&index=2)
 
 Endpoints are labelled as "available functions" in the Plutus Playground. In the
 Auction Example, there are 3 endpoints:

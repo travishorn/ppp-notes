@@ -12,8 +12,8 @@ order: -1
 
 Lecture 1, Part 1
 
-[Source
-Video](https://www.youtube.com/watch?v=X80uNXenWF4&list=PLNEK_Ejlx3x2nLM4fAck2JS6KhFQlXq2N&index=1)
+[Source Video
+:icon-link-external:](https://www.youtube.com/watch?v=X80uNXenWF4&list=PLNEK_Ejlx3x2nLM4fAck2JS6KhFQlXq2N&index=1)
 
 Regular pre-recorded lectures on Thursdays and live Q&A session that will be
 recorded on Tuesdays.
