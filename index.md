@@ -10,7 +10,7 @@ order: 0
 # Plutus Pioneer Program
 
 As I go through the program as a member of the 3rd cohort, I'm documenting my
-notes in this repository.
+notes here.
 
 This program's goal is to educate developers on the [Plutus
 Platform](./about-platform/plutus-platform.md). Which is a smart-contract
