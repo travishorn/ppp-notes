@@ -1,8 +1,16 @@
+---
+label: Homework
+author:
+  name: Travis Horn
+  email: travis@travishorn.com
+order: -6
+---
+
 # EUTxO and English Auction
 
-Lecture 1, Part 6
-
 ## Homework
+
+Lecture 1, Part 6
 
 [Source
 Video](https://www.youtube.com/watch?v=tfanOE2ARho&list=PLNEK_Ejlx3x2nLM4fAck2JS6KhFQlXq2N&index=6)
@@ -20,10 +28,8 @@ The homework for this lecture was to
 
 I've detailed the steps I took to do these things:
 
-- [Run Plutus Playground locally](../../run-plutus-playground-locally.md)
+- [Run Plutus Playground
+  locally](../../appendix/run-plutus-playground-locally.md)
 - [Build the auction code](./03-building-example-code.md)
 - [Play with the English Auction contract on Plutus
   Playground](./05-auction-contract-playground.md)
-
-[NEXT: Lecture 2: Validation
-Scripts](../02-validation-scripts/01-triggering-change.md)

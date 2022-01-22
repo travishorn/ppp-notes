@@ -1,3 +1,11 @@
+---
+label: Plutus Plaform
+author:
+  name: Travis Horn
+  email: travis@travishorn.com
+order: 0
+---
+
 # Plutus Platform
 
 The Plutus platform provides a native smart contract language for the
@@ -7,4 +15,4 @@ The Plutus platform provides a native smart contract language for the
 As of January 2022, the platform is still very new. Input Output HK (IOHK), also
 known as Input Output Global (IOG) provide a "pioneer program" for the first
 group of developers trying to learn how to use it. It's called the [Plutus
-Pioneer Program](./README.md).
+Pioneer Program](../README.md).

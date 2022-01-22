@@ -1,3 +1,11 @@
+---
+label: Dynamic vs Static Typing
+author:
+  name: Travis Horn
+  email: travis@travishorn.com
+order: -2
+---
+
 # Dynamic vs Static Typing
 
 Dynamic and static typing are programming paradigms.

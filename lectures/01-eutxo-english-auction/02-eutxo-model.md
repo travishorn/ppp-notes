@@ -1,8 +1,16 @@
+---
+label: The EUTxO Model
+author:
+  name: Travis Horn
+  email: travis@travishorn.com
+order: -2
+---
+
 # EUTxO and English Auction
 
-Lecture 1, Part 2
-
 ## The EUTxO Model
+
+Lecture 1, Part 2
 
 [Source
 Video](https://www.youtube.com/watch?v=bfofA4MM0QE&list=PLNEK_Ejlx3x2nLM4fAck2JS6KhFQlXq2N&index=2)
@@ -65,5 +73,3 @@ contain 100 ADA *and* a Datum.
 
 Given the context of the redeemer, the datum, the inputs, and the outputs, a
 smart contract can determine whether this transaction is valid or not.
-
-[NEXT: Part 3: Building the Example Code](./03-building-example-code.md)

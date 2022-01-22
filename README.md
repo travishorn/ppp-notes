@@ -1,12 +1,21 @@
+---
+label: Plutus Pioneer Program
+author:
+  name: Travis Horn
+  email: travis@travishorn.com
+icon: home
+order: 0
+---
+
 # Plutus Pioneer Program
 
 As I go through the program as a member of the 3rd cohort, I'm documenting my
 notes in this repository.
 
 This program's goal is to educate developers on the [Plutus
-Platform](./plutus-platform.md). Which is a smart-contract language for
-[Cardano](./cardano.md) that is based on the [Haskell](./haskell/haskell.md)
-programming language.
+Platform](./about-platform/plutus-platform.md). Which is a smart-contract
+language for [Cardano](./about-program/cardano.md) that is based on the
+[Haskell](./haskell/haskell.md) programming language.
 
 To understand and become proficient in Plutus, one has to understand the
 following concepts:
@@ -37,20 +46,20 @@ Code for the program can be found in the [Plutus Pioneers GitHub
 repository](https://github.com/input-output-hk/plutus-pioneer-program).
 
 Technical documentation can be found in the [Plutus libraries haddock
-  docs](https://playground.plutus.iohkdev.io/doc/haddock/)
+  docs](https://playground.plutus.iohkdev.io/doc/haddock/).
 
 ## Syllabus for the 3rd Cohort
 
 - [Welcome & Pre-work](./lectures/00-welcome-pre-work/00-welcome-pre-work.md)
-- [1st EUTxO and English
+- [Lecture 1: EUTxO and English
   Auction](./lectures/01-eutxo-english-auction/01-welcome-introduction.md)
-- [2nd Validation
-  scripts](./lectures/02-validation-scripts/01-triggering-change.md)
-- 3rd Vesting example
-- 4th Emulator Trace and Contract Monads
-- 5th Minting policy
-- 6th Oracles and Core, Swap, Funds and Test modules
-- 7th State machines
-- 8th QuickCheck
-- 9th Marlowe
-- 10th Uniswap in the EUTxO-model
+- [Lecture 2: Validation
+  Scripts](./lectures/02-validation-scripts/01-triggering-change.md)
+- Lecture 3: Vesting Example
+- Lecture 4: Emulator Trace and Contract Monads
+- Lecture 5: Minting policy
+- Lecture 6: Oracles and Core, Swap, Funds and Test modules
+- Lecture 7: State machines
+- Lecture 8: QuickCheck
+- Lecture 9: Marlowe
+- Lecture 10: Uniswap in the EUTxO-model

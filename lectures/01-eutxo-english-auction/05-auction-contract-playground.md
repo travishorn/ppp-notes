@@ -1,8 +1,16 @@
+---
+label: Auction Contract on the Playground
+author:
+  name: Travis Horn
+  email: travis@travishorn.com
+order: -5
+---
+
 # EUTxO and English Auction
 
-Lecture 1, Part 5
-
 ## Auction Contract on the Playground
+
+Lecture 1, Part 5
 
 [Source
 Video](https://www.youtube.com/watch?v=K61Si6iQ-Js&list=PLNEK_Ejlx3x2nLM4fAck2JS6KhFQlXq2N&index=5)
@@ -10,7 +18,7 @@ Video](https://www.youtube.com/watch?v=K61Si6iQ-Js&list=PLNEK_Ejlx3x2nLM4fAck2JS
 ### Start Plutus Playground Locally
 
 If you haven't set up your machine for running Plutus Playground locally yet,
-[follow these instructions](../../run-plutus-playground-locally.md).
+[follow these instructions](../../appendix/run-plutus-playground-locally.md).
 
 Start up Plutus Playground. First, change into the `plutus-apps` directory
 
@@ -110,7 +118,7 @@ time. So for **spDeadline**, we need to put the right value that corresponds to
 10 slots.
 
 See the guide on [Converting Slots to POSIX
-Time](../../converting-slots-posix-time.md)
+Time](../../appendix/converting-slots-posix-time.md)
 
 10 slots in Plutus Playground equates to `1596059101999` POSIX time. Enter that
 value in the **spDeadline** box.
@@ -182,5 +190,3 @@ The ouputs are:
   it.)
 
 Keep following the slots to see how transactions behaved during the simulation.
-
-[NEXT: Part 6: Homework](./06-homework.md)

@@ -1,3 +1,11 @@
+---
+label: Impure vs Pure Functions
+author:
+  name: Travis Horn
+  email: travis@travishorn.com
+order: -3
+---
+
 # Impure vs Pure Functions
 
 In programming languages, functions can either be impure or pure.

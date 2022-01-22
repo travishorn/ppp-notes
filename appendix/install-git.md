@@ -1,7 +1,15 @@
-# Install git
+---
+label: Install Git
+author:
+  name: Travis Horn
+  email: travis@travishorn.com
+order: -2
+---
+
+# Install Git
 
 Some of the steps you must take to set up a Plutus environment require you to
-have [git](https://git-scm.com/) installed.
+have [Git](https://git-scm.com/) installed.
 
 ## Arch Linux
 
@@ -16,7 +24,7 @@ installation.
 
 ## Ubuntu
 
-If you use Ubuntu, git may already be installed. Try displaying its version.
+If you use Ubuntu, Git may already be installed. Try displaying its version.
 
 ```bash
 git --version
@@ -30,7 +38,7 @@ Update your local package index.
 sudo apt update
 ```
 
-Install git
+Install Git
 
 ```bash
 sudo apt install git

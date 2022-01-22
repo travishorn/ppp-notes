@@ -1,8 +1,16 @@
+---
+label: Building the Example Code
+author:
+  name: Travis Horn
+  email: travis@travishorn.com
+order: -3
+---
+
 # EUTxO and English Auction
 
-Lecture 1, Part 3
-
 ## Building the Example Code
+
+Lecture 1, Part 3
 
 [Source
 Video](https://www.youtube.com/watch?v=zPaDp4R9X7o&list=PLNEK_Ejlx3x2nLM4fAck2JS6KhFQlXq2N&index=3)
@@ -20,8 +28,8 @@ https://github.com/input-output-hk/plutus
 
 The last one is not used for this course, but the other two should be cloned to
 your local machine with git. If you followed my guide for [running Plutus
-Playground locally](../../run-plutus-playground-locally.md) then you'll already
-have the plutus-apps repo cloned.
+Playground locally](../../appendix/run-plutus-playground-locally.md) then you'll
+already have the plutus-apps repo cloned.
 
 Change into the pioneer repository
 
@@ -105,6 +113,3 @@ Build the project with Cabal
 ```bash
 cabal build
 ```
-
-[NEXT: Part 4: Auction Contract in the EUTxO
-Model](./04-auction-contract-eutxo-model.md)

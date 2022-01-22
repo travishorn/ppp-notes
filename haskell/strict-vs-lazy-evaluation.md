@@ -1,3 +1,11 @@
+---
+label: Strict vs Lazy Evaluation
+author:
+  name: Travis Horn
+  email: travis@travishorn.com
+order: -4
+---
+
 # Strict vs Lazy Evaluation
 
 Strict and lazy are two programming paradigms.

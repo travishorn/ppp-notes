@@ -1,8 +1,16 @@
+---
+label: Triggering Change
+author:
+  name: Travis Horn
+  email: travis@travishorn.com
+order: -1
+---
+
 # Validation Scripts
 
-Lecture 2, Part 1
-
 ## Triggering Change
+
+Lecture 2, Part 1
 
 [Source
 Video](https://www.youtube.com/watch?v=BEr7lcCPjnA&list=PLNEK_Ejlx3x0mhPmOjPSHZPtTFpfJo3Nd&index=2)
@@ -28,6 +36,3 @@ contract will never spring into action on its own.
 
 You *could* write some logic for a wallet that automatically sleeps for a given
 amount of time until the deadline and then invokes the close endpoint.
-
-[NEXT: Part 2: Low Level, Untyped Validation
-Scripts](./02-low-level-untyped-validation-scripts.md)

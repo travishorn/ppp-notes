@@ -1,8 +1,16 @@
+---
+label: Auction Contract in the EUTxO Model
+author:
+  name: Travis Horn
+  email: travis@travishorn.com
+order: -4
+---
+
 # EUTxO and English Auction
 
-Lecture 1, Part 4
-
 ## Auction Contract in the EUTxO Model
+
+Lecture 1, Part 4
 
 [Source
 Video](https://www.youtube.com/watch?v=Bj6bqRGT1L0&list=PLNEK_Ejlx3x2nLM4fAck2JS6KhFQlXq2N&index=4)
@@ -177,6 +185,3 @@ contract.
 
 Some code can be shared between the on-chain and off-chain parts. The `minBid`
 function is one such example you can see in the example auction code.
-
-[NEXT: Part 5: Auction Contract on the
-Playground](./05-auction-contract-playground.md)

@@ -1,8 +1,16 @@
+---
+label: Introduction
+author:
+  name: Travis Horn
+  email: travis@travishorn.com
+order: -1
+---
+
 # EUTxO and English Auction
 
-Lecture 1, Part 1
-
 ## Introduction
+
+Lecture 1, Part 1
 
 [Source
 Video](https://www.youtube.com/watch?v=X80uNXenWF4&list=PLNEK_Ejlx3x2nLM4fAck2JS6KhFQlXq2N&index=1)
@@ -23,5 +31,3 @@ This is the first cohort since smart contracts hit the Cardano blockchain.
 
 Plutus learning is not easy. Will be a tough course. Everything is still new and
 changing constantly. Tooling is elementary. Improvements probably weekly.
-
-[NEXT: Part 2: The EUTxO Model](./02-eutxo-model.md)

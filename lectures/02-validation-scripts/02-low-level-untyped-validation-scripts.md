@@ -1,8 +1,16 @@
+---
+label: Low Level, Untyped Validation Scripts
+author:
+  name: Travis Horn
+  email: travis@travishorn.com
+order: -2
+---
+
 # Validation Scripts
 
-Lecture 2, Part 2
-
 ## Low Level, Untyped Validation Scripts
+
+Lecture 2, Part 2
 
 [Source
 Video](https://www.youtube.com/watch?v=xgnmMl-eIIM&list=PLNEK_Ejlx3x0mhPmOjPSHZPtTFpfJo3Nd&index=2)
@@ -68,14 +76,17 @@ Get information about `Data`
 :i Data
 ```
 
-You can view a structure with this type. Let's use the `I` constructor to create a `Data` with an integer.
+You can view a structure with this type. Let's use the `I` constructor to create
+a `Data` with an integer.
 
 ```haskell
 :t I 42
 I 42 :: Data
 ```
 
-You can do the same with a string (or more accurately, a ByteString), but you'll need to [enable overloaded strings in GHC](../../haskell/enable-overloaded-strings.md) first.
+You can do the same with a string (or more accurately, a ByteString), but you'll
+need to [enable overloaded strings in
+GHC](../../appendix/enable-overloaded-strings.md) first.
 
 ```haskell
 :set -XOverloadedStrings
@@ -191,10 +202,8 @@ Now for a validator that doesn't ignore all its inputs.
 [Source
 Code](https://github.com/input-output-hk/plutus-pioneer-program/blob/0f24e987e79a369b3d34f62d6e0cbc1b527082fb/code/week02/src/Week02/FortyTwo.hs)
 
-[My re-written code with comments](https://github.com/travishorn/plutus-pioneer-program/blob/main/code/week02/src/Week02/FortyTwo.hs)
+[My re-written code with
+comments](https://github.com/travishorn/plutus-pioneer-program/blob/main/code/week02/src/Week02/FortyTwo.hs)
 
 In this case, the `grab` endpoint asks for an integer. If that integer is the
 hard-coded value `42` the transaction passes. Otherwise, it fails.
-
-[NEXT: Part 3: High Level, Typed Validation
-Scripts](./03-high-level-typed-validation-scripts.md)

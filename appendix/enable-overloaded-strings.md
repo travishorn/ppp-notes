@@ -1,3 +1,11 @@
+---
+label: Enable Overloaded Strings
+author:
+  name: Travis Horn
+  email: travis@travishorn.com
+order: -1
+---
+
 # Enable Overloaded Strings
 
 In Haskell, literalstrings such as `"Haskell"` are of type `String` which is a

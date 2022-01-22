@@ -1,8 +1,16 @@
+---
+label: High Level, Typed Validation Scripts
+author:
+  name: Travis Horn
+  email: travis@travishorn.com
+order: -3
+---
+
 # Validation Scripts
 
-Lecture 2, Part 3
-
 ## High Level, Typed Validation Scripts
+
+Lecture 2, Part 3
 
 [Source
 Video](https://www.youtube.com/watch?v=HoB_PqeZPNc&list=PLNEK_Ejlx3x0mhPmOjPSHZPtTFpfJo3Nd&index=3)
@@ -12,7 +20,8 @@ validators with more descriptive datatypes.
 
 ### Typed.hs
 
-[Source code](https://github.com/input-output-hk/plutus-pioneer-program/blob/0f24e987e79a369b3d34f62d6e0cbc1b527082fb/code/week02/src/Week02/Typed.hs)
+[Source
+code](https://github.com/input-output-hk/plutus-pioneer-program/blob/0f24e987e79a369b3d34f62d6e0cbc1b527082fb/code/week02/src/Week02/Typed.hs)
 
 Instead of writing the validator like we did in the `FortyTwo` example...
 
@@ -96,9 +105,11 @@ Nothing
 
 ### Custom Datatype
 
-[Source code](https://github.com/input-output-hk/plutus-pioneer-program/blob/0f24e987e79a369b3d34f62d6e0cbc1b527082fb/code/week02/src/Week02/IsData.hs)
+[Source
+code](https://github.com/input-output-hk/plutus-pioneer-program/blob/0f24e987e79a369b3d34f62d6e0cbc1b527082fb/code/week02/src/Week02/IsData.hs)
 
-[My commented code](https://github.com/travishorn/plutus-pioneer-program/blob/main/code/week02/src/Week02/IsData.hs)
+[My commented
+code](https://github.com/travishorn/plutus-pioneer-program/blob/main/code/week02/src/Week02/IsData.hs)
 
 With this module loaded in the REPL, we can convert the new type to `Data`.
 
@@ -108,5 +119,3 @@ import PlutuxTx.IsData.Class
 toData $ MySillyRedeemer 42
 Constr 0 [I 42]
 ```
-
-[NEXT: Part 4: Summary](./04-summary.md)

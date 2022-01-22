@@ -1,3 +1,11 @@
+---
+label: Imperative vs Declarative
+author:
+  name: Travis Horn
+  email: travis@travishorn.com
+order: -1
+---
+
 # Imperative vs Declarative
 
 Imperative and declarative are two programming paradigms. A paradigm is a way to
