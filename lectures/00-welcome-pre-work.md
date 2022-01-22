@@ -57,4 +57,4 @@ pitfalls. However, this is the canonical code repository and what the actual
 development team at IOG uses.
 
 I wrote a document detailing all of the steps I did to [run plutus playground
-locally](../../appendix/run-plutus-playground-locally.md) on my Linux machine.
+locally](../appendix/run-plutus-playground-locally.md) on my Linux machine.

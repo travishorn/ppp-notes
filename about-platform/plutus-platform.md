@@ -10,7 +10,7 @@ order: 0
 
 The Plutus platform provides a native smart contract language for the
 [Cardano](./cardano.md) blockchain. It is built upon the
-[Haskell](./haskell/haskell.md) programming language.
+[Haskell](../haskell/haskell.md) programming language.
 
 As of January 2022, the platform is still very new. Input Output HK (IOHK), also
 known as Input Output Global (IOG) provide a "pioneer program" for the first

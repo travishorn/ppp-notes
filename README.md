@@ -14,7 +14,7 @@ notes in this repository.
 
 This program's goal is to educate developers on the [Plutus
 Platform](./about-platform/plutus-platform.md). Which is a smart-contract
-language for [Cardano](./about-program/cardano.md) that is based on the
+language for [Cardano](./about-platform/cardano.md) that is based on the
 [Haskell](./haskell/haskell.md) programming language.
 
 To understand and become proficient in Plutus, one has to understand the
@@ -50,7 +50,7 @@ Technical documentation can be found in the [Plutus libraries haddock
 
 ## Syllabus for the 3rd Cohort
 
-- [Welcome & Pre-work](./lectures/00-welcome-pre-work/00-welcome-pre-work.md)
+- [Welcome & Pre-work](./lectures/00-welcome-pre-work.md)
 - [Lecture 1: EUTxO and English
   Auction](./lectures/01-eutxo-english-auction/01-welcome-introduction.md)
 - [Lecture 2: Validation
