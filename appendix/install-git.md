@@ -3,7 +3,7 @@ label: Install Git
 author:
   name: Travis Horn
   email: travis@travishorn.com
-order: -2
+order: -4
 ---
 
 # Install Git

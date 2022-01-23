@@ -13,9 +13,9 @@ As I go through the program as a member of the 3rd cohort, I'm documenting my
 notes here.
 
 This program's goal is to educate developers on the [Plutus
-Platform](./about-platform/plutus-platform.md). Which is a smart-contract
-language for [Cardano](./about-platform/cardano.md) that is based on the
-[Haskell](./haskell/haskell.md) programming language.
+Platform](./appendix/about-platform/plutus-platform.md). Which is a smart-contract
+language for [Cardano](./appendix/about-platform/cardano.md) that is based on the
+[Haskell](./appendix/haskell/haskell.md) programming language.
 
 To understand and become proficient in Plutus, one has to understand the
 following concepts:
@@ -50,11 +50,11 @@ Technical documentation can be found in the [Plutus libraries haddock docs
 
 ## Syllabus for the 3rd Cohort
 
-- [Welcome & Pre-work](./lectures/00-welcome-pre-work.md)
+- [Welcome & Pre-work](./00-welcome-pre-work.md)
 - [Lecture 1: EUTxO and English
-  Auction](./lectures/01-eutxo-english-auction/01-welcome-introduction.md)
+  Auction](./01-eutxo-english-auction/01-welcome-introduction.md)
 - [Lecture 2: Validation
-  Scripts](./lectures/02-validation-scripts/01-triggering-change.md)
+  Scripts](./02-validation-scripts/01-triggering-change.md)
 - Lecture 3: Vesting Example
 - Lecture 4: Emulator Trace and Contract Monads
 - Lecture 5: Minting policy

@@ -3,7 +3,7 @@ label: Enable Overloaded Strings
 author:
   name: Travis Horn
   email: travis@travishorn.com
-order: -1
+order: -3
 ---
 
 # Enable Overloaded Strings

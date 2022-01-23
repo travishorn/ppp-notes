@@ -18,7 +18,7 @@ Lecture 1, Part 5
 ### Start Plutus Playground Locally
 
 If you haven't set up your machine for running Plutus Playground locally yet,
-[follow these instructions](../../appendix/run-plutus-playground-locally.md).
+[follow these instructions](../appendix/run-plutus-playground-locally.md).
 
 Start up Plutus Playground. First, change into the `plutus-apps` directory
 
@@ -118,7 +118,7 @@ time. So for **spDeadline**, we need to put the right value that corresponds to
 10 slots.
 
 See the guide on [Converting Slots to POSIX
-Time](../../appendix/converting-slots-posix-time.md)
+Time](../appendix/converting-slots-posix-time.md)
 
 10 slots in Plutus Playground equates to `1596059101999` POSIX time. Enter that
 value in the **spDeadline** box.

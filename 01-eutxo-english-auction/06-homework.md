@@ -29,7 +29,7 @@ The homework for this lecture was to
 I've detailed the steps I took to do these things:
 
 - [Run Plutus Playground
-  locally](../../appendix/run-plutus-playground-locally.md)
+  locally](../appendix/run-plutus-playground-locally.md)
 - [Build the auction code](./03-building-example-code.md)
 - [Play with the English Auction contract on Plutus
   Playground](./05-auction-contract-playground.md)

@@ -1,9 +1,10 @@
 ---
 label: Welcome & Pre-work
+icon: file
 author:
   name: Travis Horn
   email: travis@travishorn.com
-order: 0
+order: -1
 ---
 
 # Welcome & Pre-work
@@ -61,4 +62,3 @@ pitfalls. However, this is the canonical code repository and what the actual
 development team at IOG uses.
 
 I wrote a document detailing all of the steps I did to [run plutus playground
-locally](../appendix/run-plutus-playground-locally.md) on my Linux machine.

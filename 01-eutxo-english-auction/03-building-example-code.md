@@ -31,7 +31,7 @@ Plutus code for on-chain things is located at
 
 The last one is not used for this course, but the other two should be cloned to
 your local machine with git. If you followed my guide for [running Plutus
-Playground locally](../../appendix/run-plutus-playground-locally.md) then you'll
+Playground locally](../appendix/run-plutus-playground-locally.md) then you'll
 already have the plutus-apps repo cloned.
 
 Change into the pioneer repository

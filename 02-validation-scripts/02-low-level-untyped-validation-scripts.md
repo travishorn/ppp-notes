@@ -87,7 +87,7 @@ I 42 :: Data
 
 You can do the same with a string (or more accurately, a ByteString), but you'll
 need to [enable overloaded strings in
-GHC](../../appendix/enable-overloaded-strings.md) first.
+GHC](../appendix/enable-overloaded-strings.md) first.
 
 ```haskell
 :set -XOverloadedStrings
