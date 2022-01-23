@@ -7,21 +7,21 @@
     <meta name="turbo-cache-control" content="no-cache">
 
     <!-- Primary Meta Tags -->
-    <title>Install Git</title>
-    <meta name="title" content="Install Git">
-    <meta name="description" content="Some of the steps you must take to set up a Plutus environment require you to have Git installed." />
+    <title>Validation Scripts</title>
+    <meta name="title" content="Validation Scripts">
+    <meta name="description" content="Lecture 2, Part 3" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://travishorn.github.io/ppp-notes/appendix/install-git/">
-    <meta property="og:title" content="Install Git">
-    <meta property="og:description" content="Some of the steps you must take to set up a Plutus environment require you to have Git installed.">
+    <meta property="og:url" content="https://travishorn.github.io/ppp-notes/02-validation-scripts/03-high-level-typed-validation-scripts/">
+    <meta property="og:title" content="Validation Scripts">
+    <meta property="og:description" content="Lecture 2, Part 3">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://travishorn.github.io/ppp-notes/appendix/install-git/">
-    <meta property="twitter:title" content="Install Git">
-    <meta property="twitter:description" content="Some of the steps you must take to set up a Plutus environment require you to have Git installed.">
+    <meta property="twitter:url" content="https://travishorn.github.io/ppp-notes/02-validation-scripts/03-high-level-typed-validation-scripts/">
+    <meta property="twitter:title" content="Validation Scripts">
+    <meta property="twitter:description" content="Lecture 2, Part 3">
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/ppp-notes/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
@@ -165,10 +165,10 @@
                 <div id="docs-sidebar-right-toggle"></div>
                
                 <!-- Page content  -->
-<doc-anchor-target id="install-git" class="break-words">
+<doc-anchor-target id="validation-scripts" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#install-git">#</doc-anchor-trigger>
-        <span>Install Git</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#validation-scripts">#</doc-anchor-trigger>
+        <span>Validation Scripts</span>
     </h1>
 </doc-anchor-target>
 <div class="-mt-3 mb-12 flex flex-wrap text-sm text-gray-400 dark:text-dark-350">
@@ -183,38 +183,107 @@
     </div>
 </div>
 
-<p>Some of the steps you must take to set up a Plutus environment require you to
-have <a href="https://git-scm.com/">Git</a> installed.</p>
-<doc-anchor-target id="arch-linux">
+<doc-anchor-target id="high-level-typed-validation-scripts">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#arch-linux">#</doc-anchor-trigger>
-        <span>Arch Linux</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#high-level-typed-validation-scripts">#</doc-anchor-trigger>
+        <span>High Level, Typed Validation Scripts</span>
     </h2>
 </doc-anchor-target>
-<p>On Arch Linux, I installed it using pacman.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">sudo pacman -S git</code></pre>
-</doc-codeblock></div>
-<p>Enter <strong>y</strong> and press <strong>Enter</strong> when asked if you want to continue with
-installation.</p>
-<doc-anchor-target id="ubuntu">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#ubuntu">#</doc-anchor-trigger>
-        <span>Ubuntu</span>
-    </h2>
+<p>Lecture 2, Part 3</p>
+<p><a href="https://www.youtube.com/watch?v=HoB_PqeZPNc&amp;list=PLNEK_Ejlx3x0mhPmOjPSHZPtTFpfJo3Nd&amp;index=3">Source Video
+<svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M15.5 2.25a.75.75 0 01.75-.75h5.5a.75.75 0 01.75.75v5.5a.75.75 0 01-1.5 0V4.06l-6.22 6.22a.75.75 0 11-1.06-1.06L19.94 3h-3.69a.75.75 0 01-.75-.75z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 010 1.5h-8.5a.25.25 0 00-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 00.25-.25v-8.5a.75.75 0 011.5 0v8.5a1.75 1.75 0 01-1.75 1.75H4.25a1.75 1.75 0 01-1.75-1.75V4.25z"/></g></g></svg></a></p>
+<p>Using BuiltinData works great and it&#x27;s very performant. However, you can code
+validators with more descriptive datatypes.</p>
+<doc-anchor-target id="typedhs">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#typedhs">#</doc-anchor-trigger>
+        <span>Typed.hs</span>
+    </h3>
 </doc-anchor-target>
-<p>If you use Ubuntu, Git may already be installed. Try displaying its version.</p>
+<p><a href="https://github.com/input-output-hk/plutus-pioneer-program/blob/0f24e987e79a369b3d34f62d6e0cbc1b527082fb/code/week02/src/Week02/Typed.hs">Source code
+<svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M15.5 2.25a.75.75 0 01.75-.75h5.5a.75.75 0 01.75.75v5.5a.75.75 0 01-1.5 0V4.06l-6.22 6.22a.75.75 0 11-1.06-1.06L19.94 3h-3.69a.75.75 0 01-.75-.75z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 010 1.5h-8.5a.25.25 0 00-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 00.25-.25v-8.5a.75.75 0 011.5 0v8.5a1.75 1.75 0 01-1.75 1.75H4.25a1.75 1.75 0 01-1.75-1.75V4.25z"/></g></g></svg></a></p>
+<p>Instead of writing the validator like we did in the <code v-pre>FortyTwo</code> example...</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">git --version</code></pre>
+<pre class="language-haskell"><code v-pre class="language-haskell">mkValidator :: BuiltinData -&gt; BuiltinData -&gt; BuiltinData -&gt; ()
+mkValidator = _ r _
+  | r == Builtins.mkI 42 = ()
+  | otherwise = traceError &quot;Wrong redeemer&quot;</code></pre>
 </doc-codeblock></div>
-<p>If you receive an error that git is not installed, you&#x27;ll need to install it.</p>
-<p>Update your local package index.</p>
+<p>We can use stronger types for each argument. Since we don&#x27;t care about the datum
+we can just give it type <code v-pre>()</code>. The redeemer should be an <code v-pre>Integer</code>. And even
+though we don&#x27;t care about the context, it&#x27;s good practice to use
+<code v-pre>ScriptContext</code>. Finally, the validator either passes or it doesn&#x27;t so <code v-pre>Bool</code> is
+a much more natural-feeling return type.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">sudo apt update</code></pre>
+<pre class="language-haskell"><code v-pre class="language-haskell">mkValidator :: () -&gt; Integer -&gt; ScriptContect -&gt; Bool
+mkValidator = _ r _ = traceIfFalse &quot;Wrong redeemer&quot; $ r == 42</code></pre>
 </doc-codeblock></div>
-<p>Install Git</p>
+<p>Notice <code v-pre>traceIfFalse</code>. It takes a string and an expression. If the expression is
+true, it returns true. If the expression is false, it traces (logs) the string
+and returns false.</p>
+<p>With high level typed validation scripts there is a little more boilerplate
+needed to compile.</p>
+<p>Two new blocks are needed:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">sudo apt install git</code></pre>
+<pre class="language-haskell"><code v-pre class="language-haskell">data Typed
+instance Scripts.ValidatorTypes Typed where
+    type instance DatumType Typed = ()
+    type instance RedeemerType Typed = Integer
+
+typedValidator :: Scripts.TypedValidator Typed
+typedValidator = Scripts.mkTypedValidator @Typed
+    $$(PlutusTx.compile [|| mkValidator ||])
+    $$(PlutusTx.compile [|| wrap ||])
+  where
+    wrap = Scripts.wrapValidator @() @Integer</code></pre>
+</doc-codeblock></div>
+<p><code v-pre>validator</code> and <code v-pre>valHash</code> need to be modified.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">validator :: Validator
+validator = Scripts.validatorScript typedValidator
+
+valHash :: Ledger.ValidatorHash
+valHash = Scripts.validatorHash typedValidator</code></pre>
+</doc-codeblock></div>
+<p><code v-pre>scrAddress</code> stays the same.</p>
+<doc-anchor-target id="fromdata-and-todata">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#fromdata-and-todata">#</doc-anchor-trigger>
+        <span>fromData and toData</span>
+    </h3>
+</doc-anchor-target>
+<p>In the REPL, you can see how these two functions work.</p>
+<p>Turning an integer into data uses the <code v-pre>I</code> constructor.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">toData (42 :: Integer)
+I 42</code></pre>
+</doc-codeblock></div>
+<p>And the other way around. Notice we use <code v-pre>Maybe</code> because the operation can fail.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">FromData (I 42) :: Maybe Integer
+Just 42</code></pre>
+</doc-codeblock></div>
+<p>It fails and returns Nothing when you try to go from a list to an integer.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">FromData (List []) :: Maybe Integer
+Nothing</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="custom-datatype">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#custom-datatype">#</doc-anchor-trigger>
+        <span>Custom Datatype</span>
+    </h3>
+</doc-anchor-target>
+<p><a href="https://github.com/input-output-hk/plutus-pioneer-program/blob/0f24e987e79a369b3d34f62d6e0cbc1b527082fb/code/week02/src/Week02/IsData.hs">Source code
+<svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M15.5 2.25a.75.75 0 01.75-.75h5.5a.75.75 0 01.75.75v5.5a.75.75 0 01-1.5 0V4.06l-6.22 6.22a.75.75 0 11-1.06-1.06L19.94 3h-3.69a.75.75 0 01-.75-.75z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 010 1.5h-8.5a.25.25 0 00-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 00.25-.25v-8.5a.75.75 0 011.5 0v8.5a1.75 1.75 0 01-1.75 1.75H4.25a1.75 1.75 0 01-1.75-1.75V4.25z"/></g></g></svg></a></p>
+<p><a href="https://github.com/travishorn/plutus-pioneer-program/blob/main/code/week02/src/Week02/IsData.hs">My commented code
+<svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M15.5 2.25a.75.75 0 01.75-.75h5.5a.75.75 0 01.75.75v5.5a.75.75 0 01-1.5 0V4.06l-6.22 6.22a.75.75 0 11-1.06-1.06L19.94 3h-3.69a.75.75 0 01-.75-.75z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 010 1.5h-8.5a.25.25 0 00-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 00.25-.25v-8.5a.75.75 0 011.5 0v8.5a1.75 1.75 0 01-1.75 1.75H4.25a1.75 1.75 0 01-1.75-1.75V4.25z"/></g></g></svg></a></p>
+<p>With this module loaded in the REPL, we can convert the new type to <code v-pre>Data</code>.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">import PlutusTx
+import PlutuxTx.IsData.Class
+toData $ MySillyRedeemer 42
+Constr 0 [I 42]</code></pre>
 </doc-codeblock></div>
 
 
@@ -227,20 +296,20 @@ installation.</p>
             
 <nav class="flex mt-14">
     <div class="w-1/2">
-        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/ppp-notes/appendix/enable-overloaded-strings/">
+        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/ppp-notes/02-validation-scripts/02-low-level-untyped-validation-scripts/">
             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
             <span>
                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                <span class="block mt-1">Enable Overloaded Strings</span>
+                <span class="block mt-1">Low Level, Untyped Validation Scripts</span>
             </span>
         </a>
     </div>
 
     <div class="w-1/2">
-        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/ppp-notes/appendix/run-haddock-docs-locally/">
+        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/ppp-notes/02-validation-scripts/04-summary/">
             <span>
                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                <span class="block mt-1">Run Haddock Docs Locally</span>
+                <span class="block mt-1">Summary</span>
             </span>
             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
         </a>
@@ -288,6 +357,6 @@ installation.</p>
 
         <div id="docs-overlay-target"></div>
 
-        <script>window.__DOCS__ = { "title": "Install Git", icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
+        <script>window.__DOCS__ = { "title": "High Level, Typed Validation Scripts", icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
     </body>
 </html>

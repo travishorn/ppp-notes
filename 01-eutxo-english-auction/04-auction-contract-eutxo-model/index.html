@@ -7,21 +7,21 @@
     <meta name="turbo-cache-control" content="no-cache">
 
     <!-- Primary Meta Tags -->
-    <title>Install Git</title>
-    <meta name="title" content="Install Git">
-    <meta name="description" content="Some of the steps you must take to set up a Plutus environment require you to have Git installed." />
+    <title>EUTxO and English Auction</title>
+    <meta name="title" content="EUTxO and English Auction">
+    <meta name="description" content="Lecture 1, Part 4" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://travishorn.github.io/ppp-notes/appendix/install-git/">
-    <meta property="og:title" content="Install Git">
-    <meta property="og:description" content="Some of the steps you must take to set up a Plutus environment require you to have Git installed.">
+    <meta property="og:url" content="https://travishorn.github.io/ppp-notes/01-eutxo-english-auction/04-auction-contract-eutxo-model/">
+    <meta property="og:title" content="EUTxO and English Auction">
+    <meta property="og:description" content="Lecture 1, Part 4">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://travishorn.github.io/ppp-notes/appendix/install-git/">
-    <meta property="twitter:title" content="Install Git">
-    <meta property="twitter:description" content="Some of the steps you must take to set up a Plutus environment require you to have Git installed.">
+    <meta property="twitter:url" content="https://travishorn.github.io/ppp-notes/01-eutxo-english-auction/04-auction-contract-eutxo-model/">
+    <meta property="twitter:title" content="EUTxO and English Auction">
+    <meta property="twitter:description" content="Lecture 1, Part 4">
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/ppp-notes/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
@@ -165,10 +165,10 @@
                 <div id="docs-sidebar-right-toggle"></div>
                
                 <!-- Page content  -->
-<doc-anchor-target id="install-git" class="break-words">
+<doc-anchor-target id="eutxo-and-english-auction" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#install-git">#</doc-anchor-trigger>
-        <span>Install Git</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#eutxo-and-english-auction">#</doc-anchor-trigger>
+        <span>EUTxO and English Auction</span>
     </h1>
 </doc-anchor-target>
 <div class="-mt-3 mb-12 flex flex-wrap text-sm text-gray-400 dark:text-dark-350">
@@ -183,39 +183,160 @@
     </div>
 </div>
 
-<p>Some of the steps you must take to set up a Plutus environment require you to
-have <a href="https://git-scm.com/">Git</a> installed.</p>
-<doc-anchor-target id="arch-linux">
+<doc-anchor-target id="auction-contract-in-the-eutxo-model">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#arch-linux">#</doc-anchor-trigger>
-        <span>Arch Linux</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#auction-contract-in-the-eutxo-model">#</doc-anchor-trigger>
+        <span>Auction Contract in the EUTxO Model</span>
     </h2>
 </doc-anchor-target>
-<p>On Arch Linux, I installed it using pacman.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">sudo pacman -S git</code></pre>
-</doc-codeblock></div>
-<p>Enter <strong>y</strong> and press <strong>Enter</strong> when asked if you want to continue with
-installation.</p>
-<doc-anchor-target id="ubuntu">
+<p>Lecture 1, Part 4</p>
+<p><a href="https://www.youtube.com/watch?v=Bj6bqRGT1L0&amp;list=PLNEK_Ejlx3x2nLM4fAck2JS6KhFQlXq2N&amp;index=4">Source Video
+<svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M15.5 2.25a.75.75 0 01.75-.75h5.5a.75.75 0 01.75.75v5.5a.75.75 0 01-1.5 0V4.06l-6.22 6.22a.75.75 0 11-1.06-1.06L19.94 3h-3.69a.75.75 0 01-.75-.75z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 010 1.5h-8.5a.25.25 0 00-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 00.25-.25v-8.5a.75.75 0 011.5 0v8.5a1.75 1.75 0 01-1.75 1.75H4.25a1.75 1.75 0 01-1.75-1.75V4.25z"/></g></g></svg></a></p>
+<p>Introductory example is an auction. Somebody wants to auction off an NFT.</p>
+<p>Auction is parameterized by the owner of the token. They provide the token
+itself, a minimum bid, and deadline.</p>
+<p>Alice has an NFT and she wants to auction it. She creates a EUTxO.</p>
+<ul>
+<li>The value (were it might normally be 10 ADA or 100 ADA, etc) is just the NFT</li>
+<li>The datum is initially &quot;Nothing&quot;. Later it will contain the highest bidder and
+the highest bid</li>
+</ul>
+<p>In the real blockchain, all EUTxOs much be accompanied by some amount of ADA,
+but we are ignoring it for simplicity.</p>
+<p>Bob wants to bid 100 ADA. He creates a transaction with 2 inputs and 1 output.
+The first input is the auction EUTxO and the second input is a EUTxO
+representing his bid. It contains 100 ADA. The output is again the auction
+script, but with the value and the datum changed.</p>
+<p><strong>Redeemer:</strong> bid</p>
+<p><strong>Input 1:</strong> The auction EUTxO</p>
+<p><strong>Input 2:</strong> A EUTxO representing his bid. The value is 100 ADA</p>
+<p><strong>Output:</strong> The auction EUTxO again, but with the value and datum changed. The
+value is &quot;NFT + 100 ADA&quot; and the datum is (Bob, 100).</p>
+<p>The script checks that all conditions are met. The bid is above the minimum and
+the time is before the deadline. It passes.</p>
+<p>Now, Charlie wants to submit a bid for 200 ADA. He creates a transaction with 2
+inputs and 2 outputs.</p>
+<p><strong>Redeemer:</strong> bid</p>
+<p><strong>Input 1:</strong> The auction EUTxO (includes changes from Bob)</p>
+<p><strong>Input 2:</strong> A EUTxO representing his bid. The value is 200 ADA</p>
+<p><strong>Output 1:</strong> The auction EUTxO again, but with the value and datum changed. The
+value is &quot;NFT + 200 ADA&quot; and the datum is (Charlie, 200).</p>
+<p><strong>Output 2:</strong> 100 ADA to Bob. He is getting his bid back. The information can be
+found by looking at the datum on the input auction</p>
+<p>Again, the script checks that all conditions are met. In addition to the bid
+minimum and the deadline, it also checks that the new bid is higher than the
+current highest bid, the new auction EUTxO is correctly updated, and that the
+previous highest bidder gets his bid back.</p>
+<p>Once the deadline has passed, someone has to initiate one more transaction of
+the script. It can be anybody. But it will probably be Alice who wants her bid
+or the winner, Charlie, who wants his NFT.</p>
+<p>This final transaction will have 1 input and 2 outputs.</p>
+<p><strong>Redeemer:</strong> close</p>
+<p><strong>Input:</strong> The auction EUTxO</p>
+<p><strong>Output 1:</strong> NFT to Charlie</p>
+<p><strong>Output 2:</strong> 200 ADA to Alice</p>
+<p>The script will check conditions. Conditions are: deadline is reached and
+highest bidder gets NFT and auction owner gets highest bid.</p>
+<p>What if no one bids? Alice makes a transaction.</p>
+<p><strong>Redeemer:</strong> close</p>
+<p><strong>Input:</strong> The auction EUTxO</p>
+<p><strong>Output:</strong> NFT to Alice</p>
+<p>The script checks and sees there is no highest bidder and outputs the NFT to
+Alice.</p>
+<doc-anchor-target id="the-auction-code-itself">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#ubuntu">#</doc-anchor-trigger>
-        <span>Ubuntu</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#the-auction-code-itself">#</doc-anchor-trigger>
+        <span>The Auction Code Itself</span>
     </h2>
 </doc-anchor-target>
-<p>If you use Ubuntu, Git may already be installed. Try displaying its version.</p>
+<p>On Cardano, there are on-chain and off-chain code. Everything above is on-chain
+code.</p>
+<p>There are public key addresses and script addresses. They sit on an output. If a
+transaction tries to consume a EUTxO on the script address (tries to use the
+script address as an input), the script executes on-chain by a node.</p>
+<p>Look at <a href="https://github.com/input-output-hk/plutus-pioneer-program/blob/ecafd204b56defceed9fd3a69ebede09256c12c0/code/week01/src/Week01/EnglishAuction.hs">plutus-pioneer-program/code/week01/src/Week01/EnglishAuction.hs
+<svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M15.5 2.25a.75.75 0 01.75-.75h5.5a.75.75 0 01.75.75v5.5a.75.75 0 01-1.5 0V4.06l-6.22 6.22a.75.75 0 11-1.06-1.06L19.94 3h-3.69a.75.75 0 01-.75-.75z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 010 1.5h-8.5a.25.25 0 00-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 00.25-.25v-8.5a.75.75 0 011.5 0v8.5a1.75 1.75 0 01-1.75 1.75H4.25a1.75 1.75 0 01-1.75-1.75V4.25z"/></g></g></svg></a></p>
+<p>On line 56, you can see the data definition for the <code v-pre>Auction</code></p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">git --version</code></pre>
+<pre class="language-haskell"><code v-pre class="language-haskell">data Auction = Auction
+  { aSeller   :: !PaymentPubKeyHash
+  , aDeadline :: !POSIXTime
+  , aMinBid   :: !Integer
+  , aCurrency :: !CurrencySymbol
+  , aToken    :: !TokenName
+  } deriving (P.Show, Generic, ToJSON, FromJSON, ToSchema)</code></pre>
 </doc-codeblock></div>
-<p>If you receive an error that git is not installed, you&#x27;ll need to install it.</p>
-<p>Update your local package index.</p>
+<p>It contains information about the seller, deadline, minimum bid, and (the last
+two keys) the NFT.</p>
+<p>On line 114, you can see the start of the definition of the heart of the script.
+This is the actual logic used in the script.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">sudo apt update</code></pre>
+<pre class="language-haskell"><code v-pre class="language-haskell">mkAuctionValidator :: AuctionDatum -&gt; AuctionAction -&gt; ScriptContext -&gt; Bool
+mkAuctionValidator ad redeemer ctx =
+  traceIfFalse &quot;wrong input value&quot; correctInputValue &amp;&amp;
+  --- Many more lines below here snipped</code></pre>
 </doc-codeblock></div>
-<p>Install Git</p>
+<p>On line 216, you can see where the compilation happens. This is &quot;template
+Haskell&quot; that initiates the GHC compiler plugin.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">sudo apt install git</code></pre>
+<pre class="language-haskell"><code v-pre class="language-haskell">typedAuctionValidator :: Scripts.TypedValidator Auctioning
+typedActuionValidator = Scripts.mkTypedValidator @Auctioning
+    $$(PlutusTx.compile [|| mkAuctionValidator ||])
+    $$(PlutusTx.compile [|| wrap ||])
+  where
+    wrap = Scripts.wrapValidator @AuctionDatum @AuctionAction</code></pre>
 </doc-codeblock></div>
+<p>On line 232 starts the off-chain part of the code. This particular block defines
+parameters for enpoints that are involved.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">data StartParams = StartParams
+  { spDeadline :: !POSIXTime
+  , spMinBid   :: !Integer
+  , spCurrency :: !CurrencySymbold
+  , spToken    :: !TokenName
+  } deriving (Generic, ToJSON, FromJSON, ToSchema)
+
+-- Two more endpoints snipped: BidParams and CloseParams</code></pre>
+</doc-codeblock></div>
+<p>The logic for <code v-pre>start</code>, <code v-pre>bid</code>, and <code v-pre>close</code> as well as a few more helper functions
+are defined a little lower starting on line 255.</p>
+<p>The last few lines starting on line 362 are for demo purposes and trying out the
+auction in the playground. It&#x27;s creating a sample NFT we can use to auction
+away.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">myToken :: KnownCurrency
+myToken = KnownCurrency (ValidatorHash &quot;f&quot;) &quot;Token&quot; (TokenName &quot;T&quot; :| [])
+
+mkKnownCurrencies ['myToken]</code></pre>
+</doc-codeblock></div>
+<p>The token created here has the hash &quot;f&quot;. Looking up the UTF-8 table, you can see
+that &quot;f&quot; can also be represented as decimal 102, which is hexidecimal 66.</p>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Printable Character</th>
+<th style="text-align: right;">Decimal</th>
+<th style="text-align: right;">Hexidecimal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Latin small character F</td>
+<td style="text-align: left;">f</td>
+<td style="text-align: right;">102</td>
+<td style="text-align: right;">66</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>That value &quot;66&quot; will be necessary to know when using the playground. It needs to
+be entered as the <code v-pre>spCurrency unCurrencySymbol</code> when interacting with the
+contract.</p>
+<hr />
+<p>Some code can be shared between the on-chain and off-chain parts. The <code v-pre>minBid</code>
+function is one such example you can see in the example auction code.</p>
 
 
 
@@ -227,20 +348,20 @@ installation.</p>
             
 <nav class="flex mt-14">
     <div class="w-1/2">
-        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/ppp-notes/appendix/enable-overloaded-strings/">
+        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/ppp-notes/01-eutxo-english-auction/03-building-example-code/">
             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
             <span>
                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                <span class="block mt-1">Enable Overloaded Strings</span>
+                <span class="block mt-1">Building the Example Code</span>
             </span>
         </a>
     </div>
 
     <div class="w-1/2">
-        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/ppp-notes/appendix/run-haddock-docs-locally/">
+        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/ppp-notes/01-eutxo-english-auction/05-auction-contract-playground/">
             <span>
                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                <span class="block mt-1">Run Haddock Docs Locally</span>
+                <span class="block mt-1">Auction Contract on the Playground</span>
             </span>
             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
         </a>
@@ -288,6 +409,6 @@ installation.</p>
 
         <div id="docs-overlay-target"></div>
 
-        <script>window.__DOCS__ = { "title": "Install Git", icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
+        <script>window.__DOCS__ = { "title": "Auction Contract in the EUTxO Model", icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
     </body>
 </html>
