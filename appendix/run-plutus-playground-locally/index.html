@@ -25,12 +25,12 @@
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/ppp-notes/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/ppp-notes/resources/css/retype.css?v=1.11.2.696276935579" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/ppp-notes/resources/css/retype.css?v=1.11.2.696478236214" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/ppp-notes/resources/js/config.js?v=1.11.2.696276935579" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/ppp-notes/resources/js/config.js?v=1.11.2.696478236214" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/ppp-notes/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/ppp-notes/resources/js/lunr.js?v=1.11.2.696276935579" defer></script>
-    <script id="prism-js" type="text/javascript" src="/ppp-notes/resources/js/prism.js?v=1.11.2.696276935579" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/ppp-notes/resources/js/lunr.js?v=1.11.2.696478236214" defer></script>
+    <script id="prism-js" type="text/javascript" src="/ppp-notes/resources/js/prism.js?v=1.11.2.696478236214" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -186,72 +186,17 @@
 <p>The Plutus Playground is an application that lets you play with the <a href="../about-platform/plutus-platform/">Plutus
 Platform</a> and the
 <a href="../about-platform/cardano/">Cardano</a> blockchain.</p>
-<p>These instructions are for Arch Linux. You&#x27;ll need around 12GB of free hard disk
-space. More is better, to be safe.</p>
-<p>Install Nix. Nix is a tool for reproducible builds and deployment.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">sh &lt;(curl -L https://nixos.org/nix/install) --daemon</code></pre>
-</doc-codeblock></div>
-<p>Follow any prompts during installation.</p>
-<p>Open the Nix configuration as root</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">sudo vim /etc/nix/nix.conf</code></pre>
-</doc-codeblock></div>
-<p>Add the following lines</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">substituters = https://hydra.iohk.io https://iohk.cachix.org https://cache.nixos.org/
-trusted-public-keys = hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ= iohk.cachix.org-1:DpRUyj7h7V830dp/i6Nti+NEO2/nhblbov/8MW7Rqoo= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
-experimental-features = nix-command</code></pre>
-</doc-codeblock></div>
-<p>The first two lines tell Nix to use the binary cache maintained by IOHK when
-building their code. It can save hours of build time.</p>
-<p>The last line tells Nix to enable the <code v-pre>nix</code> command, as it is an experimental
-feature that is disabled by default.</p>
-<p>Save and close the file</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">:wq</code></pre>
-</doc-codeblock></div>
-<p>I don&#x27;t think that Ubuntu machines have this problem, but on my Arch machine,
-the Nix service had trouble starting because it couldn&#x27;t find the daemon-socket
-directory it was expecting.</p>
-<p>If you have the same problem I did, make the daemon-socket directory manually</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">sudo mkdir -p /nix/var/nix/daemon-socket</code></pre>
-</doc-codeblock></div>
-<p>Reload active sessions and restart the Nix service by rebooting the machine</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">sudo shutdown -r now</code></pre>
-</doc-codeblock></div>
-<p>You&#x27;ll need git installed for the next step. <a href="../install-git/">Install it if you don&#x27;t already
-have it.</a></p>
-<p>Clone the Plutus Apps repository. This will create a new directory called
-<code v-pre>plutus-apps</code> under your current working directory.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">git clone https://github.com/input-output-hk/plutus-apps</code></pre>
-</doc-codeblock></div>
+<p>Before following the steps below, make sure to complete the <a href="../../first-time-setup/">first time
+setup</a>.</p>
 <p>Change into the <code v-pre>plutus-apps</code> directory</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-bash"><code v-pre class="language-bash">cd plutus-apps</code></pre>
 </doc-codeblock></div>
-<p>Build the Nix environment</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">nix build -f default.nix plutus-apps.haskell.packages.plutus-pab.components.library</code></pre>
-</doc-codeblock></div>
-<p>It will take around 5-10 minutes. Make sure you see it downloading files from
-hydra.iohk.io. If you don&#x27;t, that means the binary cache was not set up
-correctly. Go back and make sure you follow all the previous steps correctly.</p>
-<p>Start a Nix Shell</p>
+<p>Start a Nix shell</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-bash"><code v-pre class="language-bash">nix-shell</code></pre>
 </doc-codeblock></div>
-<p>Starting the Nix Shell puts you in a reproducible environment defined by IOHK.
-In order to do this, it needs to have all the tools and packages defined by the
-Nix configuration. The first time you run this, it will take a around 15-20
-minutes to download and build the environment.</p>
-<p>It is important to run this command inside the <code v-pre>plutus-apps</code> directory every
-time you want to work with the Plutus Application Framework.</p>
-<p>Once you&#x27;re in the Nix Shell, change into the <code v-pre>plutus-playground-client</code>
-directory</p>
+<p>Change into the <code v-pre>plutus-playground-client</code> directory</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-bash"><code v-pre class="language-bash">cd plutus-playground-client</code></pre>
 </doc-codeblock></div>

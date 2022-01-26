@@ -25,12 +25,12 @@
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/ppp-notes/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/ppp-notes/resources/css/retype.css?v=1.11.2.696276935579" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/ppp-notes/resources/css/retype.css?v=1.11.2.696478236214" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/ppp-notes/resources/js/config.js?v=1.11.2.696276935579" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/ppp-notes/resources/js/config.js?v=1.11.2.696478236214" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/ppp-notes/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/ppp-notes/resources/js/lunr.js?v=1.11.2.696276935579" defer></script>
-    <script id="prism-js" type="text/javascript" src="/ppp-notes/resources/js/prism.js?v=1.11.2.696276935579" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/ppp-notes/resources/js/lunr.js?v=1.11.2.696478236214" defer></script>
+    <script id="prism-js" type="text/javascript" src="/ppp-notes/resources/js/prism.js?v=1.11.2.696478236214" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -202,55 +202,12 @@
 <p>Plutus code for on-chain things is located at
 <a href="https://github.com/input-output-hk/plutus">https://github.com/input-output-hk/plutus
 <svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M15.5 2.25a.75.75 0 01.75-.75h5.5a.75.75 0 01.75.75v5.5a.75.75 0 01-1.5 0V4.06l-6.22 6.22a.75.75 0 11-1.06-1.06L19.94 3h-3.69a.75.75 0 01-.75-.75z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 010 1.5h-8.5a.25.25 0 00-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 00.25-.25v-8.5a.75.75 0 011.5 0v8.5a1.75 1.75 0 01-1.75 1.75H4.25a1.75 1.75 0 01-1.75-1.75V4.25z"/></g></g></svg></a></p>
-<p>The last one is not used for this course, but the other two should be cloned to
-your local machine with git. If you followed my guide for <a href="../../appendix/run-plutus-playground-locally/">running Plutus
-Playground locally</a> then you&#x27;ll
-already have the plutus-apps repo cloned.</p>
-<p>Change into the pioneer repository</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">cd plutus-pioneer-program</code></pre>
-</doc-codeblock></div>
-<p>Pull the latest changes from remote</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">git pull</code></pre>
-</doc-codeblock></div>
-<p>Change into the week 1 directory</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">cd ./code/week01</code></pre>
-</doc-codeblock></div>
-<p>View the Cabal project file.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">vim cabal.project</code></pre>
-</doc-codeblock></div>
-<p>Look for the following lines</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-none"><code v-pre class="language-none">source-repository-package
-  type: git
-  location: https://github.com/input-output-hk/plutus-apps.git
-  tag: [some long string of letters and numbers]</code></pre>
-</doc-codeblock></div>
-<p>Copy the <code v-pre>tag</code> value (the long string of letters and numbers)</p>
-<p>Change into the <code v-pre>plutus-apps</code> directory</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">cd ../../../plutus-apps</code></pre>
-</doc-codeblock></div>
-<p>Your file structure may be different so you might have to tweak the command
-above.</p>
-<p>Pull the latest changes</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">git pull</code></pre>
-</doc-codeblock></div>
-<p>Check out the code at the given tag. Replace <code v-pre>[tag]</code> below with the actual tag
-you copied.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">git checkout [tag]</code></pre>
-</doc-codeblock></div>
-<p>While still in the <code v-pre>plutus-apps</code> repository, start a Nix shell</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">nix-shell</code></pre>
-</doc-codeblock></div>
-<p>It might take a while the complete the first time</p>
-<p>Change directory back into the code for this week</p>
+<hr />
+<p>Building the example code requires that you&#x27;ve done the <a href="../../first-time-setup/">first time
+setup</a> and the <a href="../../weekly-setup/">weekly
+setup</a> first.</p>
+<p>With those steps out of the way, change directory back into the code for this
+week</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-bash"><code v-pre class="language-bash">../plutus-pioneer-program/code/week01</code></pre>
 </doc-codeblock></div>

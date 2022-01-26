@@ -25,12 +25,11 @@
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/ppp-notes/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/ppp-notes/resources/css/retype.css?v=1.11.2.696276935579" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/ppp-notes/resources/css/retype.css?v=1.11.2.696478236214" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/ppp-notes/resources/js/config.js?v=1.11.2.696276935579" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/ppp-notes/resources/js/config.js?v=1.11.2.696478236214" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/ppp-notes/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/ppp-notes/resources/js/lunr.js?v=1.11.2.696276935579" defer></script>
-    <script id="prism-js" type="text/javascript" src="/ppp-notes/resources/js/prism.js?v=1.11.2.696276935579" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/ppp-notes/resources/js/lunr.js?v=1.11.2.696478236214" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -198,37 +197,8 @@
         <span>Start Plutus Playground Locally</span>
     </h3>
 </doc-anchor-target>
-<p>If you haven&#x27;t set up your machine for running Plutus Playground locally yet,
-<a href="../../appendix/run-plutus-playground-locally/">follow these instructions</a>.</p>
-<p>Start up Plutus Playground. First, change into the <code v-pre>plutus-apps</code> directory</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">cd plutus-apps</code></pre>
-</doc-codeblock></div>
-<p>Start a Nix shell</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">nix-shell</code></pre>
-</doc-codeblock></div>
-<p>Change into the <code v-pre>plutus-playground-client</code> directory</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">cd plutus-playground-client</code></pre>
-</doc-codeblock></div>
-<p>Start the server</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">plutus-playground-server</code></pre>
-</doc-codeblock></div>
-<p>Open up another terminal</p>
-<p>Start a Nix shell in this new terminal</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">nix-shell</code></pre>
-</doc-codeblock></div>
-<p>Change into the <code v-pre>plutus-playground-client</code> directory</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">cd plutus-playground-client</code></pre>
-</doc-codeblock></div>
-<p>Start the client</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">npm run start</code></pre>
-</doc-codeblock></div>
+<p>Follow the instructions to <a href="../../appendix/run-plutus-playground-locally/">run Plutus Playground
+locally</a>.</p>
 <p>Open your web browser to https://localhost:8009 to see the playground.</p>
 <doc-anchor-target id="run-the-english-auction">
     <h3>
@@ -386,6 +356,6 @@ it.)</li>
 
         <div id="docs-overlay-target"></div>
 
-        <script>window.__DOCS__ = { "title": "Auction Contract on the Playground", icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
+        <script>window.__DOCS__ = { "title": "Auction Contract on the Playground", icon: "file", hasPrism: false, hasMermaid: false, hasMath: false }</script>
     </body>
 </html>
