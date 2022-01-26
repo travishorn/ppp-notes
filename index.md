@@ -55,7 +55,7 @@ Technical documentation can be found in the [Plutus libraries haddock docs
 
 ## Syllabus for the 3rd Cohort
 
-- [Welcome & Pre-work](./00-welcome-pre-work.md)
+- [Welcome & Pre-work](./welcome-pre-work.md)
 - [Lecture 1: EUTxO and English
   Auction](./01-eutxo-english-auction/01-welcome-introduction.md)
 - [Lecture 2: Validation
