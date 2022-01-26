@@ -17,52 +17,8 @@ Lecture 1, Part 5
 
 ### Start Plutus Playground Locally
 
-If you haven't set up your machine for running Plutus Playground locally yet,
-[follow these instructions](../appendix/run-plutus-playground-locally.md).
-
-Start up Plutus Playground. First, change into the `plutus-apps` directory
-
-```bash
-cd plutus-apps
-```
-
-Start a Nix shell
-
-```bash
-nix-shell
-```
-
-Change into the `plutus-playground-client` directory
-
-```bash
-cd plutus-playground-client
-```
-
-Start the server
-
-```bash
-plutus-playground-server
-```
-
-Open up another terminal
-
-Start a Nix shell in this new terminal
-
-```bash
-nix-shell
-```
-
-Change into the `plutus-playground-client` directory
-
-```bash
-cd plutus-playground-client
-```
-
-Start the client
-
-```bash
-npm run start
-```
+Follow the instructions to [run Plutus Playground
+locally](../appendix/run-plutus-playground-locally.md).
 
 Open your web browser to https://localhost:8009 to see the playground.
 

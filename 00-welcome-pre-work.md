@@ -4,7 +4,7 @@ icon: file
 author:
   name: Travis Horn
   email: travis@travishorn.com
-order: -1
+order: -3
 ---
 
 # Welcome & Pre-work

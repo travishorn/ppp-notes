@@ -48,6 +48,11 @@ Code for the program can be found in the [Plutus Pioneers GitHub repository
 Technical documentation can be found in the [Plutus libraries haddock docs
   :icon-link-external:](https://playground.plutus.iohkdev.io/doc/haddock/).
 
+## Before Starting
+
+- Complete the [first time setup](./first-time-setup.md)
+- Complete the [weekly setup](./weekly-setup.md)
+
 ## Syllabus for the 3rd Cohort
 
 - [Welcome & Pre-work](./00-welcome-pre-work.md)

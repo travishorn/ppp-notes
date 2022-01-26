@@ -11,12 +11,9 @@ order: -5
 Technical Haskell documentation for all the functions and types in Plutus can be
 built with Haddock. You can view the built docs in your web browser.
 
-First, follow all the steps to build the Nix environment found in the guide for
-[running Plutus Playground locally](./run-plutus-playground-locally.md). This is
-a one-time setup step. Stop once you get to the step where you start
-`nix-shell`.
+First, make sure you've done the [first time setup](../first-time-setup.md).
 
-Change into the `plutus-apps` directory
+Then change into the `plutus-apps` directory
 
 ```
 cd plutus-apps
