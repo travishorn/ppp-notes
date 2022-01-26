@@ -12,8 +12,8 @@ order: -1
 Before starting the Plutus Pioneer Program or developing on the Plutus platform
 in general, you'll need to do some one-time setup.
 
-These instructions are for Arch Linux. You'll need around 12GB of free hard disk
-space. More is better, to be safe.
+These instructions are for Arch Linux. You'll need around 26GB of free hard
+disk space and around 8GB of RAM. More is better, to be safe.
 
 Install Nix. Nix is a tool for reproducible builds and deployment.
 
