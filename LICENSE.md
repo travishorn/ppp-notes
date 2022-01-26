@@ -1,7 +1,7 @@
 ---
 label: License
 icon: file-badge
-order: -7
+order: -8
 ---
 
 The MIT License (MIT)
