@@ -49,6 +49,7 @@ Save and close the file
 :wq
 ```
 
+!!!warning
 I don't think that Ubuntu machines have this problem, but on my Arch machine,
 the Nix service had trouble starting because it couldn't find the daemon-socket
 directory it was expecting.
@@ -58,6 +59,7 @@ If you have the same problem I did, make the daemon-socket directory manually
 ```bash
 sudo mkdir -p /nix/var/nix/daemon-socket
 ```
+!!!
 
 Reload active sessions and restart the Nix service by rebooting the machine
 
@@ -65,8 +67,10 @@ Reload active sessions and restart the Nix service by rebooting the machine
 sudo shutdown -r now
 ```
 
+!!!
 You'll need git installed for the next step. [Install it if you don't already
 have it.](./appendix/install-git.md)
+!!!
 
 Clone the Plutus Pioneer Program repository to your local machine.
 

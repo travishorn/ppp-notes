@@ -20,7 +20,8 @@ Lecture 1, Part 5
 Follow the instructions to [run Plutus Playground
 locally](../appendix/run-plutus-playground-locally.md).
 
-Open your web browser to https://localhost:8009 to see the playground.
+Open your web browser to [https://localhost:8009](https://localhost:8009) to see
+the playground.
 
 ### Run the English Auction
 

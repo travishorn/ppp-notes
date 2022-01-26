@@ -31,9 +31,11 @@ Plutus code for on-chain things is located at
 
 ---
 
+!!!warning
 Building the example code requires that you've done the [first time
 setup](../first-time-setup.md) and the [weekly
 setup](../weekly-setup.md) first.
+!!!
 
 With those steps out of the way, change directory back into the code for this
 week

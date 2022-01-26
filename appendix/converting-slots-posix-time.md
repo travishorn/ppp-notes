@@ -76,7 +76,7 @@ The corresponding POSIX time is shown:
 POSIXTime {getPOSIXTime = 1596059101999}
 ```
 
-Some common conversions are:
+Some arbitrary conversions are:
 
 | Slot |    POSIX Time | Human Readable           |
 |-----:|--------------:|:-------------------------|

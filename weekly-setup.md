@@ -14,8 +14,12 @@ repository](https://github.com/input-output-hk/plutus-pioneer-program) will be
 updated with the code used in that week's lecture.
 
 You'll need to follow the steps below to get your development environment set up
-for the week. Make sure you've already done the [first time
+for the week.
+
+!!!
+Make sure you've already done the [first time
 setup](./first-time-setup.md) first.
+!!!
 
 Change into the pioneer repository
 
@@ -80,7 +84,7 @@ While still in the `plutus-apps` repository, start a Nix shell
 nix-shell
 ```
 
-It might take a while the complete the first time
+It might take a while to complete the first time.
 
 Start as many Nix shells as necessary for development. You might need one each
 for:
