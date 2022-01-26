@@ -1,0 +1,25 @@
+{
+  "name": "ppp-notes",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Notes from the Plutus Pioneer Program 3rd cohort",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "retype watch",
+    "build": "retype build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/travishorn/ppp-notes.git"
+  },
+  "keywords": [],
+  "author": "Travis Horn <travis@travishorn.com> (https://travishorn.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/travishorn/ppp-notes/issues"
+  },
+  "homepage": "https://github.com/travishorn/ppp-notes#readme",
+  "devDependencies": {
+    "retypeapp": "^1.11.2"
+  }
+}

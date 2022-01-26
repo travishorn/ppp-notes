@@ -6,13 +6,7 @@ See the published notes at https://travishorn.github.io/ppp-notes/
 
 ## Development
 
-To run these notes locally, install Retype globally
-
-```bash
-npm i -g retypeapp
-```
-
-Clone this repository
+To run these notes locally, clone this repository
 
 ```bash
 git clone https://github.com/travishorn/ppp-notes
@@ -24,16 +18,47 @@ Change into the repo directory
 cd ppp-notes
 ```
 
+Install dependencies
+
+```bash
+npm install
+```
+
 Run the dev server
 
 ```bash
-retype watch
+npm run dev
 ```
 
 The site is served at http://localhost:5000/ppp-notes
 
 Modify markdown files in the repository. The site will automatically be
 hot-reloaded.
+
+## Deployment
+
+Modify `retype.yml` and set the `url` to the URL where the site will be served.
+
+### Using GitHub Pages
+
+Pushing this repository to GitHub will automatically invoke a GitHub Action
+which will create a new branch called `retype`.
+
+Visit your repository on GitHub. Go to **Settings** > **Pages**. Under
+**Source**, choose the `retype` branch and click **Save**.
+
+Your site will be live at https://[username].github.io/[repo name] shortly.
+
+### Using other static hosting
+
+Build the site
+
+```bash
+npm run build
+```
+
+Built files are created in a directory called `.retype`. You can publish those
+files to a static web server.
 
 ## License
 
