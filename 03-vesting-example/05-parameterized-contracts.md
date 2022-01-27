@@ -12,5 +12,5 @@ order: -5
 
 Lecture 3, Part 5
 
-[Source Video
+[Lecture Video
 :icon-link-external:](https://www.youtube.com/watch?v=XqFILXV_ACM&list=PLNEK_Ejlx3x2zxcfoVGARFExzOHwXFCCL&index=5)

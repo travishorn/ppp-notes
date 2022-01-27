@@ -12,7 +12,7 @@ order: -3
 
 Lecture 2, Part 3
 
-[Source Video
+[Lecture Video
 :icon-link-external:](https://www.youtube.com/watch?v=HoB_PqeZPNc&list=PLNEK_Ejlx3x0mhPmOjPSHZPtTFpfJo3Nd&index=3)
 
 Using BuiltinData works great and it's very performant. However, you can code

@@ -12,7 +12,7 @@ order: -2
 
 Lecture 3, Part 2
 
-[Source Video
+[Lecture Video
 :icon-link-external:](https://www.youtube.com/watch?v=B66xLrGXwmw&list=PLNEK_Ejlx3x2zxcfoVGARFExzOHwXFCCL&index=2)
 
 Remember that a validator takes 3 arguments:

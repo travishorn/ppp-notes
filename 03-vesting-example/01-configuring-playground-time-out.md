@@ -12,7 +12,7 @@ order: -1
 
 Lecture 3, Part 1
 
-[Source Video
+[Lecture Video
 :icon-link-external:](https://www.youtube.com/watch?v=sLMhsqiWeGU&list=PLNEK_Ejlx3x2zxcfoVGARFExzOHwXFCCL&index=1)
 
 Depending on the performance of your local machine, the playground may take such

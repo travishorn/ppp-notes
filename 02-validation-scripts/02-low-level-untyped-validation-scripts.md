@@ -12,7 +12,7 @@ order: -2
 
 Lecture 2, Part 2
 
-[Source Video
+[Lecture Video
 :icon-link-external:](https://www.youtube.com/watch?v=xgnmMl-eIIM&list=PLNEK_Ejlx3x0mhPmOjPSHZPtTFpfJo3Nd&index=2)
 
 There are 2 parts to a smart contract: an on-chain part and an off-chain part.

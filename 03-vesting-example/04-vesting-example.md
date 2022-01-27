@@ -12,7 +12,7 @@ order: -4
 
 Lecture 3, Part 4
 
-[Source Video
+[Lecture Video
 :icon-link-external:](https://www.youtube.com/watch?v=ae7U_yKIQ0Y&list=PLNEK_Ejlx3x2zxcfoVGARFExzOHwXFCCL&index=4)
 
 Imagine you want to gift some ADA to a child but don't want them to be able to

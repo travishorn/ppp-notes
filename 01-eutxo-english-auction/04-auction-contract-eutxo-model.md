@@ -12,7 +12,7 @@ order: -4
 
 Lecture 1, Part 4
 
-[Source Video
+[Lecture Video
 :icon-link-external:](https://www.youtube.com/watch?v=Bj6bqRGT1L0&list=PLNEK_Ejlx3x2nLM4fAck2JS6KhFQlXq2N&index=4)
 
 Introductory example is an auction. Somebody wants to auction off an NFT.

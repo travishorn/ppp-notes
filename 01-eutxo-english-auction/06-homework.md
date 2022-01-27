@@ -12,7 +12,7 @@ order: -6
 
 Lecture 1, Part 6
 
-[Source Video
+[Lecture Video
 :icon-link-external:](https://www.youtube.com/watch?v=tfanOE2ARho&list=PLNEK_Ejlx3x2nLM4fAck2JS6KhFQlXq2N&index=6)
 
 The homework for this lecture was to

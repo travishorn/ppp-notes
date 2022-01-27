@@ -12,7 +12,7 @@ order: -3
 
 Lecture 3, Part 3
 
-[Source Video
+[Lecture Video
 :icon-link-external:](https://www.youtube.com/watch?v=mf06ll-4j2w&list=PLNEK_Ejlx3x2zxcfoVGARFExzOHwXFCCL&index=3)
 
 Under most circumstances you can always tell whether a transaction will fail

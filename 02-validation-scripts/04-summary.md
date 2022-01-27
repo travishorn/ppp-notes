@@ -12,7 +12,7 @@ order: -4
 
 Lecture 2, Part 4
 
-[Source Video
+[Lecture Video
 :icon-link-external:](https://www.youtube.com/watch?v=V5P2gKHos48&list=PLNEK_Ejlx3x0mhPmOjPSHZPtTFpfJo3Nd&index=4)
 
 We looked at typed and untyped validators.

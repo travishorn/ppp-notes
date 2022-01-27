@@ -12,7 +12,7 @@ order: -2
 
 Lecture 1, Part 2
 
-[Source Video
+[Lecture Video
 :icon-link-external:](https://www.youtube.com/watch?v=bfofA4MM0QE&list=PLNEK_Ejlx3x2nLM4fAck2JS6KhFQlXq2N&index=2)
 
 Extended Unspent Transaction Output

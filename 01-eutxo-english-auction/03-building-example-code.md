@@ -12,7 +12,7 @@ order: -3
 
 Lecture 1, Part 3
 
-[Source Video
+[Lecture Video
 :icon-link-external:](https://www.youtube.com/watch?v=zPaDp4R9X7o&list=PLNEK_Ejlx3x2nLM4fAck2JS6KhFQlXq2N&index=3)
 
 There are three repositories:

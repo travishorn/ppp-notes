@@ -12,7 +12,7 @@ order: -5
 
 Lecture 1, Part 5
 
-[Source Video
+[Lecture Video
 :icon-link-external:](https://www.youtube.com/watch?v=K61Si6iQ-Js&list=PLNEK_Ejlx3x2nLM4fAck2JS6KhFQlXq2N&index=5)
 
 ### Start Plutus Playground Locally
