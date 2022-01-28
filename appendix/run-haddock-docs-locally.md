@@ -3,7 +3,7 @@ label: Run Haddock Docs Locally
 author:
   name: Travis Horn
   email: travis@travishorn.com
-order: -5
+order: -6
 ---
 
 # Run Haddock Docs Locally

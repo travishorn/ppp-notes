@@ -3,7 +3,7 @@ label: Getting Playground Wallet Addresses
 author:
   name: Travis Horn
   email: travis@travishorn.com
-order: -2
+order: -4
 ---
 
 # Getting Playground Wallet Addresses
@@ -76,4 +76,3 @@ The first few playground wallets as of Plutus Pioneer Program Cohort 3 Week 3
 | 3      | 2e0ad60c3207248cecd47dbde3d752e0aad141d6b8f81ac2c6eca27c |
 | 4      | 557d23c0a533b4d295ac2dc14b783a7efc293bc23ede88a6fefd203d |
 | 5      | bf342ddd3b1a6191d4ce936c92d29834d6879edf2849eaea84c827f8 |
-
