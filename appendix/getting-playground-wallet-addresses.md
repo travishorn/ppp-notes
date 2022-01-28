@@ -69,11 +69,11 @@ The first few playground wallets as of Plutus Pioneer Program Cohort 3 Week 3
 | 4      | 5f5a4f5f465580a5500b9a9cede7f4e014a37ea8 |
 | 5      | d3eddd0d37989746b029a0e050386bc425363901 |
 
-| Wallet | Hash                                                             |
-|:-------|:-----------------------------------------------------------------|
-| 1      | 8d9de88fbf445b7f6c3875a14daba94caee2ffcbc9ac211c95aba0a2f5711853 |
-| 2      | 98c77c40ccc536e0d433874dae97d4a0787b10b3bca0dc2e1bdc7be0a544f0ac |
-| 3      | 4cdc632449cde98d811f78ad2e2d15a278731bc5e3b8821739a47534c324fe20 |
-| 4      | c0a4b02f44c212ba6c1197df5a5cf8bd1a3dceef9c42e4a17c0d48f8ae468cdb |
-| 5      | 993684ab55aa4f999edb02c9cd1e730e91d785eccc0922db5d2aa805fde40f68 |
+| Wallet | Hash                                                     |
+|:-------|:---------------------------------------------------------|
+| 1      | a2c20c77887ace1cd986193e4e75babd8993cfd56995cd5cfce609c2 |
+| 2      | 80a4f45b56b88d1139da23bc4c3c75ec6d32943c087f250b86193ca7 |
+| 3      | 2e0ad60c3207248cecd47dbde3d752e0aad141d6b8f81ac2c6eca27c |
+| 4      | 557d23c0a533b4d295ac2dc14b783a7efc293bc23ede88a6fefd203d |
+| 5      | bf342ddd3b1a6191d4ce936c92d29834d6879edf2849eaea84c827f8 |
 
