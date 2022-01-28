@@ -1,12 +1,12 @@
 ---
-label: Converting Slots to POSIX Time
+label: Convert Slots to POSIX Time
 author:
   name: Travis Horn
   email: travis@travishorn.com
 order: -2
 ---
 
-# Converting Slots to POSIX Time
+# Convert Slots to POSIX Time
 
 The time in Plutus is described in POSIX time (the number of milliseconds that
 have elapsed since 1 January 1970 00:00:00.000). But the time in Plutus

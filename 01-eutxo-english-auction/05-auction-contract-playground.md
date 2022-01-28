@@ -75,7 +75,7 @@ time. So for **spDeadline**, we need to put the right value that corresponds to
 10 slots.
 
 See the guide on [Converting Slots to POSIX
-Time](../appendix/converting-slots-posix-time.md)
+Time](../appendix/convert-slots-posix-time.md)
 
 10 slots in Plutus Playground equates to `1596059101999` POSIX time. Enter that
 value in the **spDeadline** box.

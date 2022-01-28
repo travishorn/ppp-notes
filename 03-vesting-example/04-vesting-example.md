@@ -35,7 +35,7 @@ That's the one we learned custom types on.
 In order to simulate this contract in the Playground you'll need to know the
 public key hash of the beneficiary wallet(s). [Use the REPL inside a particular
 week's project to get these simulated wallet key
-hashes.](../appendix/getting-playground-wallet-addresses.md)
+hashes.](../appendix/get-playground-wallet-addresses.md)
 
 If you set up the Playground so that there are 3 wallets with 30 ADA each, then
 start adding actions:

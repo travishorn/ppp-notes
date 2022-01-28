@@ -1,12 +1,12 @@
 ---
-label: Getting Playground Wallet Addresses
+label: Get Playground Wallet Addresses
 author:
   name: Travis Horn
   email: travis@travishorn.com
 order: -4
 ---
 
-# Getting Playground Wallet Addresses
+# Get Playground Wallet Addresses
 
 In order to simulate some contracts in the Playground you'll need to know the
 public key hash of the wallets. You can use the REPL inside a particular week's
