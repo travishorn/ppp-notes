@@ -61,7 +61,8 @@ beneficiary because, this time, the deadline for both has passed.
 ### Validating Off- and On-chain
 
 The way we wrote the wallet code makes it so that the on-chain validator is
-never really used. The transaction will fail in the wallet before being submitted to the blockchain because of the checks we put in place.
+never really used. The transaction will fail in the wallet before being
+submitted to the blockchain because of the checks we put in place.
 
 It's still very important to write the on-chain validation because a user
 doesn't necessary have to use our script to interact with the UTxOs. They could
