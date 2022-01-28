@@ -17,7 +17,13 @@ anyone can request it for free.
 These instructions are for Linux, but you may be able to modify them according
 to your operating system.
 
-## Download the Latest Binary
+## Installation
+
+Installation is a one-time process you must complete before starting a node. It
+will take about 10GB of storage space and synchronization will take a few hours
+once you get it going.
+
+### Download the Latest Binary
 
 Go to https://github.com/input-output-hk/cardano-node
 
@@ -56,7 +62,7 @@ Move the unzipped files to that directory
 mv ./* ~/.local/bin/cardano-node
 ```
 
-## Set Environment Variables
+### Set Environment Variables
 
 Make sure the node directory is always in your path by adding an export in your
 `.bashrc`.
@@ -110,22 +116,38 @@ manually yourself.
 
 ```bash
 cardano-node run \
- --topology testnet-topology.json \
- --database-path db \
- --socket-path node.socket \
- --host-addr 127.0.0.1 \
- --port 3001 \
- --config testnet-config.json
+  --topology testnet-topology.json \
+  --database-path db \
+  --socket-path node.socket \
+  --host-addr 127.0.0.1 \
+  --port 3001 \
+  --config testnet-config.json
 ```
 
-As soon as the node starts, it will start syncing with the testnet blockchain.
-Before you can really interact with the testnet, you'll have to wait until your
-node is fully synchronized. This will take a few hours the first time you start
-your node.
+### View Sync Progress
+
+The first time you start the node, it will immediately start syncing with the
+testnet blockchain. Before you can really interact with the testnet, you'll have
+to wait until your node is fully synchronized. This will take a few hours.
 
 You can see the sync progress at any time by using `cardano-cli` in another
 terminal.
 
+The command to see sync progress requires a `--testnet-magic` flag with a
+specific number. You can find this number in the genesis configuration for the
+node you started.
+
+```bash
+cat testnet-shelley-genesis.json | grep Magic
+  "networkMagic": 1097911063
+```
+
+Query to see sync progress
+
 ```bash
 cardano-cli query tip --testnet-magic 1097911063
 ```
+
+Each subsequent time you run the node, it will first push ledger state. This
+will take a few minutes. Then it will synchronize with the blockchain again. It
+should go quickly if you've ran the node recently.
