@@ -25,12 +25,12 @@
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/ppp-notes/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/ppp-notes/resources/css/retype.css?v=1.11.2.696707223362" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/ppp-notes/resources/css/retype.css?v=1.11.2.696717978795" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/ppp-notes/resources/js/config.js?v=1.11.2.696707223362" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/ppp-notes/resources/js/config.js?v=1.11.2.696717978795" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/ppp-notes/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/ppp-notes/resources/js/lunr.js?v=1.11.2.696707223362" defer></script>
-    <script id="prism-js" type="text/javascript" src="/ppp-notes/resources/js/prism.js?v=1.11.2.696707223362" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/ppp-notes/resources/js/lunr.js?v=1.11.2.696717978795" defer></script>
+    <script id="prism-js" type="text/javascript" src="/ppp-notes/resources/js/prism.js?v=1.11.2.696717978795" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -367,7 +367,149 @@ TxHash  TxIx  Amount
         <span>Using Plutus in the Cardano CLI</span>
     </h3>
 </doc-anchor-target>
-<p>These notes are incomplete. They stop at timestamp 16:22 of lecture 3, part 6.</p>
+<p>Before using Plutus with the CLI, we have to write various serialized Plutus
+types to disk. <code v-pre>Deploy.hs</code> (in week 3&#x27;s code directory) does this.</p>
+<p><a href="https://github.com/input-output-hk/plutus-pioneer-program/blob/037142877d7275d47314af21413d803dc58a1da3/code/week03/src/Week03/Deploy.hs">Source code <svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M15.5 2.25a.75.75 0 01.75-.75h5.5a.75.75 0 01.75.75v5.5a.75.75 0 01-1.5 0V4.06l-6.22 6.22a.75.75 0 11-1.06-1.06L19.94 3h-3.69a.75.75 0 01-.75-.75z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 010 1.5h-8.5a.25.25 0 00-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 00.25-.25v-8.5a.75.75 0 011.5 0v8.5a1.75 1.75 0 01-1.75 1.75H4.25a1.75 1.75 0 01-1.75-1.75V4.25z"/></g></g></svg></a></p>
+<p><a href="https://github.com/travishorn/plutus-pioneer-program/blob/main/code/week03/src/Week03/Deploy.hs">My commented code <svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M15.5 2.25a.75.75 0 01.75-.75h5.5a.75.75 0 01.75.75v5.5a.75.75 0 01-1.5 0V4.06l-6.22 6.22a.75.75 0 11-1.06-1.06L19.94 3h-3.69a.75.75 0 01-.75-.75z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 010 1.5h-8.5a.25.25 0 00-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 00.25-.25v-8.5a.75.75 0 011.5 0v8.5a1.75 1.75 0 01-1.75 1.75H4.25a1.75 1.75 0 01-1.75-1.75V4.25z"/></g></g></svg></a></p>
+<p>The <code v-pre>Cardano.API</code> module is what <code v-pre>cardano-cli</code> uses under the hood. It contains
+all the functionality to interact with the network.</p>
+<p>When writing a deployment script like this, you may need a wallet&#x27;s public key
+hash. You can write hashes to files for each wallet like so:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">cardano-cli address key-hash \
+  --payment-verification-key-file 01.vkey
+  --out-file 01.pkh
+
+cardano-cli address key-hash \
+  --payment-verification-key-file 02.vkey
+  --out-file 02.pkh</code></pre>
+</doc-codeblock></div>
+<p>The *.pkh files each contain a hash</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">cat 02.pkh
+d4f...</code></pre>
+</doc-codeblock></div>
+<p>You may also need a time in POSIX. You can use an online converter like
+<a href="https://epochconverter.com">EpochConverter</a>. Enter a human-readable date and
+convert it to a timestamp in milliseconds.</p>
+<doc-anchor-target id="build-the-script">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#build-the-script">#</doc-anchor-trigger>
+        <span>Build the Script</span>
+    </h3>
+</doc-anchor-target>
+<p>First, you need write the script file to disk.</p>
+<p>Make sure you&#x27;re in a <code v-pre>plutus-apps</code> Nix shell, then start the REPL in week 3&#x27;s
+code directory.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">cd plutus-apps
+nix-shell
+cd ../plutus-pioneer-program/code/week03
+cabal repl</code></pre>
+</doc-codeblock></div>
+<p>Import Deploy.hs</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">import src/week03/Deploy.hs</code></pre>
+</doc-codeblock></div>
+<p>Write the validator to disk</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">writeVestingValidator</code></pre>
+</doc-codeblock></div>
+<p>That function writes a file called <code v-pre>vesting.plutus</code></p>
+<p>Use that file to build the script</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">cardano-cli address build-script \
+  --script-file vesting.plutus \
+  --testnet-magic 1097911063 \
+  --out-file vesting.addr</code></pre>
+</doc-codeblock></div>
+<p>You can view the script&#x27;s address</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">cat vesting.addr
+addr_test1</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="use-the-give-endpoint">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#use-the-give-endpoint">#</doc-anchor-trigger>
+        <span>Use the <code v-pre>give</code> endpoint</span>
+    </h3>
+</doc-anchor-target>
+<p>To use any script endpoint, you&#x27;ll need to again build, sign, and submit a
+transaction.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">cardano-cli transaction build \
+  --alonzo-era \
+  --testnet-magic 1097911063 \
+  --change-address $(cat 01.addr) \
+  --tx-in abae0d0e19f75938537dc5e33252567ae3b1df1f35aafedd1402b6b9ccb7685a#0 \
+  --tx-out &quot;$(cat vesting.addr) 200000000 lovelace&quot; \
+  --tx-out-datum-hash-file unit.json \
+  --out-file tx.body
+
+cardano-cli transaction sign \
+  --tx-body-file tx.body \
+  --signing-key-file 01.skey \
+  --testnet-magic 1097911063 \
+  --out-file tx.signed
+
+cardano-cli transaction submit \
+  --testnet-magic 1097911063 \
+  --tx-file tx.signed</code></pre>
+</doc-codeblock></div>
+<p>These three commands are already written for you in <code v-pre>testnet/give.sh</code>. You will
+need to edit the <code v-pre>--tx-in</code> flag in that file. It should be the TxHash and TxIx
+of the UTxO where wallet 1&#x27;s tADA is sitting.</p>
+<p>Run the script to build, sign, and submit the transaction</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">./give.sh</code></pre>
+</doc-codeblock></div>
+<p>Check the script address to see the transaction</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">cardano-cli query utxo \
+  --address (cat vesting.addr)
+  --testnet-magic 1097911063
+
+TxHash  TxIx  Amount
+--------------------------------------------------------------------------------
+000...     0  200000000 lovelace + TxOutDatumHash ScriptDataInAlonzoEra &quot;923...&quot;</code></pre>
+</doc-codeblock></div>
+<p>The script address does indeed have the 200 ADA we gave from wallet 1</p>
+<doc-anchor-target id="use-the-grab-endpoint">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#use-the-grab-endpoint">#</doc-anchor-trigger>
+        <span>Use the <code v-pre>grab</code> endpoint</span>
+    </h3>
+</doc-anchor-target>
+<p>Again, you&#x27;ll need to build, sign, and submit a transaction.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">cardano-cli transaction build \
+  --alonzo-era \
+  --testnet-magic 1097911063 \
+  --change-address $(cat 02.addr) \
+  --tx-in 18cbe6cadecd3f89b60e08e68e5e6c7d72d730aaa1ad21431590f7e6643438ef#1 \
+  --tx-in-script-file vesting.plutus \
+  --tx-in-datum-file unit.json \
+  --tx-in-redeemer-file unit.json \
+  --tx-in-collateral 18e93407ea137b6be63039fd3c564d4c5233e7eb7ce4ee845bc7df12c80e4df7#1 \
+  --required-signer-hash c2ff616e11299d9094ce0a7eb5b7284b705147a822f4ffbd471f971a \
+  --invalid-before 48866954 \
+  --protocol-params-file protocol.json \
+  --out-file tx.body
+
+cardano-cli transaction sign \
+  --tx-body-file tx.body \
+  --signing-key-file 02.skey \
+  --testnet-magic 1097911063 \
+  --out-file tx.signed
+
+cardano-cli transaction submit \
+  --testnet-magic 1097911063 \
+  --tx-file tx.signed</code></pre>
+</doc-codeblock></div>
+<p><code v-pre>testnet/grab.sh</code> has these three commands in it already. You will need to
+modify <code v-pre>--tx-in</code> and <code v-pre>--tx-in-collateral</code> to be the TxHash and TxIx of the UTxO
+with the 200 tADA at the script address.</p>
+<p>These notes are incomplete. They stop at timestamp 23:47 of Lecture 3, Part 6.</p>
 
 
 
