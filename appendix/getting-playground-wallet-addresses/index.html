@@ -25,12 +25,12 @@
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/ppp-notes/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/ppp-notes/resources/css/retype.css?v=1.11.2.696645834449" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/ppp-notes/resources/css/retype.css?v=1.11.2.696646483945" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/ppp-notes/resources/js/config.js?v=1.11.2.696645834449" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/ppp-notes/resources/js/config.js?v=1.11.2.696646483945" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/ppp-notes/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/ppp-notes/resources/js/lunr.js?v=1.11.2.696645834449" defer></script>
-    <script id="prism-js" type="text/javascript" src="/ppp-notes/resources/js/prism.js?v=1.11.2.696645834449" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/ppp-notes/resources/js/lunr.js?v=1.11.2.696646483945" defer></script>
+    <script id="prism-js" type="text/javascript" src="/ppp-notes/resources/js/prism.js?v=1.11.2.696646483945" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -206,10 +206,84 @@ project to get simulated wallet key hashes.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-haskell"><code v-pre class="language-haskell">import Wallet.Emulator</code></pre>
 </doc-codeblock></div>
-<p>Get the address of wallet 1</p>
+<p>Get the address of various wallets by number</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-haskell"><code v-pre class="language-haskell">knownWallet 1</code></pre>
+<pre class="language-haskell"><code v-pre class="language-haskell">knownWallet 1
+Wallet 872cb83b5ee40eb23bfdab1772660c822a48d491
+
+knowWallet 2
+Wallet 7ce812d7a4770bbf58004067665c3a48f28ddd58</code></pre>
 </doc-codeblock></div>
+<p>Get the hash of a wallet</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">mockWalletPaymentPubKeyHash $ knownWallet 1
+a2c20c77887ace1cd986193e4e75babd8993cfd56995cd5cfce609c2</code></pre>
+</doc-codeblock></div>
+<p>The first few playground wallets as of Plutus Pioneer Program Cohort 3 Week 3</p>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th style="text-align: left;">Wallet</th>
+<th style="text-align: left;">Address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">872cb83b5ee40eb23bfdab1772660c822a48d491</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">7ce812d7a4770bbf58004067665c3a48f28ddd58</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">c30efb78b4e272685c1f9f0c93787fd4b6743154</td>
+</tr>
+<tr>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">5f5a4f5f465580a5500b9a9cede7f4e014a37ea8</td>
+</tr>
+<tr>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">d3eddd0d37989746b029a0e050386bc425363901</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th style="text-align: left;">Wallet</th>
+<th style="text-align: left;">Hash</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">8d9de88fbf445b7f6c3875a14daba94caee2ffcbc9ac211c95aba0a2f5711853</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">98c77c40ccc536e0d433874dae97d4a0787b10b3bca0dc2e1bdc7be0a544f0ac</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">4cdc632449cde98d811f78ad2e2d15a278731bc5e3b8821739a47534c324fe20</td>
+</tr>
+<tr>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">c0a4b02f44c212ba6c1197df5a5cf8bd1a3dceef9c42e4a17c0d48f8ae468cdb</td>
+</tr>
+<tr>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">993684ab55aa4f999edb02c9cd1e730e91d785eccc0922db5d2aa805fde40f68</td>
+</tr>
+</tbody>
+</table>
+</div>
 
 
 
