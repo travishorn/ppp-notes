@@ -25,11 +25,11 @@
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/ppp-notes/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/ppp-notes/resources/css/retype.css?v=1.11.2.696646802767" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/ppp-notes/resources/css/retype.css?v=1.11.2.696648449259" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/ppp-notes/resources/js/config.js?v=1.11.2.696646802767" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/ppp-notes/resources/js/config.js?v=1.11.2.696648449259" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/ppp-notes/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/ppp-notes/resources/js/lunr.js?v=1.11.2.696646802767" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/ppp-notes/resources/js/lunr.js?v=1.11.2.696648449259" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -207,10 +207,44 @@ able to pull it out after a certain time.</p>
 <svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M15.5 2.25a.75.75 0 01.75-.75h5.5a.75.75 0 01.75.75v5.5a.75.75 0 01-1.5 0V4.06l-6.22 6.22a.75.75 0 11-1.06-1.06L19.94 3h-3.69a.75.75 0 01-.75-.75z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 010 1.5h-8.5a.25.25 0 00-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 00.25-.25v-8.5a.75.75 0 011.5 0v8.5a1.75 1.75 0 01-1.75 1.75H4.25a1.75 1.75 0 01-1.75-1.75V4.25z"/></g></g></svg></a></p>
 <p><code v-pre>Vesting.hs</code> is a modified version of the <code v-pre>IsData.hs</code> script from last week.
 That&#x27;s the one we learned custom types on.</p>
-<p>In order to simulate this contract in the playground you&#x27;ll need to know the
+<p>In order to simulate this contract in the Playground you&#x27;ll need to know the
 public key hash of the beneficiary wallet(s). <a href="../../appendix/getting-playground-wallet-addresses/">Use the REPL inside a particular
 week&#x27;s project to get these simulated wallet key
 hashes.</a></p>
+<p>If you set up the Playground so that there are 3 wallets with 30 ADA each, then
+start adding actions:</p>
+<ul>
+<li>Wallet 1: give to gpBeneficiary 80a... (wallet 2) with gpDeadline of 159... (10 slots) and gpAmount 30000000</li>
+<li>Wait for 1 slot</li>
+<li>Wallet 1: give to gpBeneficiary 80a... (wallet 2) with gpDeadline of 159... (20 slots) and gpAmount 30000000</li>
+<li>Wait for 1 slot</li>
+<li>Wallet 1: give to gpBeneficiary 2e0... (wallet 3) with gpDeadline of 159... (10 slots) and gpAmount 30000000</li>
+<li>Wait until slot 11</li>
+<li>Wallet 2: grab</li>
+<li>Wallet 3: grab</li>
+<li>Wait for 5 slots</li>
+</ul>
+<p>The genesis slot gives each wallet their starting balance. Then wallet 1 gives
+the three amounts, then we wait until slot 11. When wallets 2 and 3 try to grab,
+all but the UTxO for wallet 2 with deadline of slot 20 succeed.</p>
+<p>If you change the wait between giving and grabbing to 21, both grabs succeed
+again and this time wallet 2&#x27;s grab picks up both UTxOs where they are a
+beneficiary because, this time, the deadline for both has passed.</p>
+<doc-anchor-target id="validating-off--and-on-chain">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#validating-off--and-on-chain">#</doc-anchor-trigger>
+        <span>Validating Off- and On-chain</span>
+    </h3>
+</doc-anchor-target>
+<p>The way we wrote the wallet code makes it so that the on-chain validator is
+never really used. The transaction will fail in the wallet before being
+submitted to the blockchain because of the checks we put in place.</p>
+<p>It&#x27;s still very important to write the on-chain validation because a user
+doesn&#x27;t necessary have to use our script to interact with the UTxOs. They could
+write their own script which bypasses the beneficiary and deadline off-chain
+checks and submit it to the blockchain. At this point, if we hadn&#x27;t written the
+on-chain validator, all the ADA could be drained out of every UTxO that uses our
+script.</p>
 
 
 
