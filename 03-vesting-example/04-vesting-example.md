@@ -32,4 +32,7 @@ Most of my notes for this part are done as comments directly in source code.
 `Vesting.hs` is a modified version of the `IsData.hs` script from last week.
 That's the one we learned custom types on.
 
-These notes are partial. Up to timestamp 10:45 on the lecture video.
+In order to simulate this contract in the playground you'll need to know the
+public key hash of the beneficiary wallet(s). [Use the REPL inside a particular
+week's project to get these simulated wallet key
+hashes.](../appendix/getting-playground-wallet-addresses.md)
