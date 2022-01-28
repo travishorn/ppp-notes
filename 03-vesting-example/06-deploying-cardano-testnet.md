@@ -215,4 +215,166 @@ Note that it contains 10 tADA as expected.
 
 ### Using Plutus in the Cardano CLI
 
-These notes are incomplete. They stop at timestamp 16:22 of lecture 3, part 6.
+Before using Plutus with the CLI, we have to write various serialized Plutus
+types to disk. `Deploy.hs` (in week 3's code directory) does this.
+
+[Source code :icon-link-external:](https://github.com/input-output-hk/plutus-pioneer-program/blob/037142877d7275d47314af21413d803dc58a1da3/code/week03/src/Week03/Deploy.hs)
+
+[My commented code :icon-link-external:](https://github.com/travishorn/plutus-pioneer-program/blob/main/code/week03/src/Week03/Deploy.hs)
+
+The `Cardano.API` module is what `cardano-cli` uses under the hood. It contains
+all the functionality to interact with the network.
+
+When writing a deployment script like this, you may need a wallet's public key
+hash. You can write hashes to files for each wallet like so:
+
+```bash
+cardano-cli address key-hash \
+  --payment-verification-key-file 01.vkey
+  --out-file 01.pkh
+
+cardano-cli address key-hash \
+  --payment-verification-key-file 02.vkey
+  --out-file 02.pkh
+```
+
+The *.pkh files each contain a hash
+
+```bash
+cat 02.pkh
+d4f...
+```
+
+You may also need a time in POSIX. You can use an online converter like
+[EpochConverter](https://epochconverter.com). Enter a human-readable date and
+convert it to a timestamp in milliseconds.
+
+### Build the Script
+
+First, you need write the script file to disk.
+
+Make sure you're in a `plutus-apps` Nix shell, then start the REPL in week 3's
+code directory.
+
+```bash
+cd plutus-apps
+nix-shell
+cd ../plutus-pioneer-program/code/week03
+cabal repl
+```
+
+Import Deploy.hs
+
+```haskell
+import src/week03/Deploy.hs
+```
+
+Write the validator to disk
+
+```haskell
+writeVestingValidator
+```
+
+That function writes a file called `vesting.plutus`
+
+Use that file to build the script
+
+```bash
+cardano-cli address build-script \
+  --script-file vesting.plutus \
+  --testnet-magic 1097911063 \
+  --out-file vesting.addr
+```
+
+You can view the script's address
+
+```
+cat vesting.addr
+addr_test1
+```
+
+### Use the `give` endpoint
+
+To use any script endpoint, you'll need to again build, sign, and submit a
+transaction.
+
+```bash
+cardano-cli transaction build \
+  --alonzo-era \
+  --testnet-magic 1097911063 \
+  --change-address $(cat 01.addr) \
+  --tx-in abae0d0e19f75938537dc5e33252567ae3b1df1f35aafedd1402b6b9ccb7685a#0 \
+  --tx-out "$(cat vesting.addr) 200000000 lovelace" \
+  --tx-out-datum-hash-file unit.json \
+  --out-file tx.body
+
+cardano-cli transaction sign \
+  --tx-body-file tx.body \
+  --signing-key-file 01.skey \
+  --testnet-magic 1097911063 \
+  --out-file tx.signed
+
+cardano-cli transaction submit \
+  --testnet-magic 1097911063 \
+  --tx-file tx.signed
+```
+
+These three commands are already written for you in `testnet/give.sh`. You will
+need to edit the `--tx-in` flag in that file. It should be the TxHash and TxIx
+of the UTxO where wallet 1's tADA is sitting.
+
+Run the script to build, sign, and submit the transaction
+
+```bash
+./give.sh
+```
+
+Check the script address to see the transaction
+
+```bash
+cardano-cli query utxo \
+  --address (cat vesting.addr)
+  --testnet-magic 1097911063
+
+TxHash  TxIx  Amount
+--------------------------------------------------------------------------------
+000...     0  200000000 lovelace + TxOutDatumHash ScriptDataInAlonzoEra "923..."
+```
+
+The script address does indeed have the 200 ADA we gave from wallet 1
+
+### Use the `grab` endpoint
+
+Again, you'll need to build, sign, and submit a transaction.
+
+```bash
+cardano-cli transaction build \
+  --alonzo-era \
+  --testnet-magic 1097911063 \
+  --change-address $(cat 02.addr) \
+  --tx-in 18cbe6cadecd3f89b60e08e68e5e6c7d72d730aaa1ad21431590f7e6643438ef#1 \
+  --tx-in-script-file vesting.plutus \
+  --tx-in-datum-file unit.json \
+  --tx-in-redeemer-file unit.json \
+  --tx-in-collateral 18e93407ea137b6be63039fd3c564d4c5233e7eb7ce4ee845bc7df12c80e4df7#1 \
+  --required-signer-hash c2ff616e11299d9094ce0a7eb5b7284b705147a822f4ffbd471f971a \
+  --invalid-before 48866954 \
+  --protocol-params-file protocol.json \
+  --out-file tx.body
+
+cardano-cli transaction sign \
+  --tx-body-file tx.body \
+  --signing-key-file 02.skey \
+  --testnet-magic 1097911063 \
+  --out-file tx.signed
+
+cardano-cli transaction submit \
+  --testnet-magic 1097911063 \
+  --tx-file tx.signed
+```
+
+`testnet/grab.sh` has these three commands in it already. You will need to
+modify `--tx-in` and `--tx-in-collateral` to be the TxHash and TxIx of the UTxO
+with the 200 tADA at the script address.
+
+These notes are incomplete. They stop at timestamp 23:47 of Lecture 3, Part 6.
