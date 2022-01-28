@@ -7,21 +7,21 @@
     <meta name="turbo-cache-control" content="no-cache">
 
     <!-- Primary Meta Tags -->
-    <title>Install Git</title>
-    <meta name="title" content="Install Git">
-    <meta name="description" content="Some of the steps you must take to set up a Plutus environment require you to have Git installed." />
+    <title>Testnet Node</title>
+    <meta name="title" content="Testnet Node">
+    <meta name="description" content="Go to https://github.com/input-output-hk/cardano-node" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://travishorn.github.io/ppp-notes/appendix/install-git/">
-    <meta property="og:title" content="Install Git">
-    <meta property="og:description" content="Some of the steps you must take to set up a Plutus environment require you to have Git installed.">
+    <meta property="og:url" content="https://travishorn.github.io/ppp-notes/appendix/testnet-node/">
+    <meta property="og:title" content="Testnet Node">
+    <meta property="og:description" content="Go to https://github.com/input-output-hk/cardano-node">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://travishorn.github.io/ppp-notes/appendix/install-git/">
-    <meta property="twitter:title" content="Install Git">
-    <meta property="twitter:description" content="Some of the steps you must take to set up a Plutus environment require you to have Git installed.">
+    <meta property="twitter:url" content="https://travishorn.github.io/ppp-notes/appendix/testnet-node/">
+    <meta property="twitter:title" content="Testnet Node">
+    <meta property="twitter:description" content="Go to https://github.com/input-output-hk/cardano-node">
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/ppp-notes/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
@@ -30,7 +30,6 @@
     <script type="text/javascript" src="/ppp-notes/resources/js/config.js?v=1.11.2.696660633322" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/ppp-notes/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
     <script id="lunr-js" type="text/javascript" src="/ppp-notes/resources/js/lunr.js?v=1.11.2.696660633322" defer></script>
-    <script id="prism-js" type="text/javascript" src="/ppp-notes/resources/js/prism.js?v=1.11.2.696660633322" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -165,10 +164,10 @@
                 <div id="docs-sidebar-right-toggle"></div>
                
                 <!-- Page content  -->
-<doc-anchor-target id="install-git" class="break-words">
+<doc-anchor-target id="testnet-node" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#install-git">#</doc-anchor-trigger>
-        <span>Install Git</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#testnet-node">#</doc-anchor-trigger>
+        <span>Testnet Node</span>
     </h1>
 </doc-anchor-target>
 <div class="-mt-3 mb-12 flex flex-wrap text-sm text-gray-400 dark:text-dark-350">
@@ -183,39 +182,23 @@
     </div>
 </div>
 
-<p>Some of the steps you must take to set up a Plutus environment require you to
-have <a href="https://git-scm.com/">Git</a> installed.</p>
-<doc-anchor-target id="arch-linux">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#arch-linux">#</doc-anchor-trigger>
-        <span>Arch Linux</span>
-    </h2>
-</doc-anchor-target>
-<p>On Arch Linux, I installed it using pacman.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">sudo pacman -S git</code></pre>
-</doc-codeblock></div>
-<p>Enter <strong>y</strong> and press <strong>Enter</strong> when asked if you want to continue with
-installation.</p>
-<doc-anchor-target id="ubuntu">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#ubuntu">#</doc-anchor-trigger>
-        <span>Ubuntu</span>
-    </h2>
-</doc-anchor-target>
-<p>If you use Ubuntu, Git may already be installed. Try displaying its version.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">git --version</code></pre>
-</doc-codeblock></div>
-<p>If you receive an error that git is not installed, you&#x27;ll need to install it.</p>
-<p>Update your local package index.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">sudo apt update</code></pre>
-</doc-codeblock></div>
-<p>Install Git</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">sudo apt install git</code></pre>
-</doc-codeblock></div>
+<p>Go to <a href="https://github.com/input-output-hk/cardano-node">https://github.com/input-output-hk/cardano-node</a></p>
+<p>Under Releases, click on Cardano Node 1.33.0</p>
+<p>Under Technical Specification &gt; Downloads, click on Hydra binaries</p>
+<p>Click on cardano-node-linux</p>
+<p>Click on cardano-node-1.33.0-linux.tar.gz</p>
+<p>cd Downloads</p>
+<p>tar -xf cardano-node-1.33.0-linux.tar.gz</p>
+<p>mkdir -p .local/bin/cardano-node</p>
+<p>mv ./* ~/.local/bin/cardano-node</p>
+<p>vim .bashrc</p>
+<p>export PATH=&quot;$HOME/.local/bin/cardano-node:$PATH&quot;
+export CARDANO_NODE_SOCKET_PATH=&quot;$HOME/plutus-pioneer-program/code/week03/testnet/node.socket&quot;</p>
+<p>source .bashrc</p>
+<p>cd ~/plutus-pioneer-program/code/week03/testnet</p>
+<p>./start-node-testnet.sh</p>
+<p>cardano-cli query tip --testnet-magic 1097911063</p>
+<p>Look for syncProgress. Wait until it reaches 100%. Will be a few hours.</p>
 
 
 
@@ -227,20 +210,20 @@ installation.</p>
             
 <nav class="flex mt-14">
     <div class="w-1/2">
-        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/ppp-notes/appendix/getting-playground-wallet-addresses/">
+        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/ppp-notes/appendix/run-plutus-playground-locally/">
             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
             <span>
                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                <span class="block mt-1">Getting Playground Wallet Addresses</span>
+                <span class="block mt-1">Run Plutus Playground Locally</span>
             </span>
         </a>
     </div>
 
     <div class="w-1/2">
-        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/ppp-notes/appendix/run-haddock-docs-locally/">
+        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/ppp-notes/license/">
             <span>
                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                <span class="block mt-1">Run Haddock Docs Locally</span>
+                <span class="block mt-1">License</span>
             </span>
             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
         </a>
@@ -288,6 +271,6 @@ installation.</p>
 
         <div id="docs-overlay-target"></div>
 
-        <script>window.__DOCS__ = { "title": "Install Git", icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
+        <script>window.__DOCS__ = { "title": "Testnet Node", icon: "file", hasPrism: false, hasMermaid: false, hasMath: false }</script>
     </body>
 </html>
