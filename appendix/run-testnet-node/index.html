@@ -7,30 +7,30 @@
     <meta name="turbo-cache-control" content="no-cache">
 
     <!-- Primary Meta Tags -->
-    <title>Converting Slots to POSIX Time</title>
-    <meta name="title" content="Converting Slots to POSIX Time">
-    <meta name="description" content="The time in Plutus is described in POSIX time (the number of milliseconds that have elapsed since 1 January 1970 00:00:00.000). But the time in Plutus" />
+    <title>Run a Testnet Node</title>
+    <meta name="title" content="Run a Testnet Node">
+    <meta name="description" content="The easiest way to interact with the Cardano network is by running your own node. Cardano provides two networks: The mainnet and the testnet." />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://travishorn.github.io/ppp-notes/appendix/converting-slots-posix-time/">
-    <meta property="og:title" content="Converting Slots to POSIX Time">
-    <meta property="og:description" content="The time in Plutus is described in POSIX time (the number of milliseconds that have elapsed since 1 January 1970 00:00:00.000). But the time in Plutus">
+    <meta property="og:url" content="https://travishorn.github.io/ppp-notes/appendix/run-testnet-node/">
+    <meta property="og:title" content="Run a Testnet Node">
+    <meta property="og:description" content="The easiest way to interact with the Cardano network is by running your own node. Cardano provides two networks: The mainnet and the testnet.">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://travishorn.github.io/ppp-notes/appendix/converting-slots-posix-time/">
-    <meta property="twitter:title" content="Converting Slots to POSIX Time">
-    <meta property="twitter:description" content="The time in Plutus is described in POSIX time (the number of milliseconds that have elapsed since 1 January 1970 00:00:00.000). But the time in Plutus">
+    <meta property="twitter:url" content="https://travishorn.github.io/ppp-notes/appendix/run-testnet-node/">
+    <meta property="twitter:title" content="Run a Testnet Node">
+    <meta property="twitter:description" content="The easiest way to interact with the Cardano network is by running your own node. Cardano provides two networks: The mainnet and the testnet.">
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/ppp-notes/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/ppp-notes/resources/css/retype.css?v=1.11.2.696660633322" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/ppp-notes/resources/css/retype.css?v=1.11.2.696707223362" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/ppp-notes/resources/js/config.js?v=1.11.2.696660633322" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/ppp-notes/resources/js/config.js?v=1.11.2.696707223362" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/ppp-notes/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/ppp-notes/resources/js/lunr.js?v=1.11.2.696660633322" defer></script>
-    <script id="prism-js" type="text/javascript" src="/ppp-notes/resources/js/prism.js?v=1.11.2.696660633322" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/ppp-notes/resources/js/lunr.js?v=1.11.2.696707223362" defer></script>
+    <script id="prism-js" type="text/javascript" src="/ppp-notes/resources/js/prism.js?v=1.11.2.696707223362" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -165,10 +165,10 @@
                 <div id="docs-sidebar-right-toggle"></div>
                
                 <!-- Page content  -->
-<doc-anchor-target id="converting-slots-to-posix-time" class="break-words">
+<doc-anchor-target id="run-a-testnet-node" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#converting-slots-to-posix-time">#</doc-anchor-trigger>
-        <span>Converting Slots to POSIX Time</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#run-a-testnet-node">#</doc-anchor-trigger>
+        <span>Run a Testnet Node</span>
     </h1>
 </doc-anchor-target>
 <div class="-mt-3 mb-12 flex flex-wrap text-sm text-gray-400 dark:text-dark-350">
@@ -183,168 +183,132 @@
     </div>
 </div>
 
-<p>The time in Plutus is described in POSIX time (the number of milliseconds that
-have elapsed since 1 January 1970 00:00:00.000). But the time in Plutus
-Playground is described in &quot;slots&quot;. Each slot is 1000 milliseconds starting at
-29 July 2020 9:44:51.000.</p>
-<p>Slot 0 (the first slot) ends at 29 July 2020 9:44:51.999 (1596059091999).</p>
-<p>Slot 1 ends at 29 July 2020 9:44:52.999 (1596059092999).</p>
-<p>And so on.</p>
-<p>If you need to calculate the POSIX time at the end of a specific slot, there is
-a function in Plutus that will convert slots to POSIX time called
-<code v-pre>slotToEndPOSIXTime</code>. It takes two parameters:</p>
-<ul>
-<li><code v-pre>SlotConfig</code>: A datatype to configure the length (ms) of one slot and the
-beginning of the first slot</li>
-<li><code v-pre>Slot</code>: The number of slots to show the time for</li>
-</ul>
-<p><code v-pre>SlotConfig</code> for Plutus Playground is a defined standard.</p>
-<p>You can find out what (for example) 10 slots past the start time of Plutus
-Playground&#x27;s standard config is with this function.</p>
-<p>Change into the <code v-pre>plutus-apps</code> directory</p>
+<p>The easiest way to interact with the Cardano network is by running your own
+node. Cardano provides two networks: The mainnet and the testnet. The mainnet is
+what you normally think about when you think about Cardano. The testnet also a
+real Cardano network, but ADA (called tADA on the testnet) has no real value as
+anyone can request it for free.</p>
+<p>These instructions are for Linux, but you may be able to modify them according
+to your operating system.</p>
+<doc-anchor-target id="installation">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#installation">#</doc-anchor-trigger>
+        <span>Installation</span>
+    </h2>
+</doc-anchor-target>
+<p>Installation is a one-time process you must complete before starting a node. It
+will take about 10GB of storage space and synchronization will take a few hours
+once you get it going.</p>
+<doc-anchor-target id="download-the-latest-binary">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#download-the-latest-binary">#</doc-anchor-trigger>
+        <span>Download the Latest Binary</span>
+    </h3>
+</doc-anchor-target>
+<p>Go to <a href="https://github.com/input-output-hk/cardano-node">https://github.com/input-output-hk/cardano-node</a></p>
+<p>Under <strong>Releases</strong>, click on <strong>Cardano Node 1.33.0</strong>. The version might be
+different when you&#x27;re reading this. Just use the latest version listed under
+<strong>Releases</strong>.</p>
+<p>Under <strong>Technical Specification</strong> &gt; <strong>Downloads</strong>, click on <strong>Hydra binaries</strong>.</p>
+<p>Click on <strong>cardano-node-linux</strong>.</p>
+<p>Click on <strong>cardano-node-1.33.0-linux.tar.gz</strong> to download the zipped files.</p>
+<p>Change into the directory where the zipped files were downloaded</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">cd plutus-apps</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash">cd Downloads</code></pre>
 </doc-codeblock></div>
-<p>Start a Nix shell</p>
+<p>Unzip the files</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">nix-shell</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash">tar -xf cardano-node-1.33.0-linux.tar.gz</code></pre>
 </doc-codeblock></div>
-<p>Change into the Plutus Pioneer Program&#x27;s week 1 directory</p>
+<p>Make a new directory for the Cardano binary files. This could be anywhere you
+want.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">cd plutus-pioneer-program/code/week01</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash">mkdir -p .local/bin/cardano-node</code></pre>
 </doc-codeblock></div>
-<p>Start the REPL</p>
+<p>Move the unzipped files to that directory</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">cabal repl</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash">mv ./* ~/.local/bin/cardano-node</code></pre>
 </doc-codeblock></div>
-<p>In the REPL, import the following modules</p>
+<doc-anchor-target id="set-environment-variables">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#set-environment-variables">#</doc-anchor-trigger>
+        <span>Set Environment Variables</span>
+    </h3>
+</doc-anchor-target>
+<p>Make sure the node directory is always in your path by adding an export in your
+<code v-pre>.bashrc</code>.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-haskell"><code v-pre class="language-haskell">import Data.Default
-import Ledger.TimeSlot</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash">vim ~/.bashrc</code></pre>
 </doc-codeblock></div>
-<p>Now you can use the function to determine the POSIX time for the end of 10
-slots.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-haskell"><code v-pre class="language-haskell">slotToEndPOSIXTime def 10</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash">export PATH=&quot;$HOME/.local/bin/cardano-node:$PATH&quot;</code></pre>
 </doc-codeblock></div>
-<p>The corresponding POSIX time is shown:</p>
+<p>While you&#x27;re editing <code v-pre>.bashrc</code>, you should also add the following environment
+variable. This variable will be used by <code v-pre>cardano-cli</code>. It points to the socket
+your node will be running at. You may need to modify the path depending on your
+directory structure.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-haskell"><code v-pre class="language-haskell">POSIXTime {getPOSIXTime = 1596059101999}</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash">export CARDANO_NODE_SOCKET_PATH=&quot;$HOME/plutus-pioneer-program/code/week03/testnet/node.socket&quot;</code></pre>
 </doc-codeblock></div>
-<p>Some arbitrary conversions are:</p>
-<div class="table-wrapper scrollbar overflow-hidden">
-<table class="comfortable">
-<thead>
-<tr>
-<th style="text-align: right;">Slot</th>
-<th style="text-align: right;">POSIX Time</th>
-<th style="text-align: left;">Human Readable</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: right;">0</td>
-<td style="text-align: right;">1596059091999</td>
-<td style="text-align: left;">29 July 2020 9:44:51.999</td>
-</tr>
-<tr>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1596059092999</td>
-<td style="text-align: left;">29 July 2020 9:44:52.999</td>
-</tr>
-<tr>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">1596059093999</td>
-<td style="text-align: left;">29 July 2020 9:44:53.999</td>
-</tr>
-<tr>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">1596059094999</td>
-<td style="text-align: left;">29 July 2020 9:44:54.999</td>
-</tr>
-<tr>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">1596059095999</td>
-<td style="text-align: left;">29 July 2020 9:44:55.999</td>
-</tr>
-<tr>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">1596059096999</td>
-<td style="text-align: left;">29 July 2020 9:44:56.999</td>
-</tr>
-<tr>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">1596059097999</td>
-<td style="text-align: left;">29 July 2020 9:44:57.999</td>
-</tr>
-<tr>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">1596059098999</td>
-<td style="text-align: left;">29 July 2020 9:44:58.999</td>
-</tr>
-<tr>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">1596059099999</td>
-<td style="text-align: left;">29 July 2020 9:44:59.999</td>
-</tr>
-<tr>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">1596059100999</td>
-<td style="text-align: left;">29 July 2020 9:45:00.999</td>
-</tr>
-<tr>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">1596059101999</td>
-<td style="text-align: left;">29 July 2020 9:45:01.999</td>
-</tr>
-<tr>
-<td style="text-align: right;">20</td>
-<td style="text-align: right;">1596059111999</td>
-<td style="text-align: left;">29 July 2020 9:45:11.999</td>
-</tr>
-<tr>
-<td style="text-align: right;">30</td>
-<td style="text-align: right;">1596059121999</td>
-<td style="text-align: left;">29 July 2020 9:45:21.999</td>
-</tr>
-<tr>
-<td style="text-align: right;">40</td>
-<td style="text-align: right;">1596059131999</td>
-<td style="text-align: left;">29 July 2020 9:45:31.999</td>
-</tr>
-<tr>
-<td style="text-align: right;">50</td>
-<td style="text-align: right;">1596059141999</td>
-<td style="text-align: left;">29 July 2020 9:45:41.999</td>
-</tr>
-<tr>
-<td style="text-align: right;">100</td>
-<td style="text-align: right;">1596059191999</td>
-<td style="text-align: left;">29 July 2020 9:46:31.999</td>
-</tr>
-<tr>
-<td style="text-align: right;">200</td>
-<td style="text-align: right;">1596059291999</td>
-<td style="text-align: left;">29 July 2020 9:48:11.999</td>
-</tr>
-<tr>
-<td style="text-align: right;">300</td>
-<td style="text-align: right;">1596059391999</td>
-<td style="text-align: left;">29 July 2020 9:45:01.999</td>
-</tr>
-<tr>
-<td style="text-align: right;">400</td>
-<td style="text-align: right;">1596059491999</td>
-<td style="text-align: left;">29 July 2020 9:49:51.999</td>
-</tr>
-<tr>
-<td style="text-align: right;">500</td>
-<td style="text-align: right;">1596059591999</td>
-<td style="text-align: left;">29 July 2020 9:53:11.999</td>
-</tr>
-</tbody>
-</table>
-</div>
+<p>Source <code v-pre>.bashrc</code> to make sure the <code v-pre>PATH</code> is updated and
+<code v-pre>CARDANO_NODE_SOCKET_PATH</code> is set.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">source ~/.bashrc</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="starting-the-node">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#starting-the-node">#</doc-anchor-trigger>
+        <span>Starting the Node</span>
+    </h2>
+</doc-anchor-target>
+<p>With the node installed, just do the following steps any time you want to start
+it.</p>
+<p>Change into the <code v-pre>testnet</code> directory for week 3&#x27;s code.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">cd ~/plutus-pioneer-program/code/week03/testnet</code></pre>
+</doc-codeblock></div>
+<p>Week 3&#x27;s code contains configuration files and a helpful shell script for
+starting a testnet node.</p>
+<p>Start the node using the shell script</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">./start-node-testnet.sh</code></pre>
+</doc-codeblock></div>
+<p>The script contains just one command. Alternatively, you could run this command
+manually yourself.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">cardano-node run \
+  --topology testnet-topology.json \
+  --database-path db \
+  --socket-path node.socket \
+  --host-addr 127.0.0.1 \
+  --port 3001 \
+  --config testnet-config.json</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="view-sync-progress">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#view-sync-progress">#</doc-anchor-trigger>
+        <span>View Sync Progress</span>
+    </h3>
+</doc-anchor-target>
+<p>The first time you start the node, it will immediately start syncing with the
+testnet blockchain. Before you can really interact with the testnet, you&#x27;ll have
+to wait until your node is fully synchronized. This will take a few hours.</p>
+<p>You can see the sync progress at any time by using <code v-pre>cardano-cli</code> in another
+terminal.</p>
+<p>The command to see sync progress requires a <code v-pre>--testnet-magic</code> flag with a
+specific number. You can find this number in the genesis configuration for the
+node you started.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">cat testnet-shelley-genesis.json | grep Magic
+  &quot;networkMagic&quot;: 1097911063</code></pre>
+</doc-codeblock></div>
+<p>Query to see sync progress</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">cardano-cli query tip --testnet-magic 1097911063</code></pre>
+</doc-codeblock></div>
+<p>Each subsequent time you run the node, it will first push ledger state. This
+will take a few minutes. Then it will synchronize with the blockchain again. It
+should go quickly if you&#x27;ve ran the node recently.</p>
 
 
 
@@ -356,20 +320,20 @@ slots.</p>
             
 <nav class="flex mt-14">
     <div class="w-1/2">
-        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/ppp-notes/appendix/haskell/strict-vs-lazy-evaluation/">
+        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/ppp-notes/appendix/run-plutus-playground-locally/">
             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
             <span>
                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                <span class="block mt-1">Strict vs Lazy Evaluation</span>
+                <span class="block mt-1">Run Plutus Playground Locally</span>
             </span>
         </a>
     </div>
 
     <div class="w-1/2">
-        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/ppp-notes/appendix/enable-overloaded-strings/">
+        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/ppp-notes/license/">
             <span>
                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                <span class="block mt-1">Enable Overloaded Strings</span>
+                <span class="block mt-1">License</span>
             </span>
             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
         </a>
@@ -417,6 +381,6 @@ slots.</p>
 
         <div id="docs-overlay-target"></div>
 
-        <script>window.__DOCS__ = { "title": "Converting Slots to POSIX Time", icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
+        <script>window.__DOCS__ = { "title": "Run a Testnet Node", icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
     </body>
 </html>

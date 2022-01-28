@@ -25,11 +25,12 @@
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/ppp-notes/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/ppp-notes/resources/css/retype.css?v=1.11.2.696660633322" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/ppp-notes/resources/css/retype.css?v=1.11.2.696707223362" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/ppp-notes/resources/js/config.js?v=1.11.2.696660633322" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/ppp-notes/resources/js/config.js?v=1.11.2.696707223362" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/ppp-notes/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/ppp-notes/resources/js/lunr.js?v=1.11.2.696660633322" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/ppp-notes/resources/js/lunr.js?v=1.11.2.696707223362" defer></script>
+    <script id="prism-js" type="text/javascript" src="/ppp-notes/resources/js/prism.js?v=1.11.2.696707223362" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -191,6 +192,182 @@
 <p>Lecture 3, Part 6</p>
 <p><a href="https://www.youtube.com/watch?v=ABtffZPoUqU&amp;list=PLNEK_Ejlx3x2zxcfoVGARFExzOHwXFCCL&amp;index=6">Lecture Video
 <svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M15.5 2.25a.75.75 0 01.75-.75h5.5a.75.75 0 01.75.75v5.5a.75.75 0 01-1.5 0V4.06l-6.22 6.22a.75.75 0 11-1.06-1.06L19.94 3h-3.69a.75.75 0 01-.75-.75z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 010 1.5h-8.5a.25.25 0 00-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 00.25-.25v-8.5a.75.75 0 011.5 0v8.5a1.75 1.75 0 01-1.75 1.75H4.25a1.75 1.75 0 01-1.75-1.75V4.25z"/></g></g></svg></a></p>
+<p><a href="../../appendix/run-testnet-node/">Install and run a testnet node.</a></p>
+<doc-anchor-target id="generating-wallets">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#generating-wallets">#</doc-anchor-trigger>
+        <span>Generating Wallets</span>
+    </h3>
+</doc-anchor-target>
+<p>To test out a contract, you&#x27;ll want a couple wallets to interact with.</p>
+<p>Change into the testnet directory under week 3</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">cd plutus-pioneer-program/code/week03/testnet</code></pre>
+</doc-codeblock></div>
+<p>Generate a key for &quot;wallet 1&quot;</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">cardano-cli address key-gen \
+  --verification-key-file 01.vkey \
+  --signing-key-file 01.skey</code></pre>
+</doc-codeblock></div>
+<p>Generate a key for &quot;wallet 2&quot;</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">cardano-cli address key-gen \
+  --verification-key-file 02.vkey \
+  --signing-key-file 02.skey</code></pre>
+</doc-codeblock></div>
+<p>From these two commands, four new keys are created:</p>
+<ul>
+<li>01.vkey - wallet 1&#x27;s verification key</li>
+<li>01.skey - wallet 1&#x27;s signing key</li>
+<li>02.vkey - wallet 2&#x27;s verification key</li>
+<li>02.skey - wallet 2&#x27;s signing key</li>
+</ul>
+<p>You can view any of these keys</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">cat 01.vkey
+
+{
+  &quot;type&quot;: &quot;PaymentVerificationKeyShelley_ed255519&quot;,
+  &quot;description&quot;: &quot;Payment Verification Key&quot;,
+  &quot;cborHex&quot;: &quot;582...&quot;
+}</code></pre>
+</doc-codeblock></div>
+<p>The next commands require the testnet magic number.</p>
+<p>View it in the genesis configuration for the started node</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">cat testnet-shelley-genesis.json | grep Magic
+  &quot;networkMagic&quot;: 1097911063</code></pre>
+</doc-codeblock></div>
+<p>Build a testnet address based on wallet 1&#x27;s verification key</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">cardano-cli address build \
+  --payment-verification-key-file 01.vkey \
+  --testnet-magic 1097911063 \
+  --out-file 01.addr</code></pre>
+</doc-codeblock></div>
+<p>And again, but for wallet 2</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">cardano-cli address build \
+  --payment-verification-key-file 02.vkey \
+  --testnet-magic 1097911063 \
+  --out-file 02.addr</code></pre>
+</doc-codeblock></div>
+<p>Those two commands generated two new files:</p>
+<ul>
+<li>01.addr - wallet 1&#x27;s address</li>
+<li>02.addr - wallet 2&#x27;s address</li>
+</ul>
+<p>You can view them if you like</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">cat 01.addr
+addr_test1vrlnf...</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="funding-with-test-ada">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#funding-with-test-ada">#</doc-anchor-trigger>
+        <span>Funding with Test ADA</span>
+    </h3>
+</doc-anchor-target>
+<p>You&#x27;ll need some ADA to play with. On the testnet, this is called tADA. You can
+request tADA for free using the testnet faucet.</p>
+<p>First, copy the address of wallet 1 to your clipboard</p>
+<p>Then go to <a href="https://testnets.cardano.org/en/testnets/cardano/tools/faucet">https://testnets.cardano.org/en/testnets/cardano/tools/faucet
+<svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M15.5 2.25a.75.75 0 01.75-.75h5.5a.75.75 0 01.75.75v5.5a.75.75 0 01-1.5 0V4.06l-6.22 6.22a.75.75 0 11-1.06-1.06L19.94 3h-3.69a.75.75 0 01-.75-.75z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 010 1.5h-8.5a.25.25 0 00-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 00.25-.25v-8.5a.75.75 0 011.5 0v8.5a1.75 1.75 0 01-1.75 1.75H4.25a1.75 1.75 0 01-1.75-1.75V4.25z"/></g></g></svg></a></p>
+<p>Paste in the address into the <strong>Address</strong> box</p>
+<p>Check the <strong>I&#x27;m not a robot</strong> checkbox to complete the CAPTCHA.</p>
+<p>Click on <strong>Request funds</strong></p>
+<p>A new transaction is automatically generated with 1000 tADA to your address as
+an output.</p>
+<p>You can query for all UTxOs containing wallet 1&#x27;s address</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">cardano-cli query utxo \
+  --address $(cat 01.addr)
+  --testnet-magic 1097911063
+
+TxHash  TxIx  Amount
+--------------------------------------------------
+1e7...     0  1000000000 lovelace + TxOutDatumNone</code></pre>
+</doc-codeblock></div>
+<p>Since we just created this wallet and used the faucet to receive 1000 tADA,
+there&#x27;s a single UTxO that contains that amount.</p>
+<doc-anchor-target id="transferring-from-one-address-to-another">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#transferring-from-one-address-to-another">#</doc-anchor-trigger>
+        <span>Transferring from One Address to Another</span>
+    </h3>
+</doc-anchor-target>
+<p>The faucet only lets you use it once every 24 hours. To fund wallet 2, we can
+transfer tADA from wallet 1. This type of transaction requires 3 <code v-pre>cardano-cli</code>
+actions:</p>
+<ul>
+<li>Build the transaction</li>
+<li>Sign the transaction</li>
+<li>Submit the transaction</li>
+</ul>
+<p>Week 3&#x27;s testnet directory contains a shell script to do these three things. So
+you don&#x27;t have to type out the whole thing. You will, however, have to modify
+this file slightly.</p>
+<p>Edit <code v-pre>send.sh</code></p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">vim send.sh</code></pre>
+</doc-codeblock></div>
+<p>On line 5, you need to paste in the TxHash of the UTxO that contains the 1000
+tADA. Note that <code v-pre>--tx-in</code> takes the TxHash, followed by <code v-pre>#</code>, followed by the
+TxIx.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">cardano-cli transaction build \
+  --alonzo-era \
+  --testnet-magic 1097911063 \
+  --change-address $(cat 01.addr) \
+  --tx-in dfc1a522cd34fe723a0e89f68ed43a520fd218e20d8e5705b120d2cedc7f45ad#0 \
+  --tx-out &quot;$(cat 02.addr) 10000000 lovelace&quot; \
+  --out-file tx.body
+
+cardano-cli transaction sign \
+  --tx-body-file tx.body \
+  --signing-key-file 01.skey \
+  --testnet-magic 1097911063 \
+  --out-file tx.signed
+
+cardano-cli transaction submit \
+  --testnet-magic 1097911063 \
+  --tx-file tx.signed</code></pre>
+</doc-codeblock></div>
+<p>Wait a little bit for the transaction to be processed. On average, it takes
+about 20 seconds.</p>
+<p>Query for relevant UTxOs again</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">cardano-cli query utxo \
+  --address $(cat 01.addr)
+  --testnet-magic 1097911063
+
+TxHash  TxIx  Amount
+--------------------------------------------------
+9e1...     0  989834279 lovelace + TxOutDatumNone</code></pre>
+</doc-codeblock></div>
+<p>Notice the original 1000 tADA UTxO is gone. It&#x27;s no longer an Unspent
+Transaction Output. It has been spent. In its place is a new UTxO with a lower
+amount as expected. The lower amount is 1000 minus the 10 we sent to wallet 2
+minus fees.</p>
+<p>Query for wallet 2&#x27;s UTxOs now</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">cardano-cli query utxo \
+  --address $(cat 02.addr)
+  --testnet-magic 1097911063
+
+TxHash  TxIx  Amount
+------------------------------------------------
+9e1...     0  10000000 lovelace + TxOutDatumNone</code></pre>
+</doc-codeblock></div>
+<p>Note that it contains 10 tADA as expected.</p>
+<doc-anchor-target id="using-plutus-in-the-cardano-cli">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#using-plutus-in-the-cardano-cli">#</doc-anchor-trigger>
+        <span>Using Plutus in the Cardano CLI</span>
+    </h3>
+</doc-anchor-target>
+<p>These notes are incomplete. They stop at timestamp 16:22 of lecture 3, part 6.</p>
 
 
 
@@ -263,6 +440,6 @@
 
         <div id="docs-overlay-target"></div>
 
-        <script>window.__DOCS__ = { "title": "Deploying to the Cardano Testnet", icon: "file", hasPrism: false, hasMermaid: false, hasMath: false }</script>
+        <script>window.__DOCS__ = { "title": "Deploying to the Cardano Testnet", icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
     </body>
 </html>

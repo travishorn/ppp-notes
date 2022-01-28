@@ -7,29 +7,30 @@
     <meta name="turbo-cache-control" content="no-cache">
 
     <!-- Primary Meta Tags -->
-    <title>Testnet Node</title>
-    <meta name="title" content="Testnet Node">
-    <meta name="description" content="Go to https://github.com/input-output-hk/cardano-node" />
+    <title>Get Playground Wallet Addresses</title>
+    <meta name="title" content="Get Playground Wallet Addresses">
+    <meta name="description" content="In order to simulate some contracts in the Playground you'll need to know the public key hash of the wallets." />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://travishorn.github.io/ppp-notes/appendix/testnet-node/">
-    <meta property="og:title" content="Testnet Node">
-    <meta property="og:description" content="Go to https://github.com/input-output-hk/cardano-node">
+    <meta property="og:url" content="https://travishorn.github.io/ppp-notes/appendix/get-playground-wallet-addresses/">
+    <meta property="og:title" content="Get Playground Wallet Addresses">
+    <meta property="og:description" content="In order to simulate some contracts in the Playground you'll need to know the public key hash of the wallets.">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://travishorn.github.io/ppp-notes/appendix/testnet-node/">
-    <meta property="twitter:title" content="Testnet Node">
-    <meta property="twitter:description" content="Go to https://github.com/input-output-hk/cardano-node">
+    <meta property="twitter:url" content="https://travishorn.github.io/ppp-notes/appendix/get-playground-wallet-addresses/">
+    <meta property="twitter:title" content="Get Playground Wallet Addresses">
+    <meta property="twitter:description" content="In order to simulate some contracts in the Playground you'll need to know the public key hash of the wallets.">
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/ppp-notes/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/ppp-notes/resources/css/retype.css?v=1.11.2.696660633322" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/ppp-notes/resources/css/retype.css?v=1.11.2.696707223362" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/ppp-notes/resources/js/config.js?v=1.11.2.696660633322" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/ppp-notes/resources/js/config.js?v=1.11.2.696707223362" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/ppp-notes/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/ppp-notes/resources/js/lunr.js?v=1.11.2.696660633322" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/ppp-notes/resources/js/lunr.js?v=1.11.2.696707223362" defer></script>
+    <script id="prism-js" type="text/javascript" src="/ppp-notes/resources/js/prism.js?v=1.11.2.696707223362" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -164,10 +165,10 @@
                 <div id="docs-sidebar-right-toggle"></div>
                
                 <!-- Page content  -->
-<doc-anchor-target id="testnet-node" class="break-words">
+<doc-anchor-target id="get-playground-wallet-addresses" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#testnet-node">#</doc-anchor-trigger>
-        <span>Testnet Node</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#get-playground-wallet-addresses">#</doc-anchor-trigger>
+        <span>Get Playground Wallet Addresses</span>
     </h1>
 </doc-anchor-target>
 <div class="-mt-3 mb-12 flex flex-wrap text-sm text-gray-400 dark:text-dark-350">
@@ -182,23 +183,107 @@
     </div>
 </div>
 
-<p>Go to <a href="https://github.com/input-output-hk/cardano-node">https://github.com/input-output-hk/cardano-node</a></p>
-<p>Under Releases, click on Cardano Node 1.33.0</p>
-<p>Under Technical Specification &gt; Downloads, click on Hydra binaries</p>
-<p>Click on cardano-node-linux</p>
-<p>Click on cardano-node-1.33.0-linux.tar.gz</p>
-<p>cd Downloads</p>
-<p>tar -xf cardano-node-1.33.0-linux.tar.gz</p>
-<p>mkdir -p .local/bin/cardano-node</p>
-<p>mv ./* ~/.local/bin/cardano-node</p>
-<p>vim .bashrc</p>
-<p>export PATH=&quot;$HOME/.local/bin/cardano-node:$PATH&quot;
-export CARDANO_NODE_SOCKET_PATH=&quot;$HOME/plutus-pioneer-program/code/week03/testnet/node.socket&quot;</p>
-<p>source .bashrc</p>
-<p>cd ~/plutus-pioneer-program/code/week03/testnet</p>
-<p>./start-node-testnet.sh</p>
-<p>cardano-cli query tip --testnet-magic 1097911063</p>
-<p>Look for syncProgress. Wait until it reaches 100%. Will be a few hours.</p>
+<p>In order to simulate some contracts in the Playground you&#x27;ll need to know the
+public key hash of the wallets. You can use the REPL inside a particular week&#x27;s
+project to get simulated wallet key hashes.</p>
+<p>Change into the <code v-pre>plutus-apps</code> directory</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">cd plutus-apps</code></pre>
+</doc-codeblock></div>
+<p>Start a Nix shell</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">nix-shell</code></pre>
+</doc-codeblock></div>
+<p>Change into the week&#x27;s code directory</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">cd ../plutus-pioneer-program/code/week03</code></pre>
+</doc-codeblock></div>
+<p>Start the REPL</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">cabal repl</code></pre>
+</doc-codeblock></div>
+<p>Import the <code v-pre>Wallet.Emulator</code> module</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">import Wallet.Emulator</code></pre>
+</doc-codeblock></div>
+<p>Get the address of various wallets by number</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">knownWallet 1
+Wallet 872cb83b5ee40eb23bfdab1772660c822a48d491
+
+knowWallet 2
+Wallet 7ce812d7a4770bbf58004067665c3a48f28ddd58</code></pre>
+</doc-codeblock></div>
+<p>Get the hash of a wallet</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">mockWalletPaymentPubKeyHash $ knownWallet 1
+a2c20c77887ace1cd986193e4e75babd8993cfd56995cd5cfce609c2</code></pre>
+</doc-codeblock></div>
+<p>The first few playground wallets as of Plutus Pioneer Program Cohort 3 Week 3</p>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th style="text-align: left;">Wallet</th>
+<th style="text-align: left;">Address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">872cb83b5ee40eb23bfdab1772660c822a48d491</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">7ce812d7a4770bbf58004067665c3a48f28ddd58</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">c30efb78b4e272685c1f9f0c93787fd4b6743154</td>
+</tr>
+<tr>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">5f5a4f5f465580a5500b9a9cede7f4e014a37ea8</td>
+</tr>
+<tr>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">d3eddd0d37989746b029a0e050386bc425363901</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th style="text-align: left;">Wallet</th>
+<th style="text-align: left;">Hash</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">a2c20c77887ace1cd986193e4e75babd8993cfd56995cd5cfce609c2</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">80a4f45b56b88d1139da23bc4c3c75ec6d32943c087f250b86193ca7</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">2e0ad60c3207248cecd47dbde3d752e0aad141d6b8f81ac2c6eca27c</td>
+</tr>
+<tr>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">557d23c0a533b4d295ac2dc14b783a7efc293bc23ede88a6fefd203d</td>
+</tr>
+<tr>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">bf342ddd3b1a6191d4ce936c92d29834d6879edf2849eaea84c827f8</td>
+</tr>
+</tbody>
+</table>
+</div>
 
 
 
@@ -210,20 +295,20 @@ export CARDANO_NODE_SOCKET_PATH=&quot;$HOME/plutus-pioneer-program/code/week03/t
             
 <nav class="flex mt-14">
     <div class="w-1/2">
-        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/ppp-notes/appendix/run-plutus-playground-locally/">
+        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/ppp-notes/appendix/enable-overloaded-strings/">
             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
             <span>
                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                <span class="block mt-1">Run Plutus Playground Locally</span>
+                <span class="block mt-1">Enable Overloaded Strings</span>
             </span>
         </a>
     </div>
 
     <div class="w-1/2">
-        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/ppp-notes/license/">
+        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/ppp-notes/appendix/install-git/">
             <span>
                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                <span class="block mt-1">License</span>
+                <span class="block mt-1">Install Git</span>
             </span>
             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
         </a>
@@ -271,6 +356,6 @@ export CARDANO_NODE_SOCKET_PATH=&quot;$HOME/plutus-pioneer-program/code/week03/t
 
         <div id="docs-overlay-target"></div>
 
-        <script>window.__DOCS__ = { "title": "Testnet Node", icon: "file", hasPrism: false, hasMermaid: false, hasMath: false }</script>
+        <script>window.__DOCS__ = { "title": "Get Playground Wallet Addresses", icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
     </body>
 </html>
