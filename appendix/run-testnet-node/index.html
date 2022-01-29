@@ -25,12 +25,12 @@
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/ppp-notes/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/ppp-notes/resources/css/retype.css?v=1.11.2.696734607632" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/ppp-notes/resources/css/retype.css?v=1.11.2.696782992699" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/ppp-notes/resources/js/config.js?v=1.11.2.696734607632" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/ppp-notes/resources/js/config.js?v=1.11.2.696782992699" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/ppp-notes/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/ppp-notes/resources/js/lunr.js?v=1.11.2.696734607632" defer></script>
-    <script id="prism-js" type="text/javascript" src="/ppp-notes/resources/js/prism.js?v=1.11.2.696734607632" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/ppp-notes/resources/js/lunr.js?v=1.11.2.696782992699" defer></script>
+    <script id="prism-js" type="text/javascript" src="/ppp-notes/resources/js/prism.js?v=1.11.2.696782992699" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -223,11 +223,11 @@ different when you&#x27;re reading this. Just use the latest version listed unde
 <p>Make a new directory for the Cardano binary files. This could be anywhere you
 want.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">mkdir -p .local/bin/cardano-node</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash">mkdir ~/cardano-node</code></pre>
 </doc-codeblock></div>
 <p>Move the unzipped files to that directory</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">mv ./* ~/.local/bin/cardano-node</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash">mv ./* ~/cardano-node</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="set-environment-variables">
     <h3>
@@ -241,12 +241,16 @@ want.</p>
 <pre class="language-bash"><code v-pre class="language-bash">vim ~/.bashrc</code></pre>
 </doc-codeblock></div>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">export PATH=&quot;$HOME/.local/bin/cardano-node:$PATH&quot;</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash">export PATH=&quot;$HOME/cardano-node:$PATH&quot;</code></pre>
 </doc-codeblock></div>
 <p>While you&#x27;re editing <code v-pre>.bashrc</code>, you should also add the following environment
 variable. This variable will be used by <code v-pre>cardano-cli</code>. It points to the socket
 your node will be running at. You may need to modify the path depending on your
-directory structure.</p>
+directory structure. I&#x27;m running my node out of the <a href="https://github.com/input-output-hk/plutus-pioneer-program/tree/037142877d7275d47314af21413d803dc58a1da3/code/week03/testnet">week 3 directory of the
+Plutus Pioneer
+Program</a>.
+This directory already contains all of the configuration files needed to start
+the node</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-bash"><code v-pre class="language-bash">export CARDANO_NODE_SOCKET_PATH=&quot;$HOME/plutus-pioneer-program/code/week03/testnet/node.socket&quot;</code></pre>
 </doc-codeblock></div>
@@ -263,7 +267,7 @@ directory structure.</p>
 </doc-anchor-target>
 <p>With the node installed, just do the following steps any time you want to start
 it.</p>
-<p>Change into the <code v-pre>testnet</code> directory for week 3&#x27;s code.</p>
+<p>Change into the <code v-pre>testnet</code> directory under week 3.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-bash"><code v-pre class="language-bash">cd ~/plutus-pioneer-program/code/week03/testnet</code></pre>
 </doc-codeblock></div>
