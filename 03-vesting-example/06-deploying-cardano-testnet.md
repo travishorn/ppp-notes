@@ -263,10 +263,10 @@ cd ../plutus-pioneer-program/code/week03
 cabal repl
 ```
 
-Import Deploy.hs
+Week03.Deploy might already be loaded. If not, load it
 
 ```haskell
-import src/week03/Deploy.hs
+:l src/week03/Deploy.hs
 ```
 
 Write the validator to disk
@@ -290,7 +290,7 @@ You can view the script's address
 
 ```
 cat vesting.addr
-addr_test1
+addr_test1wq6...
 ```
 
 ### Use the `give` endpoint
@@ -321,7 +321,14 @@ cardano-cli transaction submit \
 
 These three commands are already written for you in `testnet/give.sh`. You will
 need to edit the `--tx-in` flag in that file. It should be the TxHash and TxIx
-of the UTxO where wallet 1's tADA is sitting.
+of the UTxO where wallet 1's tADA is sitting. Again, you can find it with
+`cardano-cli`.
+
+```bash
+cardano-cli query utxo \
+  --address $(cat 01.addr)
+  --testnet-magic 1097911063
+```
 
 Run the script to build, sign, and submit the transaction
 
@@ -333,12 +340,12 @@ Check the script address to see the transaction
 
 ```bash
 cardano-cli query utxo \
-  --address (cat vesting.addr)
+  --address $(cat vesting.addr)
   --testnet-magic 1097911063
 
 TxHash  TxIx  Amount
 --------------------------------------------------------------------------------
-000...     0  200000000 lovelace + TxOutDatumHash ScriptDataInAlonzoEra "923..."
+e10...     0  200000000 lovelace + TxOutDatumHash ScriptDataInAlonzoEra "923..."
 ```
 
 The script address does indeed have the 200 ADA we gave from wallet 1
@@ -373,8 +380,69 @@ cardano-cli transaction submit \
   --tx-file tx.signed
 ```
 
-`testnet/grab.sh` has these three commands in it already. You will need to
-modify `--tx-in` and `--tx-in-collateral` to be the TxHash and TxIx of the UTxO
-with the 200 tADA at the script address.
+`testnet/grab.sh` has these three commands in it already.
 
-These notes are incomplete. They stop at timestamp 23:47 of Lecture 3, Part 6.
+You will need to modify `--tx-in` to be the TxHash and TxIx of the UTxO with the
+200 tADA at the script address. That can be found with the last command you ran.
+
+You will need to modify `--tx-in-collateral` to be a UTxO you have access to.
+Since wallet 2 is submitting this transaction, it should be a TxHash and TxIx of
+a UTxO they have access to. Find one using the CLI again.
+
+```bash
+cardano-cli query utxo \
+  --address $(cat 02.addr)
+  --testnet-magic 1097911063
+```
+
+You will need to modify `--required-signer-hash` to be the public key hash of
+wallet 2 since they are the beneficiary and the one submitting the grab
+transaction. This should match the beneficiary listed near the end of
+`Deploy.hs`. You can also see it again with the CLI.
+
+```bash
+cardano-cli address key-hash --payment-verification-key-file 02.vkey
+```
+
+Finally, you will need to modify `--invalid-before` to be the current slot. You
+can get the current slot from the CLI
+
+```bash
+cardano-cli query tip --testnet-magic 1097911063
+```
+
+Look for "slot". Copy and paste the number after the `--invalid-before` flag.
+
+With all of that done, you can submit the transaction
+
+```bash
+./grab.sh
+```
+
+If the current time is before the deadline you set in `Deploy.hs` then you'll
+see an error
+
+```
+Script debugging logs: deadline not reached
+```
+
+If you try to run it again later, after the deadline as been reached, you'll see
+a success message
+
+```
+Transaction successfully submitted.
+```
+
+You can now query wallet 2 and see the 200 tADA (minus fees) as one of the
+matching UTxOs.
+
+```bash
+cardano-cli query utxo \
+  --address $(cat 02.addr)
+  --testnet-magic 1097911063
+
+TxHash  TxIx  Amount
+------------------------------------------------
+578...     0  199634559 lovelace + TxOutDatumNone
+9e1...     1  10000000 lovelace + TxOutDatumNone
+```
