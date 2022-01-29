@@ -53,13 +53,13 @@ Make a new directory for the Cardano binary files. This could be anywhere you
 want.
 
 ```bash
-mkdir -p .local/bin/cardano-node
+mkdir ~/cardano-node
 ```
 
 Move the unzipped files to that directory
 
 ```bash
-mv ./* ~/.local/bin/cardano-node
+mv ./* ~/cardano-node
 ```
 
 ### Set Environment Variables
@@ -72,13 +72,17 @@ vim ~/.bashrc
 ```
 
 ```bash
-export PATH="$HOME/.local/bin/cardano-node:$PATH"
+export PATH="$HOME/cardano-node:$PATH"
 ```
 
 While you're editing `.bashrc`, you should also add the following environment
 variable. This variable will be used by `cardano-cli`. It points to the socket
 your node will be running at. You may need to modify the path depending on your
-directory structure.
+directory structure. I'm running my node out of the [week 3 directory of the
+Plutus Pioneer
+Program](https://github.com/input-output-hk/plutus-pioneer-program/tree/037142877d7275d47314af21413d803dc58a1da3/code/week03/testnet).
+This directory already contains all of the configuration files needed to start
+the node
 
 ```bash
 export CARDANO_NODE_SOCKET_PATH="$HOME/plutus-pioneer-program/code/week03/testnet/node.socket"
@@ -96,7 +100,7 @@ source ~/.bashrc
 With the node installed, just do the following steps any time you want to start
 it.
 
-Change into the `testnet` directory for week 3's code.
+Change into the `testnet` directory under week 3.
 
 ```bash
 cd ~/plutus-pioneer-program/code/week03/testnet
