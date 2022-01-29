@@ -25,11 +25,12 @@
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/ppp-notes/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/ppp-notes/resources/css/retype.css?v=1.11.2.696717978795" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/ppp-notes/resources/css/retype.css?v=1.11.2.696734607632" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/ppp-notes/resources/js/config.js?v=1.11.2.696717978795" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/ppp-notes/resources/js/config.js?v=1.11.2.696734607632" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/ppp-notes/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/ppp-notes/resources/js/lunr.js?v=1.11.2.696717978795" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/ppp-notes/resources/js/lunr.js?v=1.11.2.696734607632" defer></script>
+    <script id="prism-js" type="text/javascript" src="/ppp-notes/resources/js/prism.js?v=1.11.2.696734607632" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -191,6 +192,62 @@
 <p>Lecture 3, Part 7</p>
 <p><a href="https://www.youtube.com/watch?v=GGUT2O_0urQ&amp;list=PLNEK_Ejlx3x2zxcfoVGARFExzOHwXFCCL&amp;index=7">Lecture Video
 <svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M15.5 2.25a.75.75 0 01.75-.75h5.5a.75.75 0 01.75.75v5.5a.75.75 0 01-1.5 0V4.06l-6.22 6.22a.75.75 0 11-1.06-1.06L19.94 3h-3.69a.75.75 0 01-.75-.75z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 010 1.5h-8.5a.25.25 0 00-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 00.25-.25v-8.5a.75.75 0 011.5 0v8.5a1.75 1.75 0 01-1.75 1.75H4.25a1.75 1.75 0 01-1.75-1.75V4.25z"/></g></g></svg></a></p>
+<doc-anchor-target id="homework-1">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#homework-1">#</doc-anchor-trigger>
+        <span>Homework 1</span>
+    </h3>
+</doc-anchor-target>
+<p>Homework 1 is to implement an on-chain validator that allows a wallet to lock
+ADA in a contract. The contract has beneficiary addresses and a deadline. Before
+the deadline, only beneficiary 1 should be able to grab the ADA. But after the
+deadline, only beneficiary 2 should be able to grab the ADA.</p>
+<p><a href="https://github.com/input-output-hk/plutus-pioneer-program/blob/037142877d7275d47314af21413d803dc58a1da3/code/week03/src/Week03/Homework1.hs">Homework code
+<svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M15.5 2.25a.75.75 0 01.75-.75h5.5a.75.75 0 01.75.75v5.5a.75.75 0 01-1.5 0V4.06l-6.22 6.22a.75.75 0 11-1.06-1.06L19.94 3h-3.69a.75.75 0 01-.75-.75z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 010 1.5h-8.5a.25.25 0 00-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 00.25-.25v-8.5a.75.75 0 011.5 0v8.5a1.75 1.75 0 01-1.75 1.75H4.25a1.75 1.75 0 01-1.75-1.75V4.25z"/></g></g></svg></a></p>
+<p><a href="https://github.com/travishorn/plutus-pioneer-program/blob/main/code/week03/src/Week03/Homework1.hs">My solution
+<svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M15.5 2.25a.75.75 0 01.75-.75h5.5a.75.75 0 01.75.75v5.5a.75.75 0 01-1.5 0V4.06l-6.22 6.22a.75.75 0 11-1.06-1.06L19.94 3h-3.69a.75.75 0 01-.75-.75z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 010 1.5h-8.5a.25.25 0 00-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 00.25-.25v-8.5a.75.75 0 011.5 0v8.5a1.75 1.75 0 01-1.75 1.75H4.25a1.75 1.75 0 01-1.75-1.75V4.25z"/></g></g></svg></a></p>
+<p>My solution uses guards to match 2 cases:</p>
+<ol>
+<li>Where beneficiary 1 signed and the deadline not reached</li>
+<li>Where beneficiary 2 signed and deadline reached</li>
+</ol>
+<p>Otherwise, false.</p>
+<p>I use <code v-pre>where</code> to define some helper expressions. <code v-pre>signedByBeneficiary1</code> and <code v-pre>2</code>
+are modeled after <code v-pre>signedByBeneficiary</code> in <code v-pre>Vesting.hs</code>. The other expressions
+are taken right out of <code v-pre>Vesting.hs</code> with no changes necessary.</p>
+<p>I use <code v-pre>deadlineReached</code> with the <code v-pre>not</code> function to reverse it when I want to
+check if the deadline has not been reached.</p>
+<p>Here&#x27;s the fixed validator:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">mkValidator :: VestingDatum -&gt; () -&gt; ScriptContext -&gt; Bool
+mkValidator dat () ctx
+  | signedByBeneficiary1 &amp;&amp; not deadlineReached = True
+  | signedByBeneficiary2 &amp;&amp;     deadlineReached = True
+  | otherwise                                   = False
+    where
+      info :: TxInfo
+      info = scriptContextTxInfo ctx
+
+      signedByBeneficiary1 :: Bool
+      signedByBeneficiary1 = txSignedBy info $ unPaymentPubKeyHash $ beneficiary1 dat
+
+      signedByBeneficiary2 :: Bool
+      signedByBeneficiary2 = txSignedBy info $ unPaymentPubKeyHash $ beneficiary2 dat
+
+      deadlineReached :: Bool
+      deadlineReached = contains (from $ deadline dat) $ txInfoValidRange info</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="homework-2">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#homework-2">#</doc-anchor-trigger>
+        <span>Homework 2</span>
+    </h3>
+</doc-anchor-target>
+<p>I haven&#x27;t started homework 2, yet.</p>
+<p><a href="https://github.com/input-output-hk/plutus-pioneer-program/blob/037142877d7275d47314af21413d803dc58a1da3/code/week03/src/Week03/Homework2.hs">Homework code
+<svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M15.5 2.25a.75.75 0 01.75-.75h5.5a.75.75 0 01.75.75v5.5a.75.75 0 01-1.5 0V4.06l-6.22 6.22a.75.75 0 11-1.06-1.06L19.94 3h-3.69a.75.75 0 01-.75-.75z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 010 1.5h-8.5a.25.25 0 00-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 00.25-.25v-8.5a.75.75 0 011.5 0v8.5a1.75 1.75 0 01-1.75 1.75H4.25a1.75 1.75 0 01-1.75-1.75V4.25z"/></g></g></svg></a></p>
+<p><a href="https://github.com/travishorn/plutus-pioneer-program/blob/main/code/week03/src/Week03/Homework2.hs">My solution
+<svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M15.5 2.25a.75.75 0 01.75-.75h5.5a.75.75 0 01.75.75v5.5a.75.75 0 01-1.5 0V4.06l-6.22 6.22a.75.75 0 11-1.06-1.06L19.94 3h-3.69a.75.75 0 01-.75-.75z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 010 1.5h-8.5a.25.25 0 00-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 00.25-.25v-8.5a.75.75 0 011.5 0v8.5a1.75 1.75 0 01-1.75 1.75H4.25a1.75 1.75 0 01-1.75-1.75V4.25z"/></g></g></svg></a></p>
 
 
 
@@ -263,6 +320,6 @@
 
         <div id="docs-overlay-target"></div>
 
-        <script>window.__DOCS__ = { "title": "Homework", icon: "file", hasPrism: false, hasMermaid: false, hasMath: false }</script>
+        <script>window.__DOCS__ = { "title": "Homework", icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
     </body>
 </html>

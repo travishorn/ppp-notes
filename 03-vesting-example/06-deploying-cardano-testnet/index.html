@@ -25,12 +25,12 @@
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/ppp-notes/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/ppp-notes/resources/css/retype.css?v=1.11.2.696717978795" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/ppp-notes/resources/css/retype.css?v=1.11.2.696734607632" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/ppp-notes/resources/js/config.js?v=1.11.2.696717978795" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/ppp-notes/resources/js/config.js?v=1.11.2.696734607632" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/ppp-notes/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/ppp-notes/resources/js/lunr.js?v=1.11.2.696717978795" defer></script>
-    <script id="prism-js" type="text/javascript" src="/ppp-notes/resources/js/prism.js?v=1.11.2.696717978795" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/ppp-notes/resources/js/lunr.js?v=1.11.2.696734607632" defer></script>
+    <script id="prism-js" type="text/javascript" src="/ppp-notes/resources/js/prism.js?v=1.11.2.696734607632" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -407,9 +407,9 @@ nix-shell
 cd ../plutus-pioneer-program/code/week03
 cabal repl</code></pre>
 </doc-codeblock></div>
-<p>Import Deploy.hs</p>
+<p>Week03.Deploy might already be loaded. If not, load it</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-haskell"><code v-pre class="language-haskell">import src/week03/Deploy.hs</code></pre>
+<pre class="language-haskell"><code v-pre class="language-haskell">:l src/week03/Deploy.hs</code></pre>
 </doc-codeblock></div>
 <p>Write the validator to disk</p>
 <div class="codeblock-wrapper"><doc-codeblock>
@@ -426,7 +426,7 @@ cabal repl</code></pre>
 <p>You can view the script&#x27;s address</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-none"><code v-pre class="language-none">cat vesting.addr
-addr_test1</code></pre>
+addr_test1wq6...</code></pre>
 </doc-codeblock></div>
 <doc-anchor-target id="use-the-give-endpoint">
     <h3>
@@ -458,7 +458,13 @@ cardano-cli transaction submit \
 </doc-codeblock></div>
 <p>These three commands are already written for you in <code v-pre>testnet/give.sh</code>. You will
 need to edit the <code v-pre>--tx-in</code> flag in that file. It should be the TxHash and TxIx
-of the UTxO where wallet 1&#x27;s tADA is sitting.</p>
+of the UTxO where wallet 1&#x27;s tADA is sitting. Again, you can find it with
+<code v-pre>cardano-cli</code>.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">cardano-cli query utxo \
+  --address $(cat 01.addr)
+  --testnet-magic 1097911063</code></pre>
+</doc-codeblock></div>
 <p>Run the script to build, sign, and submit the transaction</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-bash"><code v-pre class="language-bash">./give.sh</code></pre>
@@ -466,12 +472,12 @@ of the UTxO where wallet 1&#x27;s tADA is sitting.</p>
 <p>Check the script address to see the transaction</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-bash"><code v-pre class="language-bash">cardano-cli query utxo \
-  --address (cat vesting.addr)
+  --address $(cat vesting.addr)
   --testnet-magic 1097911063
 
 TxHash  TxIx  Amount
 --------------------------------------------------------------------------------
-000...     0  200000000 lovelace + TxOutDatumHash ScriptDataInAlonzoEra &quot;923...&quot;</code></pre>
+e10...     0  200000000 lovelace + TxOutDatumHash ScriptDataInAlonzoEra &quot;923...&quot;</code></pre>
 </doc-codeblock></div>
 <p>The script address does indeed have the 200 ADA we gave from wallet 1</p>
 <doc-anchor-target id="use-the-grab-endpoint">
@@ -506,10 +512,56 @@ cardano-cli transaction submit \
   --testnet-magic 1097911063 \
   --tx-file tx.signed</code></pre>
 </doc-codeblock></div>
-<p><code v-pre>testnet/grab.sh</code> has these three commands in it already. You will need to
-modify <code v-pre>--tx-in</code> and <code v-pre>--tx-in-collateral</code> to be the TxHash and TxIx of the UTxO
-with the 200 tADA at the script address.</p>
-<p>These notes are incomplete. They stop at timestamp 23:47 of Lecture 3, Part 6.</p>
+<p><code v-pre>testnet/grab.sh</code> has these three commands in it already.</p>
+<p>You will need to modify <code v-pre>--tx-in</code> to be the TxHash and TxIx of the UTxO with the
+200 tADA at the script address. That can be found with the last command you ran.</p>
+<p>You will need to modify <code v-pre>--tx-in-collateral</code> to be a UTxO you have access to.
+Since wallet 2 is submitting this transaction, it should be a TxHash and TxIx of
+a UTxO they have access to. Find one using the CLI again.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">cardano-cli query utxo \
+  --address $(cat 02.addr)
+  --testnet-magic 1097911063</code></pre>
+</doc-codeblock></div>
+<p>You will need to modify <code v-pre>--required-signer-hash</code> to be the public key hash of
+wallet 2 since they are the beneficiary and the one submitting the grab
+transaction. This should match the beneficiary listed near the end of
+<code v-pre>Deploy.hs</code>. You can also see it again with the CLI.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">cardano-cli address key-hash --payment-verification-key-file 02.vkey</code></pre>
+</doc-codeblock></div>
+<p>Finally, you will need to modify <code v-pre>--invalid-before</code> to be the current slot. You
+can get the current slot from the CLI</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">cardano-cli query tip --testnet-magic 1097911063</code></pre>
+</doc-codeblock></div>
+<p>Look for &quot;slot&quot;. Copy and paste the number after the <code v-pre>--invalid-before</code> flag.</p>
+<p>With all of that done, you can submit the transaction</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">./grab.sh</code></pre>
+</doc-codeblock></div>
+<p>If the current time is before the deadline you set in <code v-pre>Deploy.hs</code> then you&#x27;ll
+see an error</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">Script debugging logs: deadline not reached</code></pre>
+</doc-codeblock></div>
+<p>If you try to run it again later, after the deadline as been reached, you&#x27;ll see
+a success message</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">Transaction successfully submitted.</code></pre>
+</doc-codeblock></div>
+<p>You can now query wallet 2 and see the 200 tADA (minus fees) as one of the
+matching UTxOs.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">cardano-cli query utxo \
+  --address $(cat 02.addr)
+  --testnet-magic 1097911063
+
+TxHash  TxIx  Amount
+------------------------------------------------
+578...     0  199634559 lovelace + TxOutDatumNone
+9e1...     1  10000000 lovelace + TxOutDatumNone</code></pre>
+</doc-codeblock></div>
 
 
 
