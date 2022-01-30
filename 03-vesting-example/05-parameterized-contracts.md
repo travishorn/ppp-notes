@@ -18,11 +18,12 @@ Lecture 3, Part 5
 ### Parameterized.hs
 
 [Source code
-:icon-link-external](https://github.com/input-output-hk/plutus-pioneer-program/blob/037142877d7275d47314af21413d803dc58a1da3/code/week03/src/Week03/Parameterized.hs)
+:icon-link-external:](https://github.com/input-output-hk/plutus-pioneer-program/blob/037142877d7275d47314af21413d803dc58a1da3/code/week03/src/Week03/Parameterized.hs)
 
 Most of my notes for this part are done as comments directly in source code.
 
-[My commented code :icon-link-external](https://github.com/travishorn/plutus-pioneer-program/blob/main/code/week03/src/Week03/Parameterized.hs)
+[My commented code
+:icon-link-external:](https://github.com/travishorn/plutus-pioneer-program/blob/main/code/week03/src/Week03/Parameterized.hs)
 
 All of the examples so far have a fixed datum type. In `Vesting.hs`, the datum type is always...
 
