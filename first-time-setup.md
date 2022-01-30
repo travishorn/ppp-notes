@@ -51,17 +51,26 @@ Save and close the file
 
 !!!warning
 I don't think that Ubuntu machines have this problem, but on my Arch machine,
-the Nix service had trouble starting because it couldn't find the daemon-socket
-directory it was expecting.
+the Nix service had trouble starting 
 
-If you have the same problem I did, make the daemon-socket directory manually
+Getting the Nix daemon status...
+
+```
+systemctl status nix-daemon
+```
+
+Showed that it was loaded but inactive. The error message indicated that it
+couldn't find the `daemon-socket` directory it was expecting.
+
+If you have the same problem I did, make the `daemon-socket` directory manually
 
 ```bash
 sudo mkdir -p /nix/var/nix/daemon-socket
 ```
 !!!
 
-Reload active sessions and restart the Nix service by rebooting the machine
+Reload active sessions and restart the Nix service. The easiest way to do this
+for me was to reboot the machine
 
 ```bash
 sudo shutdown -r now
@@ -91,15 +100,7 @@ Change into the `plutus-apps` directory
 cd plutus-apps
 ```
 
-Build the Nix environment
-
-```bash
-nix build -f default.nix plutus-apps.haskell.packages.plutus-pab.components.library
-```
-
-It will take around 5-10 minutes. Make sure you see it downloading files from
-hydra.iohk.io. If you don't, that means the binary cache was not set up
-correctly. Go back and make sure you follow all the previous steps correctly.
+It will take around 5-10 minutes. 
 
 Start a Nix Shell
 
@@ -109,8 +110,10 @@ nix-shell
 
 Starting the Nix Shell puts you in a reproducible environment defined by IOHK.
 In order to do this, it needs to have all the tools and packages defined by the
-Nix configuration. The first time you run this, it will take a around 15-20
-minutes to download and build the environment.
+Nix configuration. The first time you run this, it will take a around 20-30
+minutes to download and build the environment. Make sure you see it downloading
+files from hydra.iohk.io. If you don't, that means the binary cache was not set
+up correctly. Go back and make sure you follow all the previous steps correctly.
 
 Now your development environment is set up and you're ready to procede with the
 program. It is important to run this command inside the `plutus-apps` directory
