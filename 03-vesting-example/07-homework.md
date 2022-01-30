@@ -66,10 +66,59 @@ mkValidator dat () ctx
 
 ### Homework 2
 
-I haven't started homework 2, yet.
+Homework 2 is to write a validator that parameterizes the `Vesting.hs`. This
+time the beneficiary and the datum are split into two separate parameters
+instead of a single data type.
 
 [Homework code
 :icon-link-external:](https://github.com/input-output-hk/plutus-pioneer-program/blob/037142877d7275d47314af21413d803dc58a1da3/code/week03/src/Week03/Homework2.hs)
 
 [My solution
 :icon-link-external:](https://github.com/travishorn/plutus-pioneer-program/blob/main/code/week03/src/Week03/Homework2.hs)
+
+The type signature looks like this:
+
+```haskell
+mkValidator :: PaymentPubKeyHash -> POSIXTime -> () -> ScriptContext -> Bool
+```
+
+I wrote the validator by copying from `Vesting.hs` and replacing `dat` (which
+was the custom data type containing both parameters) with two separate
+parameters `beneficiary deadline`.
+
+```haskell
+mkValidator beneficiary deadline () ctx =
+```
+
+The body of the validator is the same as `Vesting.hs`, but with the parameters
+referenced directly instead of through `dat`.
+
+```haskell
+mkValidator beneficiary deadline () ctx =
+  traceIfFalse "beneficiary's signature missing" signedByBeneficiary &&
+  traceIfFalse "deadline not reached" deadlineReached
+    where
+        info :: TxInfo
+        info = scriptContextTxInfo ctx
+
+        signedByBeneficiary :: Bool
+        signedByBeneficiary = txSignedBy info $ unPaymentPubKeyHash $ beneficiary
+
+        deadlineReached :: Bool
+        deadlineReached = contains (from $ deadline) $ txInfoValidRange info
+```
+
+The `typedValidator` is copied almost exactly from `Parameterized.hs`. The only
+change is the parameters passed to `Scripts.wrapValidator` take into account the
+deadline `POSIXTime` parameter.
+
+```haskell
+typedValidator :: PaymentPubKeyHash -> Scripts.TypedValidator Vesting
+typedValidator p = Scripts.mkTypedValidator @Vesting
+    ($$(PlutusTx.compile [|| mkValidator ||]) `PlutusTx.applyCode` PlutusTx.liftCode p)
+    $$(PlutusTx.compile [|| wrap ||])
+  where
+    wrap = Scripts.wrapValidator @POSIXTime @()
+```
+
+The `validator` and `scrAddress` are copied straight from `Parameterized.hs`.
