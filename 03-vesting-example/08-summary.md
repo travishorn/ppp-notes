@@ -10,6 +10,11 @@ order: -8
 
 ## Summary
 
+Lecture 3, Part 8
+
+[Lecture Video
+:icon-link-external:](https://www.youtube.com/watch?v=uyaPtayBRb8&list=PLNEK_Ejlx3x2zxcfoVGARFExzOHwXFCCL&index=8)
+
 In this lecture, we looked at:
 
 - [validation scripts that look at the script context](./02-script-contexts.md)
@@ -19,6 +24,3 @@ In this lecture, we looked at:
 - how to write [parameterized contracts](./05-parameterized-contracts.md)
 - [using the Cardano CLI to interact with Plutus contracts on the
   testnet](./06-deploying-cardano-testnet.md)
-
-[Lecture Video
-:icon-link-external:](https://www.youtube.com/watch?v=uyaPtayBRb8&list=PLNEK_Ejlx3x2zxcfoVGARFExzOHwXFCCL&index=8)
