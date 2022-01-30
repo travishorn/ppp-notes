@@ -25,12 +25,12 @@
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/ppp-notes/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/ppp-notes/resources/css/retype.css?v=1.11.2.696860785002" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/ppp-notes/resources/css/retype.css?v=1.11.2.696864300163" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/ppp-notes/resources/js/config.js?v=1.11.2.696860785002" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/ppp-notes/resources/js/config.js?v=1.11.2.696864300163" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/ppp-notes/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/ppp-notes/resources/js/lunr.js?v=1.11.2.696860785002" defer></script>
-    <script id="prism-js" type="text/javascript" src="/ppp-notes/resources/js/prism.js?v=1.11.2.696860785002" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/ppp-notes/resources/js/lunr.js?v=1.11.2.696864300163" defer></script>
+    <script id="prism-js" type="text/javascript" src="/ppp-notes/resources/js/prism.js?v=1.11.2.696864300163" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -223,16 +223,22 @@ feature that is disabled by default.</p>
         </div>
         <div class="pr-5 ml-3">
 <p>I don&#x27;t think that Ubuntu machines have this problem, but on my Arch machine,
-the Nix service had trouble starting because it couldn&#x27;t find the daemon-socket
-directory it was expecting.</p>
-<p>If you have the same problem I did, make the daemon-socket directory manually</p>
+the Nix service had trouble starting</p>
+<p>Getting the Nix daemon status...</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">systemctl status nix-daemon</code></pre>
+</doc-codeblock></div>
+<p>Showed that it was loaded but inactive. The error message indicated that it
+couldn&#x27;t find the <code v-pre>daemon-socket</code> directory it was expecting.</p>
+<p>If you have the same problem I did, make the <code v-pre>daemon-socket</code> directory manually</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-bash"><code v-pre class="language-bash">sudo mkdir -p /nix/var/nix/daemon-socket</code></pre>
 </doc-codeblock></div>
         </div>
     </div>
 </div>
-<p>Reload active sessions and restart the Nix service by rebooting the machine</p>
+<p>Reload active sessions and restart the Nix service. The easiest way to do this
+for me was to reboot the machine</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-bash"><code v-pre class="language-bash">sudo shutdown -r now</code></pre>
 </doc-codeblock></div>
@@ -267,21 +273,17 @@ have it.</a></p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-bash"><code v-pre class="language-bash">cd plutus-apps</code></pre>
 </doc-codeblock></div>
-<p>Build the Nix environment</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">nix build -f default.nix plutus-apps.haskell.packages.plutus-pab.components.library</code></pre>
-</doc-codeblock></div>
-<p>It will take around 5-10 minutes. Make sure you see it downloading files from
-hydra.iohk.io. If you don&#x27;t, that means the binary cache was not set up
-correctly. Go back and make sure you follow all the previous steps correctly.</p>
+<p>It will take around 5-10 minutes.</p>
 <p>Start a Nix Shell</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-bash"><code v-pre class="language-bash">nix-shell</code></pre>
 </doc-codeblock></div>
 <p>Starting the Nix Shell puts you in a reproducible environment defined by IOHK.
 In order to do this, it needs to have all the tools and packages defined by the
-Nix configuration. The first time you run this, it will take a around 15-20
-minutes to download and build the environment.</p>
+Nix configuration. The first time you run this, it will take a around 20-30
+minutes to download and build the environment. Make sure you see it downloading
+files from hydra.iohk.io. If you don&#x27;t, that means the binary cache was not set
+up correctly. Go back and make sure you follow all the previous steps correctly.</p>
 <p>Now your development environment is set up and you&#x27;re ready to procede with the
 program. It is important to run this command inside the <code v-pre>plutus-apps</code> directory
 every time you want to work with the Plutus Application Framework.</p>
