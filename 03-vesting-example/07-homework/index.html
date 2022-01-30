@@ -25,12 +25,12 @@
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/ppp-notes/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/ppp-notes/resources/css/retype.css?v=1.11.2.696782992699" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/ppp-notes/resources/css/retype.css?v=1.11.2.696825362252" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/ppp-notes/resources/js/config.js?v=1.11.2.696782992699" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/ppp-notes/resources/js/config.js?v=1.11.2.696825362252" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/ppp-notes/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/ppp-notes/resources/js/lunr.js?v=1.11.2.696782992699" defer></script>
-    <script id="prism-js" type="text/javascript" src="/ppp-notes/resources/js/prism.js?v=1.11.2.696782992699" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/ppp-notes/resources/js/lunr.js?v=1.11.2.696825362252" defer></script>
+    <script id="prism-js" type="text/javascript" src="/ppp-notes/resources/js/prism.js?v=1.11.2.696825362252" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -243,11 +243,51 @@ mkValidator dat () ctx
         <span>Homework 2</span>
     </h3>
 </doc-anchor-target>
-<p>I haven&#x27;t started homework 2, yet.</p>
+<p>Homework 2 is to write a validator that parameterizes the <code v-pre>Vesting.hs</code>. This
+time the beneficiary and the datum are split into two separate parameters
+instead of a single data type.</p>
 <p><a href="https://github.com/input-output-hk/plutus-pioneer-program/blob/037142877d7275d47314af21413d803dc58a1da3/code/week03/src/Week03/Homework2.hs">Homework code
 <svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M15.5 2.25a.75.75 0 01.75-.75h5.5a.75.75 0 01.75.75v5.5a.75.75 0 01-1.5 0V4.06l-6.22 6.22a.75.75 0 11-1.06-1.06L19.94 3h-3.69a.75.75 0 01-.75-.75z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 010 1.5h-8.5a.25.25 0 00-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 00.25-.25v-8.5a.75.75 0 011.5 0v8.5a1.75 1.75 0 01-1.75 1.75H4.25a1.75 1.75 0 01-1.75-1.75V4.25z"/></g></g></svg></a></p>
 <p><a href="https://github.com/travishorn/plutus-pioneer-program/blob/main/code/week03/src/Week03/Homework2.hs">My solution
 <svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M15.5 2.25a.75.75 0 01.75-.75h5.5a.75.75 0 01.75.75v5.5a.75.75 0 01-1.5 0V4.06l-6.22 6.22a.75.75 0 11-1.06-1.06L19.94 3h-3.69a.75.75 0 01-.75-.75z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 010 1.5h-8.5a.25.25 0 00-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 00.25-.25v-8.5a.75.75 0 011.5 0v8.5a1.75 1.75 0 01-1.75 1.75H4.25a1.75 1.75 0 01-1.75-1.75V4.25z"/></g></g></svg></a></p>
+<p>The type signature looks like this:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">mkValidator :: PaymentPubKeyHash -&gt; POSIXTime -&gt; () -&gt; ScriptContext -&gt; Bool</code></pre>
+</doc-codeblock></div>
+<p>I wrote the validator by copying from <code v-pre>Vesting.hs</code> and replacing <code v-pre>dat</code> (which
+was the custom data type containing both parameters) with two separate
+parameters <code v-pre>beneficiary deadline</code>.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">mkValidator beneficiary deadline () ctx =</code></pre>
+</doc-codeblock></div>
+<p>The body of the validator is the same as <code v-pre>Vesting.hs</code>, but with the parameters
+referenced directly instead of through <code v-pre>dat</code>.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">mkValidator beneficiary deadline () ctx =
+  traceIfFalse &quot;beneficiary's signature missing&quot; signedByBeneficiary &amp;&amp;
+  traceIfFalse &quot;deadline not reached&quot; deadlineReached
+    where
+        info :: TxInfo
+        info = scriptContextTxInfo ctx
+
+        signedByBeneficiary :: Bool
+        signedByBeneficiary = txSignedBy info $ unPaymentPubKeyHash $ beneficiary
+
+        deadlineReached :: Bool
+        deadlineReached = contains (from $ deadline) $ txInfoValidRange info</code></pre>
+</doc-codeblock></div>
+<p>The <code v-pre>typedValidator</code> is copied almost exactly from <code v-pre>Parameterized.hs</code>. The only
+change is the parameters passed to <code v-pre>Scripts.wrapValidator</code> take into account the
+deadline <code v-pre>POSIXTime</code> parameter.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">typedValidator :: PaymentPubKeyHash -&gt; Scripts.TypedValidator Vesting
+typedValidator p = Scripts.mkTypedValidator @Vesting
+    ($$(PlutusTx.compile [|| mkValidator ||]) `PlutusTx.applyCode` PlutusTx.liftCode p)
+    $$(PlutusTx.compile [|| wrap ||])
+  where
+    wrap = Scripts.wrapValidator @POSIXTime @()</code></pre>
+</doc-codeblock></div>
+<p>The <code v-pre>validator</code> and <code v-pre>scrAddress</code> are copied straight from <code v-pre>Parameterized.hs</code>.</p>
 
 
 
