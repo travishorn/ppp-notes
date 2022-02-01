@@ -25,12 +25,12 @@
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/ppp-notes/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/ppp-notes/resources/css/retype.css?v=1.11.2.696893457786" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/ppp-notes/resources/css/retype.css?v=1.11.2.697055809799" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/ppp-notes/resources/js/config.js?v=1.11.2.696893457786" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/ppp-notes/resources/js/config.js?v=1.11.2.697055809799" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/ppp-notes/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/ppp-notes/resources/js/lunr.js?v=1.11.2.696893457786" defer></script>
-    <script id="prism-js" type="text/javascript" src="/ppp-notes/resources/js/prism.js?v=1.11.2.696893457786" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/ppp-notes/resources/js/lunr.js?v=1.11.2.697055809799" defer></script>
+    <script id="prism-js" type="text/javascript" src="/ppp-notes/resources/js/prism.js?v=1.11.2.697055809799" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -392,6 +392,13 @@ d4f...</code></pre>
 <p>You may also need a time in POSIX. You can use an online converter like
 <a href="https://epochconverter.com">EpochConverter</a>. Enter a human-readable date and
 convert it to a timestamp in milliseconds.</p>
+<p>In the case of week 3&#x27;s <code v-pre>Deploy.hs</code>, make sure to scroll to the bottom and...</p>
+<ul>
+<li>set the beneficiary to wallet 2&#x27;s public key hash</li>
+<li>set the deadline to a POSIX time in the future. Maybe 30-60 minutes out if you
+want to be able to test a grab failing before the deadline and then succeeding
+after</li>
+</ul>
 <doc-anchor-target id="build-the-script">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#build-the-script">#</doc-anchor-trigger>
