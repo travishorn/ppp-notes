@@ -59,7 +59,7 @@ nix-shell
 Then change into this week's directory
 
 ```bash
-cd ../plutus-pioneer-program/code/week03
+cd ~/plutus-pioneer-program/code/week03
 ```
 
 Start a REPL

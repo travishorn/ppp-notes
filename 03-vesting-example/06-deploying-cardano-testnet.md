@@ -266,7 +266,7 @@ code directory.
 ```bash
 cd plutus-apps
 nix-shell
-cd ../plutus-pioneer-program/code/week03
+cd ~/plutus-pioneer-program/code/week03
 cabal repl
 ```
 

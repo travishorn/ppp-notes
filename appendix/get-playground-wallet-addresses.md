@@ -27,7 +27,7 @@ nix-shell
 Change into the week's code directory
 
 ```bash
-cd ../plutus-pioneer-program/code/week03
+cd ~/plutus-pioneer-program/code/week03
 ```
 
 Start the REPL
