@@ -25,12 +25,12 @@
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/ppp-notes/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/ppp-notes/resources/css/retype.css?v=1.11.2.697055809799" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/ppp-notes/resources/css/retype.css?v=1.11.2.697069073155" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/ppp-notes/resources/js/config.js?v=1.11.2.697055809799" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/ppp-notes/resources/js/config.js?v=1.11.2.697069073155" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/ppp-notes/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/ppp-notes/resources/js/lunr.js?v=1.11.2.697055809799" defer></script>
-    <script id="prism-js" type="text/javascript" src="/ppp-notes/resources/js/prism.js?v=1.11.2.697055809799" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/ppp-notes/resources/js/lunr.js?v=1.11.2.697069073155" defer></script>
+    <script id="prism-js" type="text/javascript" src="/ppp-notes/resources/js/prism.js?v=1.11.2.697069073155" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -221,10 +221,14 @@ setup</a> first.</p>
         </div>
     </div>
 </div>
-<p>With those steps out of the way, change directory back into the code for this
-week</p>
+<p>Make sure you&#x27;re in a Nix shell</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">../plutus-pioneer-program/code/week01</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash">cd ~/plutus-apps
+nix-shell</code></pre>
+</doc-codeblock></div>
+<p>Change directory back into the code for this week</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">~/plutus-pioneer-program/code/week01</code></pre>
 </doc-codeblock></div>
 <p>Update Cabal</p>
 <div class="codeblock-wrapper"><doc-codeblock>
@@ -233,6 +237,40 @@ week</p>
 <p>Build the project with Cabal</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-bash"><code v-pre class="language-bash">cabal build</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="starting-a-repl">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#starting-a-repl">#</doc-anchor-trigger>
+        <span>Starting a REPL</span>
+    </h3>
+</doc-anchor-target>
+<p>Make sure you&#x27;re in a Nix shell</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">cd ~/plutus-apps
+nix-shell</code></pre>
+</doc-codeblock></div>
+<p>Change directory back into the code for this week</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">~/plutus-pioneer-program/code/week01</code></pre>
+</doc-codeblock></div>
+<p>Start a REPL</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">cabal repl</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="repl-usage-example">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#repl-usage-example">#</doc-anchor-trigger>
+        <span>REPL Usage Example</span>
+    </h3>
+</doc-anchor-target>
+<p>A Read-Eval-Print-Loop (REPL) lets you interact with modules. For example, you
+could import a Plutus module</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">import PlutusTx</code></pre>
+</doc-codeblock></div>
+<p>And view about one of its datatypes</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">:i Data</code></pre>
 </doc-codeblock></div>
 
 

@@ -25,12 +25,12 @@
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/ppp-notes/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/ppp-notes/resources/css/retype.css?v=1.11.2.697055809799" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/ppp-notes/resources/css/retype.css?v=1.11.2.697069073155" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/ppp-notes/resources/js/config.js?v=1.11.2.697055809799" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/ppp-notes/resources/js/config.js?v=1.11.2.697069073155" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/ppp-notes/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/ppp-notes/resources/js/lunr.js?v=1.11.2.697055809799" defer></script>
-    <script id="prism-js" type="text/javascript" src="/ppp-notes/resources/js/prism.js?v=1.11.2.697055809799" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/ppp-notes/resources/js/lunr.js?v=1.11.2.697069073155" defer></script>
+    <script id="prism-js" type="text/javascript" src="/ppp-notes/resources/js/prism.js?v=1.11.2.697069073155" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -232,7 +232,7 @@ setup</a> first.</p>
 <p>Copy the <code v-pre>tag</code> value (the long string of letters and numbers)</p>
 <p>Change into the <code v-pre>plutus-apps</code> directory</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-bash"><code v-pre class="language-bash">cd ../../../plutus-apps</code></pre>
+<pre class="language-bash"><code v-pre class="language-bash">cd ~/plutus-apps</code></pre>
 </doc-codeblock></div>
 <p>Your file structure may be different so you might have to tweak the command
 above.</p>
@@ -245,19 +245,21 @@ you copied.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-bash"><code v-pre class="language-bash">git checkout [tag]</code></pre>
 </doc-codeblock></div>
-<p>While still in the <code v-pre>plutus-apps</code> repository, start a Nix shell</p>
+<p>While still in the <code v-pre>plutus-apps</code> repository, start a Nix shell. This will take a
+while the first time you run it. It won&#x27;t take as long in subsequent weeks.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-bash"><code v-pre class="language-bash">nix-shell</code></pre>
 </doc-codeblock></div>
-<p>It might take a while to complete the first time.</p>
-<p>Start as many Nix shells as necessary for development. You might need one each
-for:</p>
+<p>Start as many Nix shells as necessary for development; each time starting it
+from <code v-pre>plutus-apps</code>. Some things you might need a Nix shell for include:</p>
 <ul>
-<li>starting the playground server</li>
-<li>starting the playground client</li>
-<li>building and serving Haddock docs</li>
-<li>starting a cabal REPL inside the appropriate week project</li>
-<li>building the cabal project</li>
+<li><a href="../appendix/run-plutus-playground-locally/">starting the playground server</a></li>
+<li><a href="../appendix/run-plutus-playground-locally/">starting the playground client</a></li>
+<li><a href="../appendix/run-haddock-docs-locally/">building and serving Haddock docs</a></li>
+<li><a href="../01-eutxo-english-auction/03-building-example-code/">building a cabal
+project</a></li>
+<li><a href="../01-eutxo-english-auction/03-building-example-code/#starting-a-repl">starting a cabal REPL inside the appropriate week
+project</a></li>
 </ul>
 
 
