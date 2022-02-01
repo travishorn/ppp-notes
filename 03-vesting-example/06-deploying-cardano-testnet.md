@@ -249,6 +249,13 @@ You may also need a time in POSIX. You can use an online converter like
 [EpochConverter](https://epochconverter.com). Enter a human-readable date and
 convert it to a timestamp in milliseconds.
 
+In the case of week 3's `Deploy.hs`, make sure to scroll to the bottom and...
+
+- set the beneficiary to wallet 2's public key hash
+- set the deadline to a POSIX time in the future. Maybe 30-60 minutes out if you
+  want to be able to test a grab failing before the deadline and then succeeding
+  after
+
 ### Build the Script
 
 First, you need write the script file to disk.
