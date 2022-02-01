@@ -59,7 +59,7 @@ Copy the `tag` value (the long string of letters and numbers)
 Change into the `plutus-apps` directory
 
 ```bash
-cd ../../../plutus-apps
+cd ~/plutus-apps
 ```
 
 Your file structure may be different so you might have to tweak the command
@@ -78,16 +78,41 @@ you copied.
 git checkout [tag]
 ```
 
-While still in the `plutus-apps` repository, start a Nix shell
+While still in the `plutus-apps` repository, start a Nix shell. This will take a
+while the first time you run it. It won't take as long in subsequent weeks.
 
 ```bash
 nix-shell
 ```
 
-It might take a while to complete the first time.
+Update the Cabal project
 
-Start as many Nix shells as necessary for development. You might need one each
-for:
+```bash
+cabal update
+```
+
+Build the Cabal project
+
+```bash
+cabal build
+```
+
+Change back into the directory for this week
+
+```bash
+~/plutus-pioneer-program/code/week01
+```
+
+Create a symlink to the `dist-newstyle` directory that `cabal build` created in
+`plutus-apps`. This will make `cabal repl` start quicker because it can reuse
+much of the already-downloaded and built Cabal environment
+
+```bash
+ln -s ~/plutus-apps/dist-newstyle dist-newstyle
+```
+
+Start as many Nix shells as necessary for development; each time starting it
+from `plutus-apps`. You might need one each for:
 
 - starting the playground server
 - starting the playground client
