@@ -85,18 +85,6 @@ while the first time you run it. It won't take as long in subsequent weeks.
 nix-shell
 ```
 
-Update the Cabal project
-
-```bash
-cabal update
-```
-
-Build the Cabal project
-
-```bash
-cabal build
-```
-
 Change back into the directory for this week
 
 ```bash
