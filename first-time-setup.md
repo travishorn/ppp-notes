@@ -67,6 +67,12 @@ If you have the same problem I did, make the `daemon-socket` directory manually
 ```bash
 sudo mkdir -p /nix/var/nix/daemon-socket
 ```
+
+Then start the Nix daemon
+
+```bash
+sudo systemctl enable --now nix-daemon
+```
 !!!
 
 Reload active sessions and restart the Nix service. The easiest way to do this
