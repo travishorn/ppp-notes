@@ -85,25 +85,13 @@ while the first time you run it. It won't take as long in subsequent weeks.
 nix-shell
 ```
 
-Change back into the directory for this week
-
-```bash
-~/plutus-pioneer-program/code/week01
-```
-
-Create a symlink to the `dist-newstyle` directory that `cabal build` created in
-`plutus-apps`. This will make `cabal repl` start quicker because it can reuse
-much of the already-downloaded and built Cabal environment
-
-```bash
-ln -s ~/plutus-apps/dist-newstyle dist-newstyle
-```
-
 Start as many Nix shells as necessary for development; each time starting it
-from `plutus-apps`. You might need one each for:
+from `plutus-apps`. Some things you might need a Nix shell for include:
 
-- starting the playground server
-- starting the playground client
-- building and serving Haddock docs
-- starting a cabal REPL inside the appropriate week project
-- building the cabal project
+- [starting the playground server](./appendix/run-plutus-playground-locally.md)
+- [starting the playground client](./appendix/run-plutus-playground-locally.md)
+- [building and serving Haddock docs](./appendix/run-haddock-docs-locally.md)
+- [building a cabal
+  project](./01-eutxo-english-auction/03-building-example-code.md)
+- [starting a cabal REPL inside the appropriate week
+  project](./01-eutxo-english-auction/03-building-example-code.md#starting-a-repl)

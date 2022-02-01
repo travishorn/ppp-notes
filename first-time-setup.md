@@ -121,18 +121,6 @@ minutes to download and build the environment. Make sure you see it downloading
 files from hydra.iohk.io. If you don't, that means the binary cache was not set
 up correctly. Go back and make sure you follow all the previous steps correctly.
 
-Update the Cabal project
-
-```bash
-cabal update
-```
-
-Build the Cabal project
-
-```bash
-cabal build
-```
-
 Now your development environment is set up and you're ready to procede with the
 program. It is important to run this command inside the `plutus-apps` directory
 every time you want to work with the Plutus Application Framework.
