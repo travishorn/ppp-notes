@@ -37,11 +37,17 @@ setup](../first-time-setup.md) and the [weekly
 setup](../weekly-setup.md) first.
 !!!
 
-With those steps out of the way, change directory back into the code for this
-week
+Make sure you're in a Nix shell
 
 ```bash
-../plutus-pioneer-program/code/week01
+cd ~/plutus-apps
+nix-shell
+```
+
+Change directory back into the code for this week
+
+```bash
+~/plutus-pioneer-program/code/week01
 ```
 
 Update Cabal
@@ -54,4 +60,40 @@ Build the project with Cabal
 
 ```bash
 cabal build
+```
+
+### Starting a REPL
+
+Make sure you're in a Nix shell
+
+```bash
+cd ~/plutus-apps
+nix-shell
+```
+
+Change directory back into the code for this week
+
+```bash
+~/plutus-pioneer-program/code/week01
+```
+
+Start a REPL
+
+```bash
+cabal repl
+```
+
+### REPL Usage Example
+
+A Read-Eval-Print-Loop (REPL) lets you interact with modules. For example, you
+could import a Plutus module
+
+```haskell
+import PlutusTx
+```
+
+And view about one of its datatypes
+
+```haskell
+:i Data
 ```
