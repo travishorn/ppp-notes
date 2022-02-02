@@ -15,6 +15,20 @@ Lecture 3, Part 5
 [Lecture Video
 :icon-link-external:](https://www.youtube.com/watch?v=XqFILXV_ACM&list=PLNEK_Ejlx3x2zxcfoVGARFExzOHwXFCCL&index=5)
 
+### Benefits of Parameterized Contracts
+
+A smart contract you write will have one script address. If deployed,
+`Vesting.hs` - which allows people to lock ADA away for specific beneficiaries
+at specific deadlines - could theoretically be used by millions of people and
+have millions of UTxOs available to it. When a beneficiary wants to grab ADA out
+of it, the script must first filter through all of the millions of UTxOs to find
+the one (or few) that match it.
+
+Parameterizing the contract is a more efficient approach. By parameterizing, the
+contract code accepts a beneficiary and a deadline as parameters when building
+the script. This way, each vesting contract is separate. Each is a distinct
+script with a different script address.!
+
 ### Parameterized.hs
 
 [Source code
