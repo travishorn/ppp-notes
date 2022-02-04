@@ -25,12 +25,12 @@
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/ppp-notes/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/ppp-notes/resources/css/retype.css?v=1.11.2.697260883032" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/ppp-notes/resources/css/retype.css?v=1.11.2.697262596490" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/ppp-notes/resources/js/config.js?v=1.11.2.697260883032" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/ppp-notes/resources/js/config.js?v=1.11.2.697262596490" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/ppp-notes/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/ppp-notes/resources/js/lunr.js?v=1.11.2.697260883032" defer></script>
-    <script id="prism-js" type="text/javascript" src="/ppp-notes/resources/js/prism.js?v=1.11.2.697260883032" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/ppp-notes/resources/js/lunr.js?v=1.11.2.697262596490" defer></script>
+    <script id="prism-js" type="text/javascript" src="/ppp-notes/resources/js/prism.js?v=1.11.2.697262596490" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -225,7 +225,8 @@ foo
 foo</code></pre>
 </doc-codeblock></div>
 <p><code v-pre>foo</code> will always return the same number. We don&#x27;t need to know what the code
-inside it does to know that. If we give a function the same arguments, it will always return the same result. Side-effects cannot happen.</p>
+inside it does to know that. If we give a function the same arguments, it will
+always return the same result. Side-effects cannot happen.</p>
 <doc-anchor-target id="the-io-monad">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#the-io-monad">#</doc-anchor-trigger>
@@ -335,7 +336,8 @@ toUpper :: Char -&gt; Char
 toUpper 'q'
 'Q'</code></pre>
 </doc-codeblock></div>
-<p>Since a <code v-pre>String</code> is just a list of <code v-pre>Char</code>s, we can <code v-pre>map</code> over a <code v-pre>String</code> with <code v-pre>toUpper</code>.</p>
+<p>Since a <code v-pre>String</code> is just a list of <code v-pre>Char</code>s, we can <code v-pre>map</code> over a <code v-pre>String</code> with
+<code v-pre>toUpper</code>.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-haskell"><code v-pre class="language-haskell">:t map toUpper
 map toUpper :: [Char] -&gt; [Char]
@@ -376,7 +378,8 @@ World</code></pre>
         <span>&gt;&gt;= (Bind)</span>
     </h3>
 </doc-anchor-target>
-<p>If you need to use the result of the first action, you can use bind <code v-pre>&gt;&gt;=</code>. The type signature must match this:</p>
+<p>If you need to use the result of the first action, you can use bind <code v-pre>&gt;&gt;=</code>. The
+type signature must match this:</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-haskell"><code v-pre class="language-haskell">:t (&gt;&gt;=)
 (&gt;&gt;=) :: Monad m =&gt; m a -&gt; (a -&gt; m b) -&gt; m b</code></pre>
@@ -522,8 +525,11 @@ Left &quot;Haskell&quot;
 Right 42 :: Either String Int
 Right 42</code></pre>
 </doc-codeblock></div>
-<p>The problem with <code v-pre>Maybe</code> is that when there&#x27;s an error, only <code v-pre>Nothing</code> is returned. There&#x27;s no place for an error message. We can use <code v-pre>Either</code> to solve that problem.</p>
-<p>The convention is the <code v-pre>Left</code> corresponds to an error while <code v-pre>Right</code> corresponds to the expected value.</p>
+<p>The problem with <code v-pre>Maybe</code> is that when there&#x27;s an error, only <code v-pre>Nothing</code> is
+returned. There&#x27;s no place for an error message. We can use <code v-pre>Either</code> to solve
+that problem.</p>
+<p>The convention is the <code v-pre>Left</code> corresponds to an error while <code v-pre>Right</code> corresponds
+to the expected value.</p>
 <p>I wrote more notes as comments in the file.</p>
 <p><a href="https://github.com/travishorn/plutus-pioneer-program/blob/main/code/week04/src/Week04/Either.hs">My commented code
 <svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M15.5 2.25a.75.75 0 01.75-.75h5.5a.75.75 0 01.75.75v5.5a.75.75 0 01-1.5 0V4.06l-6.22 6.22a.75.75 0 11-1.06-1.06L19.94 3h-3.69a.75.75 0 01-.75-.75z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 010 1.5h-8.5a.25.25 0 00-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 00.25-.25v-8.5a.75.75 0 011.5 0v8.5a1.75 1.75 0 01-1.75 1.75H4.25a1.75 1.75 0 01-1.75-1.75V4.25z"/></g></g></svg></a></p>
@@ -586,7 +592,8 @@ class Functor f =&gt; Applicative f where
 -- more info</code></pre>
 </doc-codeblock></div>
 <p>Notice that <code v-pre>pure</code> has the same signature as Monad&#x27;s <code v-pre>return</code>.</p>
-<p>The standard way to implement Functor and Applicative is to import helper functions from <code v-pre>Control.Monad</code></p>
+<p>The standard way to implement Functor and Applicative is to import helper
+functions from <code v-pre>Control.Monad</code></p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-haskell"><code v-pre class="language-haskell">instance Functor Writer where
     fmap = liftM
@@ -605,7 +612,8 @@ instance Monad Writer where
         <span>Superpowers</span>
     </h3>
 </doc-anchor-target>
-<p>Another way to think about monads is that they are a way to do a computation withe a side-effect or a superpower.</p>
+<p>Another way to think about monads is that they are a way to do a computation
+withe a side-effect or a superpower.</p>
 <p>IO&#x27;s superpower is having real-world side-effects like...</p>
 <ul>
 <li>keyboard or file input</li>
@@ -648,7 +656,9 @@ more simple:</p>
     m &lt;- mz
     return k + l + m</code></pre>
 </doc-codeblock></div>
-<p>This does the same as the first example, just with some syntactic sugar. It&#x27;s a matter of taste. For smaller number of binds, people tend to write them explicitly. For larger number of binds, they use <code v-pre>do</code>.</p>
+<p>This does the same as the first example, just with some syntactic sugar. It&#x27;s a
+matter of taste. For smaller number of binds, people tend to write them
+explicitly. For larger number of binds, they use <code v-pre>do</code>.</p>
 <p>You can also use <code v-pre>let</code> with this notation</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-haskell"><code v-pre class="language-haskell">threeInts' mx my mz = do
