@@ -77,6 +77,12 @@ Change directory back into the code for this week
 ~/plutus-pioneer-program/code/week01
 ```
 
+Update the Cabal package
+
+```bash
+cabal update
+```
+
 Start a REPL
 
 ```bash

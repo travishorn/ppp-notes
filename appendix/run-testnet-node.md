@@ -3,7 +3,7 @@ label: Run a Testnet Node
 author:
   name: Travis Horn
   email: travis@travishorn.com
-order: -8
+order: -9
 ---
 
 # Run a Testnet Node

@@ -3,7 +3,7 @@ label: Run Plutus Playground Locally
 author:
   name: Travis Horn
   email: travis@travishorn.com
-order: -7
+order: -8
 ---
 
 # Run Plutus Playground Locally
