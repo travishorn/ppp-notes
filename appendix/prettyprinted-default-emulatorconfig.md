@@ -15,7 +15,6 @@ import Plutus.Trace.Emulator
 import Data.Default
 
 def :: EmulatorConfig
-def :: EmulatorConfig
 EmulatorConfig {
   _initialChainState = Left (
     fromList [
