@@ -25,11 +25,12 @@
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/ppp-notes/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/ppp-notes/resources/css/retype.css?v=1.11.2.697262596490" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/ppp-notes/resources/css/retype.css?v=1.11.2.697308542779" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/ppp-notes/resources/js/config.js?v=1.11.2.697262596490" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/ppp-notes/resources/js/config.js?v=1.11.2.697308542779" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/ppp-notes/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/ppp-notes/resources/js/lunr.js?v=1.11.2.697262596490" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/ppp-notes/resources/js/lunr.js?v=1.11.2.697308542779" defer></script>
+    <script id="prism-js" type="text/javascript" src="/ppp-notes/resources/js/prism.js?v=1.11.2.697308542779" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -191,6 +192,88 @@
 <p>Lecture 4, Part 5</p>
 <p><a href="https://www.youtube.com/watch?v=sxRLzR0jdiY&amp;list=PLNEK_Ejlx3x230-g-U02issX5BiWAgmSi&amp;index=5">Lecture Video
 <svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M15.5 2.25a.75.75 0 01.75-.75h5.5a.75.75 0 01.75.75v5.5a.75.75 0 01-1.5 0V4.06l-6.22 6.22a.75.75 0 11-1.06-1.06L19.94 3h-3.69a.75.75 0 01-.75-.75z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 010 1.5h-8.5a.25.25 0 00-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 00.25-.25v-8.5a.75.75 0 011.5 0v8.5a1.75 1.75 0 01-1.75 1.75H4.25a1.75 1.75 0 01-1.75-1.75V4.25z"/></g></g></svg></a></p>
+<doc-anchor-target id="homework">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#homework">#</doc-anchor-trigger>
+        <span>Homework</span>
+    </h3>
+</doc-anchor-target>
+<p><a href="https://github.com/input-output-hk/plutus-pioneer-program/blob/f3102346284eca5bd9dbf40686d5a227d71620c7/code/week04/src/Week04/Homework.hs">Homework contract
+<svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M15.5 2.25a.75.75 0 01.75-.75h5.5a.75.75 0 01.75.75v5.5a.75.75 0 01-1.5 0V4.06l-6.22 6.22a.75.75 0 11-1.06-1.06L19.94 3h-3.69a.75.75 0 01-.75-.75z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 010 1.5h-8.5a.25.25 0 00-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 00.25-.25v-8.5a.75.75 0 011.5 0v8.5a1.75 1.75 0 01-1.75 1.75H4.25a1.75 1.75 0 01-1.75-1.75V4.25z"/></g></g></svg></a></p>
+<p><a href="https://github.com/travishorn/plutus-pioneer-program/blob/main/code/week04/src/Week04/Homework.hs">My solution
+<svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M15.5 2.25a.75.75 0 01.75-.75h5.5a.75.75 0 01.75.75v5.5a.75.75 0 01-1.5 0V4.06l-6.22 6.22a.75.75 0 11-1.06-1.06L19.94 3h-3.69a.75.75 0 01-.75-.75z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 010 1.5h-8.5a.25.25 0 00-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 00.25-.25v-8.5a.75.75 0 011.5 0v8.5a1.75 1.75 0 01-1.75 1.75H4.25a1.75 1.75 0 01-1.75-1.75V4.25z"/></g></g></svg></a></p>
+<p>The homework this week is to implement an EmulatorTrace where wallet 1 pays
+wallet 2 twice for amounts that are specified when running the trace.</p>
+<p>The solution I came up with was:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">-- Need functions from this module to work with wallets
+import Wallet.Emulator.Wallet
+
+payTrace :: Integer -&gt; Integer -&gt; EmulatorTrace ()
+
+-- Use do notation to bind a sequence of monadic actions
+payTrace x y = do
+    -- Activate the contract with wallet 1 and bind it's handle to h1
+    h1 &lt;- activateContractWallet (knownWallet 1) payContract
+
+    -- Call the pay endpoint with wallet 1. Params are:
+    -- ppRecipient = the pub key hash for wallet 2
+    -- ppLovelace  = the first value passed in when running the trace
+    callEndpoint @&quot;pay&quot; h1 $ PayParams
+        { ppRecipient = mockWalletPaymentPubKeyHash $ knownWallet 2
+        , ppLovelace  = x
+        }
+
+    -- Wait 1 slot
+    void $ Emulator.waitNSlots 1
+
+    -- Call the pay endpoint again. This time ppLovelace is the 2nd value passed
+    -- in when running the trace
+    callEndpoint @&quot;pay&quot; h1 $ PayParams
+        { ppRecipient = mockWalletPaymentPubKeyHash $ knownWallet 2
+        , ppLovelace  = y
+        }
+
+    -- Wait 2 more slots to let the transactions finalize
+    void $ Emulator.waitNSlots 2</code></pre>
+</doc-codeblock></div>
+<p>This works great with the given <code v-pre>payContract</code> when there are no errors.</p>
+<p>The second part of the homework was to ensure that the script would continue to
+pay wallet 2 the second amount even if the first failed. For that, I had to
+modify <code v-pre>payContract</code>:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">-- In addition to Text, we need unpack when handling the error
+import Data.Text             (Text, unpack)
+
+payContract :: Contract () PaySchema Text ()
+payContract = do
+    pp &lt;- awaitPromise $ endpoint @&quot;pay&quot; return
+    let tx = mustPayToPubKey (ppRecipient pp) $ lovelaceValueOf $ ppLovelace pp
+
+    -- Make sure the contract doesn't stop when an error occurs. Catch and
+    -- handle the error. This lets the script continue running even if the first
+    -- pay errors with insufficient funds
+    handleError (\err -&gt; Contract.logError $ &quot;caught: &quot; ++ unpack err) $
+      void $ submitTx tx
+
+    payContract</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="summary">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#summary">#</doc-anchor-trigger>
+        <span>Summary</span>
+    </h3>
+</doc-anchor-target>
+<p>In this lecture, we learned about</p>
+<ul>
+<li><a href="../02-monads/">monads</a> - how they work and why they&#x27;re important</li>
+<li><a href="../03-emulatortrace-monad/">the EmulatorTrace monad</a> - scripting scenarios
+instead of using the GUI Playground</li>
+<li><a href="../04-contract-monad/">the Contract monad</a> - writing off-chain code</li>
+</ul>
+<p>You can do much more with these monads that we haven&#x27;t covered. Basically
+anything you could do with the Cardano CLI. Things like querying the blockchain,
+constructing transactions, submitting transactions, etc.</p>
 
 
 
@@ -263,6 +346,6 @@
 
         <div id="docs-overlay-target"></div>
 
-        <script>window.__DOCS__ = { "title": "Homework & Summary", icon: "file", hasPrism: false, hasMermaid: false, hasMath: false }</script>
+        <script>window.__DOCS__ = { "title": "Homework & Summary", icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
     </body>
 </html>

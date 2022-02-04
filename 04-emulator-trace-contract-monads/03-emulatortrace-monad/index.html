@@ -25,12 +25,12 @@
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/ppp-notes/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/ppp-notes/resources/css/retype.css?v=1.11.2.697262596490" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/ppp-notes/resources/css/retype.css?v=1.11.2.697308542779" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/ppp-notes/resources/js/config.js?v=1.11.2.697262596490" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/ppp-notes/resources/js/config.js?v=1.11.2.697308542779" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/ppp-notes/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/ppp-notes/resources/js/lunr.js?v=1.11.2.697262596490" defer></script>
-    <script id="prism-js" type="text/javascript" src="/ppp-notes/resources/js/prism.js?v=1.11.2.697262596490" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/ppp-notes/resources/js/lunr.js?v=1.11.2.697308542779" defer></script>
+    <script id="prism-js" type="text/javascript" src="/ppp-notes/resources/js/prism.js?v=1.11.2.697308542779" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -195,8 +195,7 @@
 <p>One of the important monads in Plutus is the <code v-pre>EmulatorTrace</code> monad. With this
 monad, you can test out Plutus code without having to start a Plutus Playground,
 copy &amp; pasting a contract into it, and setting up a simulation through the GUI.</p>
-<p>It&#x27;s defined in <a href="https://playground.plutus.iohkdev.io/doc/haddock/plutus-contract/html/Plutus-Trace-Emulator.html">the <code v-pre>Plutus.Trace.Emulator</code>
-package in <code v-pre>plutus-contract</code>
+<p>It&#x27;s defined in <a href="https://playground.plutus.iohkdev.io/doc/haddock/plutus-contract/html/Plutus-Trace-Emulator.html">the <code v-pre>Plutus.Trace.Emulator</code> package in <code v-pre>plutus-contract</code>
 <svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M15.5 2.25a.75.75 0 01.75-.75h5.5a.75.75 0 01.75.75v5.5a.75.75 0 01-1.5 0V4.06l-6.22 6.22a.75.75 0 11-1.06-1.06L19.94 3h-3.69a.75.75 0 01-.75-.75z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 010 1.5h-8.5a.25.25 0 00-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 00.25-.25v-8.5a.75.75 0 011.5 0v8.5a1.75 1.75 0 01-1.75 1.75H4.25a1.75 1.75 0 01-1.75-1.75V4.25z"/></g></g></svg></a>.</p>
 <p>The way to run an emulator trace is by calling <a href="https://playground.plutus.iohkdev.io/doc/haddock/plutus-contract/html/Plutus-Trace-Emulator.html#v:runEmulatorTrace"><code v-pre>runEmulatorTrace</code>
 <svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M15.5 2.25a.75.75 0 01.75-.75h5.5a.75.75 0 01.75.75v5.5a.75.75 0 01-1.5 0V4.06l-6.22 6.22a.75.75 0 11-1.06-1.06L19.94 3h-3.69a.75.75 0 01-.75-.75z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 010 1.5h-8.5a.25.25 0 00-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 00.25-.25v-8.5a.75.75 0 011.5 0v8.5a1.75 1.75 0 01-1.75 1.75H4.25a1.75 1.75 0 01-1.75-1.75V4.25z"/></g></g></svg></a></p>
@@ -248,7 +247,10 @@ import Data.Default</code></pre>
 <p>In a moment we&#x27;ll need to pass an <code v-pre>EmulatorConfig</code> to <code v-pre>runEmulatorTrace</code>. We can
 use the <a href="../../appendix/prettyprinted-default-emulatorconfig/">default
 configuration</a>.</p>
-<p>We&#x27;ll also need to pass an emulator trace. We haven&#x27;t look at emulator traces yet. But you can see from <code v-pre>runEmulatorTrace</code>&#x27;s info that <code v-pre>EmulatorTrace</code> is a monad. Since we know it&#x27;s a monad, we know we can use the simplest emulator trace we can do is <code v-pre>return ()</code>.</p>
+<p>We&#x27;ll also need to pass an emulator trace. We haven&#x27;t look at emulator traces
+yet. But you can see from <code v-pre>runEmulatorTrace</code>&#x27;s info that <code v-pre>EmulatorTrace</code> is a
+monad. Since we know it&#x27;s a monad, we know we can use the simplest emulator
+trace we can do is <code v-pre>return ()</code>.</p>
 <doc-anchor-target id="runemulatortrace">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#runemulatortrace">#</doc-anchor-trigger>
