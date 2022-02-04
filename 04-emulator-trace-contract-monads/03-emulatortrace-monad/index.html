@@ -25,11 +25,12 @@
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/ppp-notes/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/ppp-notes/resources/css/retype.css?v=1.11.2.697240354021" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/ppp-notes/resources/css/retype.css?v=1.11.2.697260883032" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/ppp-notes/resources/js/config.js?v=1.11.2.697240354021" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/ppp-notes/resources/js/config.js?v=1.11.2.697260883032" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/ppp-notes/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/ppp-notes/resources/js/lunr.js?v=1.11.2.697240354021" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/ppp-notes/resources/js/lunr.js?v=1.11.2.697260883032" defer></script>
+    <script id="prism-js" type="text/javascript" src="/ppp-notes/resources/js/prism.js?v=1.11.2.697260883032" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -191,6 +192,173 @@
 <p>Lecture 4, Part 3</p>
 <p><a href="https://www.youtube.com/watch?v=qoUfgaHs1CI&amp;list=PLNEK_Ejlx3x230-g-U02issX5BiWAgmSi&amp;index=3">Lecture Video
 <svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M15.5 2.25a.75.75 0 01.75-.75h5.5a.75.75 0 01.75.75v5.5a.75.75 0 01-1.5 0V4.06l-6.22 6.22a.75.75 0 11-1.06-1.06L19.94 3h-3.69a.75.75 0 01-.75-.75z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 010 1.5h-8.5a.25.25 0 00-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 00.25-.25v-8.5a.75.75 0 011.5 0v8.5a1.75 1.75 0 01-1.75 1.75H4.25a1.75 1.75 0 01-1.75-1.75V4.25z"/></g></g></svg></a></p>
+<p>One of the important monads in Plutus is the <code v-pre>EmulatorTrace</code> monad. With this
+monad, you can test out Plutus code without having to start a Plutus Playground,
+copy &amp; pasting a contract into it, and setting up a simulation through the GUI.</p>
+<p>It&#x27;s defined in <a href="https://playground.plutus.iohkdev.io/doc/haddock/plutus-contract/html/Plutus-Trace-Emulator.html">the <code v-pre>Plutus.Trace.Emulator</code>
+package in <code v-pre>plutus-contract</code>
+<svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M15.5 2.25a.75.75 0 01.75-.75h5.5a.75.75 0 01.75.75v5.5a.75.75 0 01-1.5 0V4.06l-6.22 6.22a.75.75 0 11-1.06-1.06L19.94 3h-3.69a.75.75 0 01-.75-.75z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 010 1.5h-8.5a.25.25 0 00-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 00.25-.25v-8.5a.75.75 0 011.5 0v8.5a1.75 1.75 0 01-1.75 1.75H4.25a1.75 1.75 0 01-1.75-1.75V4.25z"/></g></g></svg></a>.</p>
+<p>The way to run an emulator trace is by calling <a href="https://playground.plutus.iohkdev.io/doc/haddock/plutus-contract/html/Plutus-Trace-Emulator.html#v:runEmulatorTrace"><code v-pre>runEmulatorTrace</code>
+<svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M15.5 2.25a.75.75 0 01.75-.75h5.5a.75.75 0 01.75.75v5.5a.75.75 0 01-1.5 0V4.06l-6.22 6.22a.75.75 0 11-1.06-1.06L19.94 3h-3.69a.75.75 0 01-.75-.75z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 010 1.5h-8.5a.25.25 0 00-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 00.25-.25v-8.5a.75.75 0 011.5 0v8.5a1.75 1.75 0 01-1.75 1.75H4.25a1.75 1.75 0 01-1.75-1.75V4.25z"/></g></g></svg></a></p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">runEmulatorTrace :: EmulatorConfig -&gt;
+                    EmulatorTrace () -&gt;
+                    ([EmulatorEvent], Maybe EmulatorErr, EmulatorState)</code></pre>
+</doc-codeblock></div>
+<p>The first argument is an <a href="https://playground.plutus.iohkdev.io/doc/haddock/plutus-contract/html/Plutus-Trace-Emulator.html#t:EmulatorConfig"><code v-pre>EmulatorConfig</code>
+<svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M15.5 2.25a.75.75 0 01.75-.75h5.5a.75.75 0 01.75.75v5.5a.75.75 0 01-1.5 0V4.06l-6.22 6.22a.75.75 0 11-1.06-1.06L19.94 3h-3.69a.75.75 0 01-.75-.75z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 010 1.5h-8.5a.25.25 0 00-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 00.25-.25v-8.5a.75.75 0 011.5 0v8.5a1.75 1.75 0 01-1.75 1.75H4.25a1.75 1.75 0 01-1.75-1.75V4.25z"/></g></g></svg></a></p>
+<p>The constructor for this config contains 3 items:</p>
+<ul>
+<li><code v-pre>_initialChainState</code></li>
+<li><code v-pre>_slotConfig</code></li>
+<li><code v-pre>_feeConfig</code></li>
+</ul>
+<p>Let&#x27;s look at <a href="https://playground.plutus.iohkdev.io/doc/haddock/plutus-contract/html/Wallet-Emulator-Stream.html#t:InitialChainState">the <code v-pre>InitialChainState</code> type
+<svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M15.5 2.25a.75.75 0 01.75-.75h5.5a.75.75 0 01.75.75v5.5a.75.75 0 01-1.5 0V4.06l-6.22 6.22a.75.75 0 11-1.06-1.06L19.94 3h-3.69a.75.75 0 01-.75-.75z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 010 1.5h-8.5a.25.25 0 00-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 00.25-.25v-8.5a.75.75 0 011.5 0v8.5a1.75 1.75 0 01-1.75 1.75H4.25a1.75 1.75 0 01-1.75-1.75V4.25z"/></g></g></svg></a></p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">type InitialChainState = Either InitialDistribution TxPool</code></pre>
+</doc-codeblock></div>
+<p>It can take either an <code v-pre>InitialDistribution</code> or a <code v-pre>TxPool</code>.</p>
+<p><code v-pre>InitialDistribution</code> is a map of a wallet value. It specified what wallets you
+want to emulate and what values they contain (initial funding).</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">type InitialDistribution = Map Wallet Value</code></pre>
+</doc-codeblock></div>
+<p>You could also use <code v-pre>TxPool</code> instead to define transactions that have &quot;happened&quot;
+before the emulation.</p>
+<p>The second item in the <code v-pre>EmulatorConfig</code> constructor is a <a href="https://playground.plutus.iohkdev.io/doc/haddock/plutus-ledger/html/Ledger-TimeSlot.html#t:SlotConfig"><code v-pre>SlotConfig</code>
+<svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M15.5 2.25a.75.75 0 01.75-.75h5.5a.75.75 0 01.75.75v5.5a.75.75 0 01-1.5 0V4.06l-6.22 6.22a.75.75 0 11-1.06-1.06L19.94 3h-3.69a.75.75 0 01-.75-.75z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 010 1.5h-8.5a.25.25 0 00-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 00.25-.25v-8.5a.75.75 0 011.5 0v8.5a1.75 1.75 0 01-1.75 1.75H4.25a1.75 1.75 0 01-1.75-1.75V4.25z"/></g></g></svg></a>.</p>
+<p>This has to do with time. It allows you to set the length of 1 slot and the
+beginning of slot 0.</p>
+<p>The third and final item in the <code v-pre>EmulatorConfig</code> constructor is a <a href="https://playground.plutus.iohkdev.io/doc/haddock/plutus-ledger/html/Ledger-Fee.html#t:FeeConfig"><code v-pre>FeeConfig</code>
+<svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M15.5 2.25a.75.75 0 01.75-.75h5.5a.75.75 0 01.75.75v5.5a.75.75 0 01-1.5 0V4.06l-6.22 6.22a.75.75 0 11-1.06-1.06L19.94 3h-3.69a.75.75 0 01-.75-.75z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 010 1.5h-8.5a.25.25 0 00-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 00.25-.25v-8.5a.75.75 0 011.5 0v8.5a1.75 1.75 0 01-1.75 1.75H4.25a1.75 1.75 0 01-1.75-1.75V4.25z"/></g></g></svg></a>.
+It defines the constant fee per transaction and the factor by which to multiply
+that fee to scale script execution.</p>
+<doc-anchor-target id="setting-up-the-repl">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#setting-up-the-repl">#</doc-anchor-trigger>
+        <span>Setting up the REPL</span>
+    </h3>
+</doc-anchor-target>
+<p>Inside a REPL, import the necessary modules.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">import Plutus.Trace.Emulator
+import Data.Default</code></pre>
+</doc-codeblock></div>
+<p>In a moment we&#x27;ll need to pass an <code v-pre>EmulatorConfig</code> to <code v-pre>runEmulatorTrace</code>. We can
+use the <a href="../../appendix/prettyprinted-default-emulatorconfig/">default
+configuration</a>.</p>
+<p>We&#x27;ll also need to pass an emulator trace. We haven&#x27;t look at emulator traces yet. But you can see from <code v-pre>runEmulatorTrace</code>&#x27;s info that <code v-pre>EmulatorTrace</code> is a monad. Since we know it&#x27;s a monad, we know we can use the simplest emulator trace we can do is <code v-pre>return ()</code>.</p>
+<doc-anchor-target id="runemulatortrace">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#runemulatortrace">#</doc-anchor-trigger>
+        <span>runEmulatorTrace</span>
+    </h2>
+</doc-anchor-target>
+<p>It won&#x27;t do anything special. It will just immediately return unit ().</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">runEmulatorTrace def $ return ()</code></pre>
+</doc-codeblock></div>
+<p>Even with the simplest version of this trace, an overwhelming amount of data is
+printed to the console. It&#x27;s virtually unusable.</p>
+<doc-anchor-target id="runemulatortraceio">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#runemulatortraceio">#</doc-anchor-trigger>
+        <span>runEmulatorTraceIO</span>
+    </h3>
+</doc-anchor-target>
+<p>Instead, you can use <code v-pre>runEmulatorTraceIO</code> which uses the default config
+automatically and runs in IO. The result is much more manageable, too.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">runEmulatorTraceIO $ return ()
+
+Slot 00000: TxnValidate 98d5fbcefe21113b3f0390c1441e075b8a870cc5a8fa2a56dcde1d8247e41715
+Slot 00000: SlotAdd Slot 1
+Slot 00001: W1bc5f27: InsertionSuccess: New tip is Tip(slot= Slot 1, blockId= BlockId(1033bd6bfb9d90108db08880ad32a58980ae8dafd14c6217d7f83db6fae6f70c), blockNo= 0). UTxO state was added to the end.
+-- and so on</code></pre>
+</doc-codeblock></div>
+<p>At the very beginning, a transaction is validated. That&#x27;s the genesis block
+that&#x27;s funding the wallets. Then it waits for 2 slots. Then it shows the final
+balances.</p>
+<p>Since we didn&#x27;t do anything in the emulator trace, nothing really happened and
+all the wallets still have their initial 100000000 Lovelace.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">Final balances
+Wallet 1bc5f27d7b4e20083977418e839e429d00cc87f3: 
+    {, &quot;&quot;}: 100000000
+Wallet 3a4778247ad35117d7c3150d194da389f3148f4a: 
+    {, &quot;&quot;}: 100000000
+-- and so on</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="runemulatortraceio-1">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#runemulatortraceio-1">#</doc-anchor-trigger>
+        <span>runEmulatorTraceIO&#x27;</span>
+    </h3>
+</doc-anchor-target>
+<p>If you want to specify a different emulator configuration, you can use
+<code v-pre>runEmulatorTraceIO'</code>.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">:t runEmulatorTraceIO'
+runEmulatorTraceIO'
+  :: TraceConfig -&gt; EmulatorConfig -&gt; EmulatorTrace () -&gt; IO ()</code></pre>
+</doc-codeblock></div>
+<p>Notice it takes a new argument we haven&#x27;t seen yet: <code v-pre>TraceConfig</code>.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">:t TraceConfig
+TraceConfig
+  :: (Wallet.Emulator.MultiAgent.EmulatorEvent' -&gt; Maybe String)
+     -&gt; GHC.IO.Handle.Types.Handle -&gt; TraceConfig</code></pre>
+</doc-codeblock></div>
+<p>It basically allows you to filter events in the trace. There is an overwhelming
+amount of events to trace. You can filter to see only the ones you want using
+<code v-pre>TraceConfig</code> and the argument <code v-pre>Wallet.Emulator.MultiAgent.EmulatorEvent'</code></p>
+<doc-anchor-target id="tracehs">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#tracehs">#</doc-anchor-trigger>
+        <span>Trace.hs</span>
+    </h3>
+</doc-anchor-target>
+<p>All of my notes for this section are <a href="https://github.com/travishorn/plutus-pioneer-program/blob/main/code/week04/src/Week04/Trace.hs">comments in the file itself
+<svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M15.5 2.25a.75.75 0 01.75-.75h5.5a.75.75 0 01.75.75v5.5a.75.75 0 01-1.5 0V4.06l-6.22 6.22a.75.75 0 11-1.06-1.06L19.94 3h-3.69a.75.75 0 01-.75-.75z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 010 1.5h-8.5a.25.25 0 00-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 00.25-.25v-8.5a.75.75 0 011.5 0v8.5a1.75 1.75 0 01-1.75 1.75H4.25a1.75 1.75 0 01-1.75-1.75V4.25z"/></g></g></svg></a>.</p>
+<p>Try out this trace emulation in the REPL by loading Trace.hs and calling <code v-pre>test</code></p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">:l src/Week04/Trace.hs
+test</code></pre>
+</doc-codeblock></div>
+<p>The output has all the information about the emulation. For example, you&#x27;ll see
+a lot of information at the start in the genesis block about initially funding
+the wallets</p>
+<p>Later in slot 2 you&#x27;ll see where <code v-pre>logInfo</code> (from <a href="https://github.com/travishorn/plutus-pioneer-program/blob/main/code/week04/src/Week04/Vesting.hs#L99">Vesting.hs line 99
+<svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M15.5 2.25a.75.75 0 01.75-.75h5.5a.75.75 0 01.75.75v5.5a.75.75 0 01-1.5 0V4.06l-6.22 6.22a.75.75 0 11-1.06-1.06L19.94 3h-3.69a.75.75 0 01-.75-.75z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 010 1.5h-8.5a.25.25 0 00-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 00.25-.25v-8.5a.75.75 0 011.5 0v8.5a1.75 1.75 0 01-1.75 1.75H4.25a1.75 1.75 0 01-1.75-1.75V4.25z"/></g></g></svg></a>)
+was called.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">Slot 00002: *** CONTRACT LOG: &quot;made a gift of 10000000 lovelace to 80a4f45b56b88d1139da23bc4c3c75ec6d32943c087f250b86193ca7 with deadline POSIXTime {getPOSIXTime = 1596059111000}&quot;</code></pre>
+</doc-codeblock></div>
+<p>You&#x27;ll see a lot of waiting for the next few slots.</p>
+<p>Then the wallet 2&#x27;s <code v-pre>grab</code> transaction is submitted in slot 20.</p>
+<p>Then you&#x27;ll see the log from <code v-pre>Trace.hs</code> and the log from the <code v-pre>grab</code> in
+<code v-pre>Vesting.hs</code> in slot 22.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">Slot 00022: *** USER LOG: reached Slot {getSlot = 22}
+Slot 00022: *** CONTRACT LOG: &quot;collected gifts&quot;</code></pre>
+</doc-codeblock></div>
+<p>Finally you&#x27;ll again see the final wallet balances.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">Wallet 7ce812d7a4770bbf58004067665c3a48f28ddd58: 
+    {, &quot;&quot;}: 109995870
+Wallet 872cb83b5ee40eb23bfdab1772660c822a48d491: 
+    {, &quot;&quot;}: 89999990</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="failing-transaction">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#failing-transaction">#</doc-anchor-trigger>
+        <span>Failing Transaction</span>
+    </h3>
+</doc-anchor-target>
+<p>You can modify <code v-pre>Trace.hs</code> to make the grab fail by not waiting long enough to
+pass the deadline. In that case, the trace output will reflect that there was no
+successful <code v-pre>grab</code>.</p>
 
 
 
@@ -263,6 +431,6 @@
 
         <div id="docs-overlay-target"></div>
 
-        <script>window.__DOCS__ = { "title": "The EmulatorTrace Monad", icon: "file", hasPrism: false, hasMermaid: false, hasMath: false }</script>
+        <script>window.__DOCS__ = { "title": "The EmulatorTrace Monad", icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
     </body>
 </html>

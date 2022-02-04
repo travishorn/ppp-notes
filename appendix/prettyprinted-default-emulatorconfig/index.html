@@ -7,21 +7,21 @@
     <meta name="turbo-cache-control" content="no-cache">
 
     <!-- Primary Meta Tags -->
-    <title>Emulator Trace &amp; Contract Monads</title>
-    <meta name="title" content="Emulator Trace & Contract Monads">
-    <meta name="description" content="Lecture 4, Part 5" />
+    <title>PrettyPrinted Default EmulatorConfig</title>
+    <meta name="title" content="PrettyPrinted Default EmulatorConfig">
+    <meta name="description" content="In a Plutus project REPL, you can view the default EmulatorConfig but it's not very easy to parse visually. Here's what it looks like prettyprinted." />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://travishorn.github.io/ppp-notes/04-emulator-trace-contract-monads/05-homework-summary/">
-    <meta property="og:title" content="Emulator Trace & Contract Monads">
-    <meta property="og:description" content="Lecture 4, Part 5">
+    <meta property="og:url" content="https://travishorn.github.io/ppp-notes/appendix/prettyprinted-default-emulatorconfig/">
+    <meta property="og:title" content="PrettyPrinted Default EmulatorConfig">
+    <meta property="og:description" content="In a Plutus project REPL, you can view the default EmulatorConfig but it's not very easy to parse visually. Here's what it looks like prettyprinted.">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://travishorn.github.io/ppp-notes/04-emulator-trace-contract-monads/05-homework-summary/">
-    <meta property="twitter:title" content="Emulator Trace & Contract Monads">
-    <meta property="twitter:description" content="Lecture 4, Part 5">
+    <meta property="twitter:url" content="https://travishorn.github.io/ppp-notes/appendix/prettyprinted-default-emulatorconfig/">
+    <meta property="twitter:title" content="PrettyPrinted Default EmulatorConfig">
+    <meta property="twitter:description" content="In a Plutus project REPL, you can view the default EmulatorConfig but it's not very easy to parse visually. Here's what it looks like prettyprinted.">
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/ppp-notes/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
@@ -30,6 +30,7 @@
     <script type="text/javascript" src="/ppp-notes/resources/js/config.js?v=1.11.2.697260883032" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/ppp-notes/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
     <script id="lunr-js" type="text/javascript" src="/ppp-notes/resources/js/lunr.js?v=1.11.2.697260883032" defer></script>
+    <script id="prism-js" type="text/javascript" src="/ppp-notes/resources/js/prism.js?v=1.11.2.697260883032" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -164,10 +165,10 @@
                 <div id="docs-sidebar-right-toggle"></div>
                
                 <!-- Page content  -->
-<doc-anchor-target id="emulator-trace--contract-monads" class="break-words">
+<doc-anchor-target id="prettyprinted-default-emulatorconfig" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#emulator-trace--contract-monads">#</doc-anchor-trigger>
-        <span>Emulator Trace &amp; Contract Monads</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#prettyprinted-default-emulatorconfig">#</doc-anchor-trigger>
+        <span>PrettyPrinted Default EmulatorConfig</span>
     </h1>
 </doc-anchor-target>
 <div class="-mt-3 mb-12 flex flex-wrap text-sm text-gray-400 dark:text-dark-350">
@@ -182,14 +183,70 @@
     </div>
 </div>
 
-<doc-anchor-target id="homework--summary">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#homework--summary">#</doc-anchor-trigger>
-        <span>Homework &amp; Summary</span>
-    </h2>
-</doc-anchor-target>
-<p>Lecture 4, Part 5</p>
-<p><a href="https://www.youtube.com/watch?v=sxRLzR0jdiY&amp;list=PLNEK_Ejlx3x230-g-U02issX5BiWAgmSi&amp;index=5">Lecture Video
+<p>In a Plutus project REPL, you can view the default <code v-pre>EmulatorConfig</code> but it&#x27;s not very easy to parse visually. Here&#x27;s what it looks like prettyprinted.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">import Plutus.Trace.Emulator
+import Data.Default
+
+def :: EmulatorConfig
+def :: EmulatorConfig
+EmulatorConfig {
+  _initialChainState = Left (
+    fromList [
+      (
+        Wallet 1bc5f27d7b4e20083977418e839e429d00cc87f3,
+        Value (Map [(,Map [(&quot;&quot;, 100000000)]))
+      ),
+      (
+        Wallet 3a4778247ad35117d7c3150d194da389f3148f4a,
+        Value (Map [(,Map [(&quot;&quot;,100000000)])])
+      ),
+      (
+        Wallet 4e76ce6b3f12c6cc5a6a2545f6770d2bcb360648,
+        Value (Map [(,Map [(&quot;&quot;,100000000)])])
+      ),
+      (
+        Wallet 5f5a4f5f465580a5500b9a9cede7f4e014a37ea8,
+        Value (Map [(,Map [(&quot;&quot;,100000000)])])
+      ),
+      (
+        Wallet 7ce812d7a4770bbf58004067665c3a48f28ddd58,
+        Value (Map [(,Map [(&quot;&quot;,100000000)])])
+      ),
+      (
+        Wallet 872cb83b5ee40eb23bfdab1772660c822a48d491,
+        Value (Map [(,Map [(&quot;&quot;,100000000)])])
+      ),
+      (
+        Wallet bdf8dbca0cadeb365480c6ec29ec746a2b85274f,
+        Value (Map [(,Map [(&quot;&quot;,100000000)])])
+      ),
+      (
+        Wallet c19599f22890ced15c6a87222302109e83b78bdf,
+        Value (Map [(,Map [(&quot;&quot;,100000000)])])
+      ),
+      (
+        Wallet c30efb78b4e272685c1f9f0c93787fd4b6743154,
+        Value (Map [(,Map [(&quot;&quot;,100000000)])])
+      ),
+      (
+        Wallet d3eddd0d37989746b029a0e050386bc425363901,
+        Value (Map [(,Map [(&quot;&quot;,100000000)])])
+      )
+    ]
+  ),
+  _slotConfig = SlotConfig {
+    scSlotLength = 1000,
+    scSlotZeroTime = POSIXTime {getPOSIXTime = 1596059091000}
+  },
+  _feeConfig = FeeConfig {
+    fcConstantFee = Lovelace {getLovelace = 10},
+    fcScriptsFeeFactor = 1.0
+  }
+}</code></pre>
+</doc-codeblock></div>
+<p>As of 2022-02-03. <a href="https://github.com/input-output-hk/plutus-apps/tree/ea1bfc6a49ee731c67ada3bfb326ee798001701a">input-output-hk/plutus-apps commit
+ea1bfc6a49ee731c67ada3bfb326ee798001701a
 <svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M15.5 2.25a.75.75 0 01.75-.75h5.5a.75.75 0 01.75.75v5.5a.75.75 0 01-1.5 0V4.06l-6.22 6.22a.75.75 0 11-1.06-1.06L19.94 3h-3.69a.75.75 0 01-.75-.75z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 010 1.5h-8.5a.25.25 0 00-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 00.25-.25v-8.5a.75.75 0 011.5 0v8.5a1.75 1.75 0 01-1.75 1.75H4.25a1.75 1.75 0 01-1.75-1.75V4.25z"/></g></g></svg></a></p>
 
 
@@ -202,20 +259,20 @@
             
 <nav class="flex mt-14">
     <div class="w-1/2">
-        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/ppp-notes/04-emulator-trace-contract-monads/04-contract-monad/">
+        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/ppp-notes/appendix/install-git/">
             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
             <span>
                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                <span class="block mt-1">The Contract Monad</span>
+                <span class="block mt-1">Install Git</span>
             </span>
         </a>
     </div>
 
     <div class="w-1/2">
-        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/ppp-notes/appendix/about-platform/plutus-platform/">
+        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/ppp-notes/appendix/run-haddock-docs-locally/">
             <span>
                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                <span class="block mt-1">Plutus Plaform</span>
+                <span class="block mt-1">Run Haddock Docs Locally</span>
             </span>
             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
         </a>
@@ -263,6 +320,6 @@
 
         <div id="docs-overlay-target"></div>
 
-        <script>window.__DOCS__ = { "title": "Homework & Summary", icon: "file", hasPrism: false, hasMermaid: false, hasMath: false }</script>
+        <script>window.__DOCS__ = { "title": "PrettyPrinted Default EmulatorConfig", icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
     </body>
 </html>
