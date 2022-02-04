@@ -62,7 +62,7 @@ Technical documentation can be found in the [Plutus libraries haddock docs
   Scripts](./02-validation-scripts/01-triggering-change.md)
 - [Lecture 3: Vesting
   Example](./03-vesting-example/01-configuring-playground-time-out.md)
-- Lecture 4: Emulator Trace and Contract Monads
+- [Lecture 4: Emulator Trace and Contract Monads](./04-emulator-trace-contract-monads/01-configuring-playground-time-out.md)
 - Lecture 5: Minting policy
 - Lecture 6: Oracles and Core, Swap, Funds and Test modules
 - Lecture 7: State machines
