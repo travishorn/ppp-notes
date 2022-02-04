@@ -15,7 +15,10 @@ Lecture 4, Part 5
 [Lecture Video
 :icon-link-external:](https://www.youtube.com/watch?v=sxRLzR0jdiY&list=PLNEK_Ejlx3x230-g-U02issX5BiWAgmSi&index=5)
 
-[Homework contract :icon-link-external:](https://github.com/input-output-hk/plutus-pioneer-program/blob/f3102346284eca5bd9dbf40686d5a227d71620c7/code/week04/src/Week04/Homework.hs)
+### Homework
+
+[Homework contract
+:icon-link-external:](https://github.com/input-output-hk/plutus-pioneer-program/blob/f3102346284eca5bd9dbf40686d5a227d71620c7/code/week04/src/Week04/Homework.hs)
 
 [My solution
 :icon-link-external:](https://github.com/travishorn/plutus-pioneer-program/blob/main/code/week04/src/Week04/Homework.hs)
@@ -60,7 +63,9 @@ payTrace x y = do
 
 This works great with the given `payContract` when there are no errors.
 
-The second part of the homework was to ensure that the script would continue to pay wallet 2 the second amount even if the first failed. For that, I had to modify `payContract`:
+The second part of the homework was to ensure that the script would continue to
+pay wallet 2 the second amount even if the first failed. For that, I had to
+modify `payContract`:
 
 ```haskell
 -- In addition to Text, we need unpack when handling the error
@@ -79,3 +84,16 @@ payContract = do
 
     payContract
 ```
+
+### Summary
+
+In this lecture, we learned about
+
+- [monads](./02-monads.md) - how they work and why they're important
+- [the EmulatorTrace monad](./03-emulatortrace-monad.md) - scripting scenarios
+  instead of using the GUI Playground
+- [the Contract monad](./04-contract-monad.md) - writing off-chain code
+
+You can do much more with these monads that we haven't covered. Basically
+anything you could do with the Cardano CLI. Things like querying the blockchain,
+constructing transactions, submitting transactions, etc.

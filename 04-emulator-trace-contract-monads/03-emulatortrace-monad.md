@@ -19,8 +19,7 @@ One of the important monads in Plutus is the `EmulatorTrace` monad. With this
 monad, you can test out Plutus code without having to start a Plutus Playground,
 copy & pasting a contract into it, and setting up a simulation through the GUI.
 
-It's defined in [the `Plutus.Trace.Emulator`
-package in `plutus-contract`
+It's defined in [the `Plutus.Trace.Emulator` package in `plutus-contract`
 :icon-link-external:](https://playground.plutus.iohkdev.io/doc/haddock/plutus-contract/html/Plutus-Trace-Emulator.html).
 
 The way to run an emulator trace is by calling [`runEmulatorTrace`
@@ -84,7 +83,10 @@ In a moment we'll need to pass an `EmulatorConfig` to `runEmulatorTrace`. We can
 use the [default
 configuration](../appendix/prettyprinted-default-emulatorconfig.md).
 
-We'll also need to pass an emulator trace. We haven't look at emulator traces yet. But you can see from `runEmulatorTrace`'s info that `EmulatorTrace` is a monad. Since we know it's a monad, we know we can use the simplest emulator trace we can do is `return ()`.
+We'll also need to pass an emulator trace. We haven't look at emulator traces
+yet. But you can see from `runEmulatorTrace`'s info that `EmulatorTrace` is a
+monad. Since we know it's a monad, we know we can use the simplest emulator
+trace we can do is `return ()`.
 
 ## runEmulatorTrace
 
