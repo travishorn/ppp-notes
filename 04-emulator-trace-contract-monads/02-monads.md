@@ -50,7 +50,8 @@ foo
 ```
 
 `foo` will always return the same number. We don't need to know what the code
-inside it does to know that. If we give a function the same arguments, it will always return the same result. Side-effects cannot happen.
+inside it does to know that. If we give a function the same arguments, it will
+always return the same result. Side-effects cannot happen.
 
 ### The IO Monad
 
@@ -163,7 +164,8 @@ toUpper 'q'
 'Q'
 ```
 
-Since a `String` is just a list of `Char`s, we can `map` over a `String` with `toUpper`.
+Since a `String` is just a list of `Char`s, we can `map` over a `String` with
+`toUpper`.
 
 ```haskell
 :t map toUpper
@@ -206,7 +208,8 @@ If the first action has a return result, it will be ignored.
 
 ### >>= (Bind)
 
-If you need to use the result of the first action, you can use bind `>>=`. The type signature must match this:
+If you need to use the result of the first action, you can use bind `>>=`. The
+type signature must match this:
 
 ```haskell
 :t (>>=)
@@ -352,9 +355,12 @@ Right 42 :: Either String Int
 Right 42
 ```
 
-The problem with `Maybe` is that when there's an error, only `Nothing` is returned. There's no place for an error message. We can use `Either` to solve that problem.
+The problem with `Maybe` is that when there's an error, only `Nothing` is
+returned. There's no place for an error message. We can use `Either` to solve
+that problem.
 
-The convention is the `Left` corresponds to an error while `Right` corresponds to the expected value.
+The convention is the `Left` corresponds to an error while `Right` corresponds
+to the expected value.
 
 I wrote more notes as comments in the file.
 
@@ -418,7 +424,8 @@ class Functor f => Applicative f where
 
 Notice that `pure` has the same signature as Monad's `return`.
 
-The standard way to implement Functor and Applicative is to import helper functions from `Control.Monad`
+The standard way to implement Functor and Applicative is to import helper
+functions from `Control.Monad`
 
 ```haskell
 instance Functor Writer where
@@ -435,7 +442,8 @@ instance Monad Writer where
 
 ### Superpowers
 
-Another way to think about monads is that they are a way to do a computation withe a side-effect or a superpower.
+Another way to think about monads is that they are a way to do a computation
+withe a side-effect or a superpower.
 
 IO's superpower is having real-world side-effects like...
 
@@ -485,7 +493,9 @@ threeInts' mx my mz = do
     return k + l + m
 ```
 
-This does the same as the first example, just with some syntactic sugar. It's a matter of taste. For smaller number of binds, people tend to write them explicitly. For larger number of binds, they use `do`.
+This does the same as the first example, just with some syntactic sugar. It's a
+matter of taste. For smaller number of binds, people tend to write them
+explicitly. For larger number of binds, they use `do`.
 
 You can also use `let` with this notation
 
