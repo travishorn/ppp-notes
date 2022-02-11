@@ -25,11 +25,12 @@
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("/ppp-notes/doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/ppp-notes/resources/css/retype.css?v=1.11.2.697902559827" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/ppp-notes/resources/css/retype.css?v=1.11.2.697926010849" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/ppp-notes/resources/js/config.js?v=1.11.2.697902559827" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/ppp-notes/resources/js/config.js?v=1.11.2.697926010849" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/ppp-notes/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/ppp-notes/resources/js/lunr.js?v=1.11.2.697902559827" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/ppp-notes/resources/js/lunr.js?v=1.11.2.697926010849" defer></script>
+    <script id="prism-js" type="text/javascript" src="/ppp-notes/resources/js/prism.js?v=1.11.2.697926010849" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -191,6 +192,169 @@
 <p>Lecture 5, Part 2</p>
 <p><a href="https://www.youtube.com/watch?v=4iNTgjovMRg&amp;list=PLNEK_Ejlx3x0G8V8CDBnRDZ86POVsrfzw&amp;index=2">Lecture Video
 <svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M15.5 2.25a.75.75 0 01.75-.75h5.5a.75.75 0 01.75.75v5.5a.75.75 0 01-1.5 0V4.06l-6.22 6.22a.75.75 0 11-1.06-1.06L19.94 3h-3.69a.75.75 0 01-.75-.75z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 010 1.5h-8.5a.25.25 0 00-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 00.25-.25v-8.5a.75.75 0 011.5 0v8.5a1.75 1.75 0 01-1.75 1.75H4.25a1.75 1.75 0 01-1.75-1.75V4.25z"/></g></g></svg></a></p>
+<p>The Plutus module that deals with values is <a href="https://playground.plutus.iohkdev.io/doc/haddock/plutus-ledger-api/html/Plutus-V1-Ledger-Value.html">Plutus.V1.Ledger.Value
+<svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M15.5 2.25a.75.75 0 01.75-.75h5.5a.75.75 0 01.75.75v5.5a.75.75 0 01-1.5 0V4.06l-6.22 6.22a.75.75 0 11-1.06-1.06L19.94 3h-3.69a.75.75 0 01-.75-.75z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 010 1.5h-8.5a.25.25 0 00-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 00.25-.25v-8.5a.75.75 0 011.5 0v8.5a1.75 1.75 0 01-1.75 1.75H4.25a1.75 1.75 0 01-1.75-1.75V4.25z"/></g></g></svg></a>.</p>
+<p>The <a href="https://playground.plutus.iohkdev.io/doc/haddock/plutus-ledger-api/html/Plutus-V1-Ledger-Value.html#t:Value">Value
+<svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M15.5 2.25a.75.75 0 01.75-.75h5.5a.75.75 0 01.75.75v5.5a.75.75 0 01-1.5 0V4.06l-6.22 6.22a.75.75 0 11-1.06-1.06L19.94 3h-3.69a.75.75 0 01-.75-.75z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 010 1.5h-8.5a.25.25 0 00-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 00.25-.25v-8.5a.75.75 0 011.5 0v8.5a1.75 1.75 0 01-1.75 1.75H4.25a1.75 1.75 0 01-1.75-1.75V4.25z"/></g></g></svg></a>
+type:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">getValue :: Map CurrencySymbol (Map TokenName Integer)</code></pre>
+</doc-codeblock></div>
+<p>Every native token (including ADA) is identified by two things:</p>
+<ul>
+<li>A currency symbol</li>
+<li>A token name</li>
+</ul>
+<p>Both <a href="https://playground.plutus.iohkdev.io/doc/haddock/plutus-ledger-api/html/Plutus-V1-Ledger-Value.html#t:CurrencySymbol">CurrencySymbol
+<svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M15.5 2.25a.75.75 0 01.75-.75h5.5a.75.75 0 01.75.75v5.5a.75.75 0 01-1.5 0V4.06l-6.22 6.22a.75.75 0 11-1.06-1.06L19.94 3h-3.69a.75.75 0 01-.75-.75z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 010 1.5h-8.5a.25.25 0 00-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 00.25-.25v-8.5a.75.75 0 011.5 0v8.5a1.75 1.75 0 01-1.75 1.75H4.25a1.75 1.75 0 01-1.75-1.75V4.25z"/></g></g></svg></a>
+and <a href="https://playground.plutus.iohkdev.io/doc/haddock/plutus-ledger-api/html/Plutus-V1-Ledger-Value.html#t:TokenName">TokenName
+<svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M15.5 2.25a.75.75 0 01.75-.75h5.5a.75.75 0 01.75.75v5.5a.75.75 0 01-1.5 0V4.06l-6.22 6.22a.75.75 0 11-1.06-1.06L19.94 3h-3.69a.75.75 0 01-.75-.75z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 010 1.5h-8.5a.25.25 0 00-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 00.25-.25v-8.5a.75.75 0 011.5 0v8.5a1.75 1.75 0 01-1.75 1.75H4.25a1.75 1.75 0 01-1.75-1.75V4.25z"/></g></g></svg></a>
+are wrappers around <code v-pre>BuiltinByteString</code>.</p>
+<p><a href="https://playground.plutus.iohkdev.io/doc/haddock/plutus-ledger-api/html/Plutus-V1-Ledger-Value.html#t:AssetClass">AssetClass
+<svg xmlns="http://www.w3.org/2000/svg" class="docs-icon" viewBox="0 0 24 24" role="presentation"><g fill="currentColor"><g><path d="M15.5 2.25a.75.75 0 01.75-.75h5.5a.75.75 0 01.75.75v5.5a.75.75 0 01-1.5 0V4.06l-6.22 6.22a.75.75 0 11-1.06-1.06L19.94 3h-3.69a.75.75 0 01-.75-.75z"/><path d="M2.5 4.25c0-.966.784-1.75 1.75-1.75h8.5a.75.75 0 010 1.5h-8.5a.25.25 0 00-.25.25v15.5c0 .138.112.25.25.25h15.5a.25.25 0 00.25-.25v-8.5a.75.75 0 011.5 0v8.5a1.75 1.75 0 01-1.75 1.75H4.25a1.75 1.75 0 01-1.75-1.75V4.25z"/></g></g></svg></a>
+is a wrapper around a <code v-pre>CurrencySymbol</code> and <code v-pre>TokenName</code> pair.</p>
+<p>Going back to the <code v-pre>Value</code> type, it&#x27;s equivalent to a map from <code v-pre>AssetClass</code> to
+<code v-pre>Integer</code>. Meaning that a value is basically how many of a given unit an
+AssetClass contains.</p>
+<doc-anchor-target id="interacting-with-the-value-module">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#interacting-with-the-value-module">#</doc-anchor-trigger>
+        <span>Interacting with the Value Module</span>
+    </h2>
+</doc-anchor-target>
+<p>You can play with the module in the REPL. After doing the <a href="../../weekly-setup/">weekly
+setup</a>, change into this week&#x27;s directory.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">cd plutus-pioneer-program/code/week05/</code></pre>
+</doc-codeblock></div>
+<p>Update Cabal</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">cabal update</code></pre>
+</doc-codeblock></div>
+<p>Start a REPL</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-bash"><code v-pre class="language-bash">cabal repl</code></pre>
+</doc-codeblock></div>
+<p>Import relevant modules</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">import Plutus.V1.Ledger.Value
+import Plutus.V1.Ledger.Ada</code></pre>
+</doc-codeblock></div>
+<p>Set overloaded strings</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">:set -XOverloadedStrings</code></pre>
+</doc-codeblock></div>
+<p><code v-pre>adaSymbol</code> is of type <code v-pre>CurrencySymbol</code></p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">:t adaSymbol
+adaSymbol :: CurrencySymbol</code></pre>
+</doc-codeblock></div>
+<p>The symbol itself is an empty bytestring.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">adaSymbol
+
+-- Empty bytestring returned above</code></pre>
+</doc-codeblock></div>
+<p><code v-pre>adaToken</code> is of type <code v-pre>TokenName</code> and it&#x27;s similarly an empty string.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">:t adaToken
+adaToken :: TokenName
+
+adaToken
+&quot;&quot;</code></pre>
+</doc-codeblock></div>
+<p>To construct a value containing just Lovelace (ADA), use <code v-pre>lovelaceValueOf</code></p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">:t lovelaceValueOf  
+lovelaceValueOf :: Integer -&gt; Value
+
+lovelaceValueOf 123 
+Value (Map [(,Map [(&quot;&quot;,123)])])</code></pre>
+</doc-codeblock></div>
+<p>The absense of anything before that first comma indicates the <code v-pre>adaSymbol</code>.
+Remember it&#x27;s an empty bytestring. The absense of anything inside the quotes
+indicates the <code v-pre>adaToken</code>.</p>
+<doc-anchor-target id="combining-values">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#combining-values">#</doc-anchor-trigger>
+        <span>Combining Values</span>
+    </h3>
+</doc-anchor-target>
+<p>The <code v-pre>Value</code> type is a monoid.</p>
+<p>Monoids are things you can combine with a natural element called <code v-pre>mempty</code>, and
+things you can combine two elements into a third with <code v-pre>mappend</code>. <code v-pre>mappend</code> has
+an infix operator <code v-pre>&lt;&gt;</code>.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">lovelaceValueOf 123 &lt;&gt; lovelaceValueOf 10
+Value (Map [(,Map [(&quot;&quot;,133)])])</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="constructing-a-value">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#constructing-a-value">#</doc-anchor-trigger>
+        <span>Constructing a Value</span>
+    </h3>
+</doc-anchor-target>
+<p>Use <code v-pre>singleton</code> to construct a value with a native token.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">:t singleton
+singleton :: CurrencySymbol -&gt; TokenName -&gt; Integer -&gt; Value</code></pre>
+</doc-codeblock></div>
+<p>You must pass the currency symbol as a hexidecimal value.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">singleton &quot;a8ff&quot; &quot;ABC&quot; 7
+Value (Map [(a8ff,Map [(&quot;ABC&quot;,7)])])</code></pre>
+</doc-codeblock></div>
+<p>The outer map contains the the currency symbol and the inner map. The inner map
+contains the token name and the amount.</p>
+<p>You can combine values like before</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">singleton &quot;a8ff&quot; &quot;ABC&quot; 7 &lt;&gt; lovelaceValueOf 42 &lt;&gt; singleton &quot;a8ff&quot; &quot;XYZ&quot; 100
+Value (Map [(,Map [(&quot;&quot;,42)]),(a8ff,Map [(&quot;ABC&quot;,7),(&quot;XYZ&quot;,100)])])</code></pre>
+</doc-codeblock></div>
+<p>Now, the outer map contains two instances of a currency symbol and an inner map.
+The first inner map is similar to what we&#x27;ve seen before, but the second inner
+map (the one with <code v-pre>a8ff</code> as the currency symbol) contains two instances of token
+names: <code v-pre>&quot;ABC&quot;</code> and <code v-pre>&quot;XYZ&quot;</code>.</p>
+<p>Assign that value to variable <code v-pre>v</code></p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">let v = let v = singleton &quot;a8ff&quot; &quot;ABC&quot; 7 &lt;&gt; lovelaceValueOf 42 &lt;&gt; singleton &quot;a8ff&quot; &quot;XYZ&quot; 100</code></pre>
+</doc-codeblock></div>
+<p>Get the amount given a value, currency symbol, and token name</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">:t valueOf
+valueOf :: Value -&gt; CurrencySymbol -&gt; TokenName -&gt; Integer
+
+valueOf v &quot;a8ff&quot; &quot;ABC&quot;
+7</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="flatten-a-value">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#flatten-a-value">#</doc-anchor-trigger>
+        <span>Flatten a Value</span>
+    </h3>
+</doc-anchor-target>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-haskell"><code v-pre class="language-haskell">:t flattenValue
+flattenValue :: Value -&gt; [(CurrencySymbol, TokenName, Integer)]
+
+flattenValue v
+[(,&quot;&quot;,42),(a8ff,&quot;XYZ&quot;,100),(a8ff,&quot;ABC&quot;,7)]</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="why-both-a-currency-symbol-and-token-name">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#why-both-a-currency-symbol-and-token-name">#</doc-anchor-trigger>
+        <span>Why both a currency symbol and token name?</span>
+    </h3>
+</doc-anchor-target>
+<p>A transaction can&#x27;t create or delete tokens. Everything that goes in must come
+out, with the exception of fees. Fees are based on size of transaction in bytes
+(not value).</p>
+<p>The currency symbol is actually a hash of a script. This type of script is
+called a &quot;minting policy.&quot;</p>
+<p>The minting script is executed alongside the validation scripts in a
+transaction. The purpose of the minting script is to determine if the
+transaction has the rights to mint or burn tokens.</p>
+<p>Minting scripts are similar to validation scripts but not identical.</p>
 
 
 
@@ -263,6 +427,6 @@
 
         <div id="docs-overlay-target"></div>
 
-        <script>window.__DOCS__ = { "title": "Values", icon: "file", hasPrism: false, hasMermaid: false, hasMath: false }</script>
+        <script>window.__DOCS__ = { "title": "Values", icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
     </body>
 </html>
