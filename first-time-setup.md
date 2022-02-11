@@ -106,8 +106,6 @@ Change into the `plutus-apps` directory
 cd plutus-apps
 ```
 
-It will take around 5-10 minutes. 
-
 Start a Nix Shell
 
 ```bash
